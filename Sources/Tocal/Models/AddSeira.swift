@@ -26,7 +26,7 @@ public struct AddSeiraData: Codable {
 //    var adUrl: String
     var categoryName: String
     var nid: String
-    var adMediaId: String
+    public var adMediaId: String
     var apiToken: String
     var targetImpressions: Int
     var adThumbData: String
