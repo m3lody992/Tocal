@@ -83,7 +83,7 @@ public class ALUserInfoService {
         set { KeychainManager.set(value: newValue, for: .isAgoraUser) }
     }
 
-    static var panPotID: String {
+    public static var panPotID: String {
         get { return UserDefaultsManager.object(forKey: .panPotID) ?? [].localizedString}
         set { UserDefaultsManager.set(newValue, forKey: .panPotID) }
     }

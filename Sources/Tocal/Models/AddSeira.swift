@@ -34,7 +34,7 @@ public struct AddSeiraData: Codable {
     var isValued: Int
     var lowestBid: Int
     var currentImpressions: Int
-    var nonce: String
+    public var nonce: String
     var h: Int
     var c: Int
 
