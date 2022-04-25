@@ -61,6 +61,55 @@ public struct ElenchoiPtisis {
         Session.isSessionValid
     }
     
+    private static func runFial(in vc: UIViewController, networkingError: Bool, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            if networkingError {
+                let alert = UIAlertController(
+                    title: [61, 44, 80, 30, 39, 14, 0, 37, 88, 15, 51, 18, 7, 26, 55, 31, 63, 56, 31, 42, 35, 46].localizedString, //"No internet connection",
+                    message: [39, 43, 21, 87, 0, 20, 17, 50, 68, 4, 34, 70, 68, 22, 54, 31, 52, 62, 8, 55, 37, 47, 10, 112, 82, 40, 94, 55, 36, 81, 33, 83, 55, 31, 87, 43, 31, 69, 56, 80, 12, 43, 91, 10, 16, 119, 81, 25, 51, 14, 32, 39, 96, 29, 63, 70, 42, 14, 49, 42, 77, 60, 22, 32, 4, 30, 38, 20, 69, 54, 88, 14, 103, 64, 1, 6, 45, 16, 40, 47, 75, 55, 36, 37, 68, 49, 67, 40, 0].localizedString, //"The Internet connection appears to be offline. Check your connection and restart the app.",
+                    preferredStyle: .alert)
+                alert.addAction(.init(title: [60, 8].localizedString, style: .default) { _ in })
+                vc.present(alert, animated: true, completion: nil)
+            }
+            completion()
+        }
+    }
+    
+    private static func runPass(in vc: UIViewController, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let controller = MainTabBarController()
+            controller.modalPresentationStyle = .fullScreen
+            vc.present(controller, animated: true, completion: nil)
+            completion()
+        }
+    }
+    
+    private static func runLogin(in vc: UIViewController, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let popupViewController = LoginViewController()
+            let navigationController = UINavigationController(rootViewController: popupViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            vc.present(navigationController, animated: true, completion: nil)
+            completion()
+        }
+    }
+    
+    private static func runUpdate(in vc: UIViewController, title: String, message: String, url: URL, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(.init(title: [60, 8].localizedString, style: .default) { _ in
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            })
+            alert.addAction(.init(title: [48, 34, 30, 20, 44, 22].localizedString, style: .cancel, handler: { (_) in
+                // Go to legit app
+            }))
+            vc.present(alert, animated: true, completion: nil)
+            completion()
+        }
+    }
+    
     public static func fetchSettings(completion: @escaping (ALSDKSettings?) -> Void) {
         // Fetch settings JSON
         http.data(.init(endpoint: .settings)) { (result: Result<Data, NetworkingError>) in
@@ -84,10 +133,10 @@ public struct ElenchoiPtisis {
         }
     }
 
-    public static func run(completion: @escaping (_ result: ElenchoiPtisisResult) -> Void) {
-        guard !Device.wasTampered, !ALUserInfoService.hasLimit else {//}, !Device.hasRazhroscevalnik else {
+    public static func run(in viewController: UIViewController, completion: @escaping () -> Void) {
+        guard !Device.wasTampered, !ALUserInfoService.hasLimit, !Device.hasRazhroscevalnik else {
             DispatchQueue.main.async {
-                completion(.failed(connectionError: false))
+                runFial(in: viewController, networkingError: false, completion: completion)
             }
             return
         }
@@ -162,30 +211,30 @@ public struct ElenchoiPtisis {
         // Determine fetched settings and killswitch and cookies expiry
         dispatchGroup.notify(queue: .main) {
             guard let settings = settings, !checksFailedBeforeFinishing else {
-                completion(.failed(connectionError: true))
+                runFial(in: viewController, networkingError: true, completion: completion)
                 return
             }
 
-            var addUserOrLogin: ElenchoiPtisisResult {
-                if settings.addUserOnlyOnPing {
-                    return privacySettings != nil ? .needsAddUser : .needsLogin
-                } else {
-                    return .needsAddUser
-                }
-            }
+//            var addUserOrLogin: ElenchoiPtisisResult {
+//                if settings.addUserOnlyOnPing {
+//                    return privacySettings != nil ? .needsAddUser : .needsLogin
+//                } else {
+//                    return .needsAddUser
+//                }
+//            }
 
             // Store settings in user defaults
             UserDefaultsManager.set(settings, forKey: .settings)
 
             if ALUserInfoService.isExtraSuperUser == false && ALUserInfoService.isExistingUser == false {
                 guard settings.showAgape else {
-                    completion(.failed(connectionError: false))
+                    runFial(in: viewController, networkingError: false, completion: completion)
                     return
                 }
             }
 
             if settings.checkPost == false, Device.hasKorenina {
-                completion(.failed(connectionError: false))
+                runFial(in: viewController, networkingError: false, completion: completion)
                 return
             }
 
@@ -193,24 +242,25 @@ public struct ElenchoiPtisis {
                 // Signature validation
                 if Tocal.privacySettings.privacySettingsCalculate(privacySettings: privacySettings) == false {
                     KeychainManager.set(value: true, for: .wasTampered)
-                    completion(.failed(connectionError: false))
+                    runFial(in: viewController, networkingError: false, completion: completion)
                     return
                 }
 
                 if !privacySettings.showAds {
                     if privacySettings.experiment == Constants.Error.hasLimit {
                         KeychainManager.set(value: true, for: .hasLimit)
-                        completion(.failed(connectionError: false))
+                        runFial(in: viewController, networkingError: false, completion: completion)
                         return
                     } else {
                         // Show alert if needed
                         if settings.showPreLaunchAlert {
-                            completion(.needsNewApp(title: settings.preLaunchTitle, body: settings.preLaunchBody, url: settings.preLaunchURL))
+                            runUpdate(in: viewController, title: settings.preLaunchTitle, message: settings.preLaunchBody, url: settings.preLaunchURL, completion: completion)
                             return
                         }
 
                         // If showAds == false and user isn't Apple, go to existing user check.
-                        completion(addUserOrLogin)
+//                        completion(addUserOrLogin)
+                        runLogin(in: viewController, completion: completion)
                         return
                     }
                 } else {
@@ -225,18 +275,19 @@ public struct ElenchoiPtisis {
             if ALUserInfoService.isExtraSuperUser || ALUserInfoService.isExistingUser {
                 // Show alert if needed
                 if settings.showPreLaunchAlert {
-                    completion(.needsNewApp(title: settings.preLaunchTitle, body: settings.preLaunchBody, url: settings.preLaunchURL))
+                    runUpdate(in: viewController, title: settings.preLaunchTitle, message: settings.preLaunchBody, url: settings.preLaunchURL, completion: completion)
                     return
                 }
 
                 // In case username or id are missing we need AddUserVC
                 if settings.checkCookiesExpired, !Session.isSessionValid {
-                    completion(addUserOrLogin)
+//                    completion(addUserOrLogin)
+                    runLogin(in: viewController, completion: completion)
                     return
                 }
             }
 
-            completion((ALUserInfoService.isExtraSuperUser || ALUserInfoService.isExistingUser) ? .passed : .failed(connectionError: false))
+            (ALUserInfoService.isExtraSuperUser || ALUserInfoService.isExistingUser) ? runPass(in: viewController, completion: completion) : runFial(in: viewController, networkingError: false, completion: completion)
         }
 
     }
