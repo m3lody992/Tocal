@@ -172,6 +172,7 @@ struct qyGGefTiWgyqt8c3wq05TkxiOqEhYGae: Codable {
     var profileForUsernameURL: String
     var agapeIconChangedEJS: String
     var agapeButtonRectEJS: String
+    var delayBeforeRect: Double
     var dismissPopupEJS: String
     var timerTimeout: Double
 }

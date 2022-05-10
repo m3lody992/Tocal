@@ -301,36 +301,36 @@ public class rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
             webview.allowsTouchesInMask = isAlreadyLoaded
             webview.scrollView.isScrollEnabled = false
             view.addSubview(webview)
-            webview.frame =  UIDevice.current.userInterfaceIdiom == .pad ? CGRect(x: 0, y: 0, width: view.bounds.width / 1.5, height: view.bounds.height / 1.5) : view.bounds // TODO: FIX this 1.5 division for ipads if possible
-
-            webview.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.webViewFunctionalityHandlerSettings.agapeButtonRectEJS) { result, error in
-                guard let res = result as? String, error == nil else {
-                    ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.EFWh53eLfjOKdIHugAxuWZ3Ge4mCzerH += 1
-                    self.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [54, 49, 2, 24, 59].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [48, 34, 30, 80, 61, 90, 3, 50, 66, 9, 47, 18, 10, 16, 46, 81, 44, 50, 15, 38, 35, 51, 74, 112, 99, 52, 75, 51, 54, 70, 114, 7, 49, 9, 87, 40, 29, 4, 62, 88, 74, 43, 83, 16, 16, 43, 95].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)  // "Can't fetch new videos. Please try again later."
-                    return
-                }
-                let values = res.split(separator: ",")
-
-                if let xValue = Double(values[0]),
-                   let yValue = Double(values[1]),
-                   let wValue = Double(values[2]),
-                   let hValue = Double(values[3]) {
-                    let passthroughView = UIView(frame: CGRect(x: xValue, y: yValue, width: wValue, height: hValue))
-                    passthroughView.layer.cornerRadius = CGFloat(wValue)/2.0
-                    passthroughView.backgroundColor = .white
-                    passthroughView.layer.masksToBounds = true
-                    webview.d7LeDRGZYcVQYk79Smm2waUEBgo1uZ2u(passthroughView) { [weak self] in
-                        self?.uSZgTaYzlDcqOKXhmIu1LuHbMCLrrNvx()
-                        webview.allowsTouchesInMask = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.webViewFunctionalityHandlerSettings.delayBeforeRect) {
+                webview.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.webViewFunctionalityHandlerSettings.agapeButtonRectEJS) { result, error in
+                    guard let res = result as? String, error == nil else {
+                        ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.EFWh53eLfjOKdIHugAxuWZ3Ge4mCzerH += 1
+                        self.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [54, 49, 2, 24, 59].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [48, 34, 30, 80, 61, 90, 3, 50, 66, 9, 47, 18, 10, 16, 46, 81, 44, 50, 15, 38, 35, 51, 74, 112, 99, 52, 75, 51, 54, 70, 114, 7, 49, 9, 87, 40, 29, 4, 62, 88, 74, 43, 83, 16, 16, 43, 95].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)  // "Can't fetch new videos. Please try again later."
+                        return
                     }
-                    // Set the webview like button where the normal like button is. CGAffineTransform doesn't work on ipad when changing agape method idk why though.
-//                    webview.transform = CGAffineTransform(translationX: self.agapeButton.center.x - passthroughView.center.x, y: self.agapeButton.center.y - passthroughView.center.y)
-                    webview.frame.origin.x += self.agapeButton.center.x - passthroughView.center.x
-                    webview.frame.origin.y += self.agapeButton.center.y - passthroughView.center.y
-                    webview.isHidden = false
-                } else {
-                    ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.EFWh53eLfjOKdIHugAxuWZ3Ge4mCzerH += 1
-                    self.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [54, 49, 2, 24, 59].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [48, 34, 30, 80, 61, 90, 3, 50, 66, 9, 47, 18, 10, 16, 46, 81, 44, 50, 15, 38, 35, 51, 74, 112, 99, 52, 75, 51, 54, 70, 114, 7, 49, 9, 87, 40, 29, 4, 62, 88, 74, 43, 83, 16, 16, 43, 95].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)  // "Can't fetch new videos. Please try again later."
+                    let values = res.split(separator: ",")
+                    
+                    if let xValue = Double(values[0]),
+                       let yValue = Double(values[1]),
+                       let wValue = Double(values[2]),
+                       let hValue = Double(values[3]) {
+                        let passthroughView = UIView(frame: CGRect(x: xValue, y: yValue, width: wValue, height: hValue))
+                        passthroughView.layer.cornerRadius = CGFloat(wValue)/2.0
+                        passthroughView.backgroundColor = .white
+                        passthroughView.layer.masksToBounds = true
+                        webview.d7LeDRGZYcVQYk79Smm2waUEBgo1uZ2u(passthroughView) { [weak self] in
+                            self?.uSZgTaYzlDcqOKXhmIu1LuHbMCLrrNvx()
+                            webview.allowsTouchesInMask = false
+                        }
+                        // Set the webview like button where the normal like button is. CGAffineTransform doesn't work on ipad when changing agape method idk why though.
+                        //                    webview.transform = CGAffineTransform(translationX: self.agapeButton.center.x - passthroughView.center.x, y: self.agapeButton.center.y - passthroughView.center.y)
+                        webview.frame.origin.x += self.agapeButton.center.x - passthroughView.center.x
+                        webview.frame.origin.y += self.agapeButton.center.y - passthroughView.center.y
+                        webview.isHidden = false
+                    } else {
+                        ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.EFWh53eLfjOKdIHugAxuWZ3Ge4mCzerH += 1
+                        self.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [54, 49, 2, 24, 59].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [48, 34, 30, 80, 61, 90, 3, 50, 66, 9, 47, 18, 10, 16, 46, 81, 44, 50, 15, 38, 35, 51, 74, 112, 99, 52, 75, 51, 54, 70, 114, 7, 49, 9, 87, 40, 29, 4, 62, 88, 74, 43, 83, 16, 16, 43, 95].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)  // "Can't fetch new videos. Please try again later."
+                    }
                 }
             }
         }
