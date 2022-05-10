@@ -20,7 +20,7 @@ public struct t7HSnnK1rGXTU8XZCrQ7Isju9M2OQCFF: Error, Codable {
         self.feedbackTitle = feedbackTitle
     }
 
-    enum co0mY0ryTmLz8zX9yrd4277izyU3Riyz: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case status
         case message
         case feedbackTitle = "feedback_title"

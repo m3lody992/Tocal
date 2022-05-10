@@ -12,7 +12,7 @@ struct H2ikYdKdFqK4mukqUcclCD84oNKVvbgg: Codable {
 
     var resiptDataString: String
 
-    enum co0mY0ryTmLz8zX9yrd4277izyU3Riyz: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case resiptDataString = "receipt-data"
     }
 

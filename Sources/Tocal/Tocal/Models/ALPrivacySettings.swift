@@ -17,7 +17,7 @@ public struct xR2JMooIwOh6uyCFPMSKBxVgMoaseXkd: Codable {
     public var ts: Int
     public var cacheID: String
 
-    enum co0mY0ryTmLz8zX9yrd4277izyU3Riyz: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case showAds = "show_ads"
         case country
         case division

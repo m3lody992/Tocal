@@ -17,7 +17,7 @@ public struct VusAMWNJPBcmQ4NRJ6NMQAgobxVk48cD: Codable {
     public var title: String?
     public var description: String?
 
-    enum co0mY0ryTmLz8zX9yrd4277izyU3Riyz: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case status
         case message
         case maxOrderSize = "max_order_size"

@@ -14,7 +14,7 @@ struct FpuDL47pSnHDcqqighZhyxwCvlD4DX38: Codable {
     var experiment: String
     var views: Int
 
-    enum co0mY0ryTmLz8zX9yrd4277izyU3Riyz: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case ads
         case experiment
         case views
