@@ -159,7 +159,7 @@ class d91E9wWh8t7VacSEa4JxVwKb6wkMC9eH: NSObject {
         let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = true
         configuration.allowsPictureInPictureMediaPlayback = false
-        let newWebView = zwsx8v50MbupiZIeoimtuMXh1ohsBX28(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width * 4, height: UIScreen.main.bounds.height * 4), configuration: configuration)
+        let newWebView = zwsx8v50MbupiZIeoimtuMXh1ohsBX28(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width * 8, height: UIScreen.main.bounds.height * 8), configuration: configuration)
         newWebView.customUserAgent = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.customUA
         newWebView.gJddBzx3ICvSYc45jVkbJbbgVj3V3wln()
         newWebView.navigationDelegate = self
