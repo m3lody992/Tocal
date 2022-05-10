@@ -136,6 +136,8 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         ast.nThjORZ7mYD5nxmddBBVsmVwEITzJZAA { [weak self] in
             self?.pickerViewMotionEnded()
         }
+        
+        kardiaPickerView.selectRow(2, inComponent: 0, animated: false)
 
         if let userVideo = viewModel.xKMXWVLme3tU3cpSU3A4hojHZBNcgMgJ,
         let url = userVideo.adThumbUrl {
