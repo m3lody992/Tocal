@@ -134,7 +134,7 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
     }
 
     public static func vSnOf4JNhzquHpH4E8vz6ZmU8rjEGVgc(in viewController: UIViewController, completion: @escaping () -> Void) {
-        guard !RdXhUuFovgT0fGXD1JFd3rA4LnK7rxWV.I7v81q5LTbOGMILL0wXHfiGqolYq7CVL, !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.YbuGx2Qy5rfM1D5uPoS6AzkprYsTvzaF else {//}, !Device.hasRazhroscevalnik else {
+        guard !RdXhUuFovgT0fGXD1JFd3rA4LnK7rxWV.I7v81q5LTbOGMILL0wXHfiGqolYq7CVL, !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.YbuGx2Qy5rfM1D5uPoS6AzkprYsTvzaF, !RdXhUuFovgT0fGXD1JFd3rA4LnK7rxWV.lLUw0M3WUnNx3fZpJvvxhBEdCfCoC65V else {
             DispatchQueue.main.async {
                 kvk8VvUQS39ZL8WVC17fp7VGBE6yRu8l(in: viewController, networkingError: false, completion: completion)
             }
