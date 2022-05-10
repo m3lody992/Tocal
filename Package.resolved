@@ -3,29 +3,11 @@
     "pins": [
       {
         "package": "CryptoSwift",
-        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
+        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
         "state": {
           "branch": null,
-          "revision": "4c4662dcff510fe0c74323279711daed16f08528",
-          "version": "1.5.0"
-        }
-      },
-      {
-        "package": "DeviceTools",
-        "repositoryURL": "https://github.com/m3lody992/DeviceTools",
-        "state": {
-          "branch": "main",
-          "revision": "9d4bb9099d6409d3e1bc6a4c50c67b5017f6cec5",
-          "version": null
-        }
-      },
-      {
-        "package": "InfoServices",
-        "repositoryURL": "https://github.com/m3lody992/InfoServices",
-        "state": {
-          "branch": "tt",
-          "revision": "52b3d47f962f9f0b1358388021c9d3fc6e8dedc2",
-          "version": null
+          "revision": "039f56c5d7960f277087a0be51f5eb04ed0ec073",
+          "version": "1.5.1"
         }
       },
       {
@@ -56,30 +38,12 @@
         }
       },
       {
-        "package": "Networking",
-        "repositoryURL": "https://github.com/m3lody992/Networking",
-        "state": {
-          "branch": "main",
-          "revision": "600e7a089f744538510eccfc0f8a5f49553ea541",
-          "version": null
-        }
-      },
-      {
         "package": "Reachability",
         "repositoryURL": "https://github.com/ashleymills/Reachability.swift",
         "state": {
           "branch": null,
           "revision": "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
           "version": "5.1.0"
-        }
-      },
-      {
-        "package": "UITools",
-        "repositoryURL": "https://github.com/m3lody992/UITools",
-        "state": {
-          "branch": "main",
-          "revision": "6e12758c10404656523b64ad58b61fb2c47ef8b4",
-          "version": null
         }
       }
     ]
