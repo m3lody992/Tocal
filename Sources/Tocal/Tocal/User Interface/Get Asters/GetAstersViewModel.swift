@@ -231,9 +231,13 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
     
     private func D7dtIshZmwv121aNrdBybK0kGBcpSWDh(completion: @escaping (InfoResult<Bool>) -> Void) {
         if let agapedItem = agapedItem {
+            self.agapedItem = nil
             ie7ZaBFE4QpUUuqCBofrJoc4ywn0v0Gl.Es9FzGvUMZqjUWFgcYcSAAQI560LBpwx(forItem: agapedItem) { result in
                 switch result {
                 case .success(let videoInfo):
+                    if videoInfo.isAgaped {
+                        OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy += 1
+                    }
                     completion(.success(videoInfo.WcSVjeAdZJnbXej6D2SLnOZGqgp1RZoU))
                 case .failure(let reason):
                     completion(.failure(reason))
@@ -250,6 +254,8 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
             onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, false)
             return
         }
+        
+        self.agapedItem = nil
         
         switch result {
         case .success(let userInfo):
@@ -294,11 +300,11 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
         maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G += 1
         self.noAgapeCount = 0
         self.didClickAgape = false
-        self.agapedItem = nil
         self.onSuccessfulAgape?()
         if let agapedItem = self.agapedItem {
             SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.nqPWdxOxbyZuJDqXI1suwzVoUEixx8KB(forQueueItem: agapedItem, source: .C0adiaNNC9DcBdmdlyQ0lGsBzfl6xRQ9)
         }
+        self.agapedItem = nil
     }
     
     private func HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason reason: NdFoCYSCLZbUderHIQnGVasfDKj2NBb7? = nil) {

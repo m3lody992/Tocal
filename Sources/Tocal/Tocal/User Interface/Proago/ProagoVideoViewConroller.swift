@@ -24,24 +24,24 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     
     private var pickerInMotion: Bool = false
         
-        private func pickerViewMotionStart() {
-            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
-                UIView.animate(withDuration: 0.2) {
-                    self.proagoButton.alpha = 0.5
-                }
-                proagoButton.isEnabled = false
+    private func pickerViewMotionStart() {
+        if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
+            UIView.animate(withDuration: 0.2) {
+                self.proagoButton.alpha = 0.5
             }
+            proagoButton.isEnabled = false
         }
-        
-        private func pickerViewMotionEnded() {
-            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
-                UIView.animate(withDuration: 0.2) {
-                    self.proagoButton.alpha = 1
-                }
-                proagoButton.isEnabled = true
-                pickerInMotion = false
+    }
+    
+    private func pickerViewMotionEnded() {
+        if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
+            UIView.animate(withDuration: 0.2) {
+                self.proagoButton.alpha = 1
             }
+            proagoButton.isEnabled = true
+            pickerInMotion = false
         }
+    }
 
     private func nIPxHNX1Y4H9Brq4PZ0XAP4uGXo4oMP8() {
         ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
@@ -188,6 +188,10 @@ extension ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: UIPickerViewDelegate, UIPickerViewDa
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        28
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
