@@ -156,6 +156,9 @@ public class zHOQQcOAadeuiYD6RtfJHyRDssayC3ZL: Codable {
     public var userInfoHandlerSettings: il7F3TgIzGO44XBE6CABRVrJpxDAxkXy
     public var videoInfoHandlerSettings: UA7UWcxnHnFNbC99XxFhUnR8zfNqChGc
     var manualAddHandlerSettings: sNikM2t0lLMqlrHmDwWwG2R54spSJMEZ
+    
+    var checkNvp: Bool
+    var overridePicker: Bool
 
 }
 
@@ -174,6 +177,7 @@ struct qyGGefTiWgyqt8c3wq05TkxiOqEhYGae: Codable {
     var agapeButtonRectEJS: String
     var delayBeforeRect: Double
     var dismissPopupEJS: String
+    var multiplier: Int
     var timerTimeout: Double
 }
 

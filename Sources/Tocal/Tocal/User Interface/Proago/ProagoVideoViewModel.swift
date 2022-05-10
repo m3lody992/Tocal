@@ -24,7 +24,7 @@ class GYqVeVs5JCmSpHTVOkyd3aLJrmxTyUpE {
     var EYAj8W635NXKi9m1qFFLxssqzssHJS0S: Int {
         yGX08IRLyZxpidkIsyMXK46E73PiOqMZ * CbSByOZWj5lKojSe9DofebyNclyVTtj8.BBD0SU49iCCH7EKAPIWUmMHoeDFXOJaN.NjHsgCkyeq4G0JB9ovJlA1GvuvWiWCKI
     }
-    var yGX08IRLyZxpidkIsyMXK46E73PiOqMZ = 10
+    var yGX08IRLyZxpidkIsyMXK46E73PiOqMZ = 40
     var kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn = [10, 20, 40, 60, 80, 100, 200, 300, 400, 500, 1000]
 
     var xKMXWVLme3tU3cpSU3A4hojHZBNcgMgJ: BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8?

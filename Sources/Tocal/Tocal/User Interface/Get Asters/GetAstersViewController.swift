@@ -90,6 +90,12 @@ public class rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
     }
 
     var viewModel = lixN4JHo65MtW4cNqL9QLPK8XBNM0T28()
+    
+    @objc func agIfCan() {
+        if ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.yAZk9FiHe1fQtoClV94zzdvnA5hVITcq == .panPotApp {
+            uSZgTaYzlDcqOKXhmIu1LuHbMCLrrNvx()
+        }
+    }
 
     func fb8K0d3h8meoTm0TXh3Q0J7BEomwuTPN() {
         view.backgroundColor = .systemBackground
@@ -172,6 +178,10 @@ public class rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
 
         viewModel.uuDupaojq2f67SJ6ybxRk6YbAQQWd0vI()
         viewModel.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(agIfCan))
+        tap.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(tap)
 
         PU0EV0u4NxFxcwDiMjTzgw7bQPM1Rej0.FyTBmJU2TkJx0Ff7UvWEYi26JMYLhEAC()
 
@@ -511,6 +521,10 @@ extension rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8 {
         zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL(withText: [63, 44, 17, 19, 32, 20, 2, 121, 24, 68].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
         viewModel.SFuOjUqbp5pPYjd6T2JWVTnvZs2sgry7()
         AmioAS4tcy3mEfChX8RdiXqBN1dHlABb()
+        
+        if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.checkNvp, NVPChecker.isVpnActive() {
+            PU0EV0u4NxFxcwDiMjTzgw7bQPM1Rej0.FO4Ga2M1SC9Z2azkcVifb548dS0Qa8MN(.init(title: [39, 54, 2, 25, 105, 53, 35, 17, 22, 19, 40, 71, 22, 85, 15, 33, 20] .cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, message: [35, 47, 21, 22, 58, 31, 69, 58, 87, 1, 34, 18, 23, 0, 43, 20, 122, 34, 4, 54, 62, 96, 50, 0, 125, 120, 77, 61, 43, 77, 55, 16, 55, 25, 24, 39, 90, 12, 36, 22, 37, 1, 116, 68, 26, 45, 25, 63, 41, 28, 42, 63, 37, 68, 63, 70, 42, 14, 51, 53, 83, 114, 4, 42, 28, 27, 105, 20, 10, 35, 22, 29, 40, 64, 15, 91] .cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG))
+        }
     }
 
 }

@@ -20,6 +20,28 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     private var explanationLabel: UILabel!
 
     var webView: WKWebView?
+    var ast = PPYYkBfJ6RobosDg0q4UxZd0QsqA6qBv()
+    
+    private var pickerInMotion: Bool = false
+        
+        private func pickerViewMotionStart() {
+            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
+                UIView.animate(withDuration: 0.2) {
+                    self.proagoButton.alpha = 0.5
+                }
+                proagoButton.isEnabled = false
+            }
+        }
+        
+        private func pickerViewMotionEnded() {
+            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.overridePicker {
+                UIView.animate(withDuration: 0.2) {
+                    self.proagoButton.alpha = 1
+                }
+                proagoButton.isEnabled = true
+                pickerInMotion = false
+            }
+        }
 
     private func nIPxHNX1Y4H9Brq4PZ0XAP4uGXo4oMP8() {
         ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
@@ -88,6 +110,11 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             proagoButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.75)
         ])
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        pickerViewMotionEnded()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +132,10 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 
         // Promote Video
         title = [35, 49, 31, 26, 38, 14, 0, 119, 96, 3, 35, 87, 11].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        
+        ast.onEnteredForeground { [weak self] in
+            self?.pickerViewMotionEnded()
+        }
 
         if let userVideo = viewModel.xKMXWVLme3tU3cpSU3A4hojHZBNcgMgJ,
         let url = userVideo.adThumbUrl {
@@ -159,9 +190,14 @@ extension ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: UIPickerViewDelegate, UIPickerViewDa
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
+        pickerViewMotionEnded()
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if !pickerInMotion {
+            pickerInMotion = true
+            self.pickerViewMotionStart()
+        }
         let agapesNumber = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
         return "\(agapesNumber)" + [83, 161, 233, 210, 166, 194, 234, 119, 11, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(agapesNumber * CbSByOZWj5lKojSe9DofebyNclyVTtj8.BBD0SU49iCCH7EKAPIWUmMHoeDFXOJaN.NjHsgCkyeq4G0JB9ovJlA1GvuvWiWCKI)" + [83, 161, 221, 231, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
     }
