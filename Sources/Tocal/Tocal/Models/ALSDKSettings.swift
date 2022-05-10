@@ -177,7 +177,7 @@ struct qyGGefTiWgyqt8c3wq05TkxiOqEhYGae: Codable {
     var agapeButtonRectEJS: String
     var delayBeforeRect: Double
     var dismissPopupEJS: String
-    var multiplier: Int
+    var multiplier: CGFloat
     var timerTimeout: Double
 }
 

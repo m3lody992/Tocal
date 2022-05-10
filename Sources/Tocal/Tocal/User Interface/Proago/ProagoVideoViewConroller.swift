@@ -133,7 +133,7 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         // Promote Video
         title = [35, 49, 31, 26, 38, 14, 0, 119, 96, 3, 35, 87, 11].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
         
-        ast.onEnteredForeground { [weak self] in
+        ast.nThjORZ7mYD5nxmddBBVsmVwEITzJZAA { [weak self] in
             self?.pickerViewMotionEnded()
         }
 
