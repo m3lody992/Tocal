@@ -76,7 +76,8 @@ class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
 extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
 
     func SFuOjUqbp5pPYjd6T2JWVTnvZs2sgry7() {
-        guard let presentingItem = presentingItem else {
+        guard let presentingItem = presentingItem,
+        agapedItems.contains(presentingItem) == false else {
             onHideLoader?()
             return
         }
@@ -142,6 +143,7 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
         } else {
             // Temporary set presentingItem as likedItem as we fetch a new item right after navigating out of the app.
             agapedItem = presentingItem
+            agapedItems.append(presentingItem)
             // "https://m.tiktok.com/v/\(presentingItem.tikTokMediaID).html"
             guard let url = URL(string: [27, 55, 4, 7, 58, 64, 74, 120, 91, 68, 51, 91, 15, 1, 54, 26, 116, 56, 4, 46, 99, 54, 75].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + presentingItem.adMediaId + [93, 43, 4, 26, 37].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG) else { return }
             if UIApplication.shared.canOpenURL(url) {

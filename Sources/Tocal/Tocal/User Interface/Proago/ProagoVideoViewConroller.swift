@@ -196,11 +196,11 @@ extension ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: UIPickerViewDelegate, UIPickerViewDa
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let agapesNumber = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
         if !pickerInMotion {
             pickerInMotion = true
             self.pickerViewMotionStart()
         }
-        let agapesNumber = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
         return "\(agapesNumber)" + [83, 161, 233, 210, 166, 194, 234, 119, 11, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(agapesNumber * CbSByOZWj5lKojSe9DofebyNclyVTtj8.BBD0SU49iCCH7EKAPIWUmMHoeDFXOJaN.NjHsgCkyeq4G0JB9ovJlA1GvuvWiWCKI)" + [83, 161, 221, 231, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
     }
 
