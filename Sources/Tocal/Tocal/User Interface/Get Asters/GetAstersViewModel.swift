@@ -235,7 +235,7 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
             ie7ZaBFE4QpUUuqCBofrJoc4ywn0v0Gl.Es9FzGvUMZqjUWFgcYcSAAQI560LBpwx(forItem: agapedItem) { result in
                 switch result {
                 case .success(let videoInfo):
-                    if videoInfo.isAgaped {
+                    if videoInfo.WcSVjeAdZJnbXej6D2SLnOZGqgp1RZoU {
                         OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy += 1
                     }
                     completion(.success(videoInfo.WcSVjeAdZJnbXej6D2SLnOZGqgp1RZoU))
