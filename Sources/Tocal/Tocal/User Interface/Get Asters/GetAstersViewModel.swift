@@ -308,11 +308,11 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
     
     private func HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason reason: NdFoCYSCLZbUderHIQnGVasfDKj2NBb7? = nil) {
         didClickAgape = false
-        agapedItem = nil
         onChangeAgapeMode?()
         if let agapedItem = self.agapedItem {
             SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ckYuj63Vw4DM4VVW2oRbMIU3VCmGzd4H(forQueueItem: agapedItem, source: .C0adiaNNC9DcBdmdlyQ0lGsBzfl6xRQ9, reason: reason ?? .HBgNx8jJcqzJSIdAZBCrBRDYdS6702s6)
         }
+        agapedItem = nil
     }
 
     func uuDupaojq2f67SJ6ybxRk6YbAQQWd0vI() {
