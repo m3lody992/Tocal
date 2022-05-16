@@ -231,7 +231,6 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
     
     private func D7dtIshZmwv121aNrdBybK0kGBcpSWDh(completion: @escaping (InfoResult<Bool>) -> Void) {
         if let agapedItem = agapedItem {
-            self.agapedItem = nil
             ie7ZaBFE4QpUUuqCBofrJoc4ywn0v0Gl.Es9FzGvUMZqjUWFgcYcSAAQI560LBpwx(forItem: agapedItem) { result in
                 switch result {
                 case .success(let videoInfo):
