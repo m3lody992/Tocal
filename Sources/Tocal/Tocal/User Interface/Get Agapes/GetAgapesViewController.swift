@@ -71,6 +71,7 @@ class gafyy5xMN1llfA1274RBKO9j1JUiFlD8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .systemBackground
+        collectionView.alwaysBounceVertical = true
         collectionView.register(LHLbwu2vnffU1zwMHxVUQKlYCTmKHmrb.self, forCellWithReuseIdentifier: String(describing: LHLbwu2vnffU1zwMHxVUQKlYCTmKHmrb.self))
         view.addSubview(collectionView)
 
