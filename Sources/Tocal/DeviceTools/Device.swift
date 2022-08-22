@@ -107,30 +107,6 @@ public struct RdXhUuFovgT0fGXD1JFd3rA4LnK7rxWV {
         }
     }
 
-    // isDebuggerAttached
-    public static var lLUw0M3WUnNx3fZpJvvxhBEdCfCoC65V: Bool {
-        var entomoIsAttached = false
-
-        var name: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
-        var info: kinfo_proc = kinfo_proc()
-        var infoSize = MemoryLayout<kinfo_proc>.size
-
-        let success = name.withUnsafeMutableBytes { (nameBytePtr: UnsafeMutableRawBufferPointer) -> Bool in
-            guard let nameBytesBlindMemory = nameBytePtr.bindMemory(to: Int32.self).baseAddress else { return false }
-            return -1 != sysctl(nameBytesBlindMemory, 4, &info, &infoSize, nil, 0)
-        }
-
-        if !success {
-            entomoIsAttached = false
-        }
-
-        if !entomoIsAttached && (info.kp_proc.p_flag & P_TRACED) != 0 {
-            entomoIsAttached = true
-        }
-
-        return entomoIsAttached
-    }
-
     public static func bwstRrE9bf6LMHggtVQRdjDiTiH84MBW(path: String) -> Bool {
         let file = fopen(path, "r") // "r"
         guard file != nil else { return false }
