@@ -188,12 +188,12 @@ public class AddUserViewController: MainViewController {
             
             reportAProblemButton.widthAnchor.constraint(equalToConstant: 100),
             reportAProblemButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            reportAProblemButton.topAnchor.constraint(equalTo: cannotEnterButton.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+            reportAProblemButton.topAnchor.constraint(equalTo: cannotEnterButton.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             cannotEnterButton.heightAnchor.constraint(equalToConstant: 30),
             cannotEnterButton.widthAnchor.constraint(equalToConstant: 112),
             cannotEnterButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            cannotEnterButton.topAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.bottomAnchor, constant: 16)
+            cannotEnterButton.topAnchor.constraint(equalTo: addUsernameButton.safeAreaLayoutGuide.bottomAnchor, constant: -16)
             
         ])
     }
