@@ -9,25 +9,15 @@ import Foundation
 import InfoServices
 import CryptoSwift
 
-public protocol LinkSignable: Codable {
-    var link: String { get set }
-    var nonce: String { get set }
-    var signature: String? { get }
-}
-
-public extension LinkSignable {
-    var signature: String? {
+public struct GetVideoInfo: Codable {
+    public var link: String
+    public var nonce: String
+    public lazy var signature: String? = {
         guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
                 return nil
         }
         return Data(hmacBytes).toHexString()
-    }
-}
-
-
-public struct GetVideoInfo: LinkSignable, Codable {
-    public var link: String
-    public var nonce: String
+    }()
     
     public init(link: String) {
         self.link = link
@@ -58,9 +48,15 @@ public struct GetVideoInfoResponse: Codable {
     }
 }
 
-public struct GetUserInfo: LinkSignable, Codable {
+public struct GetUserInfo: Codable {
     public var link: String
     public var nonce: String
+    public lazy var signature: String? = {
+        guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
+                return nil
+        }
+        return Data(hmacBytes).toHexString()
+    }()
     
     public init(link: String) {
         self.link = link
@@ -89,10 +85,16 @@ public struct GetUserInfoResponse: Codable {
     }
 }
 
-public struct GetUserPosts: LinkSignable, Codable {
+public struct GetUserPosts: Codable {
     public var link: String
     public var pagination: Int
     public var nonce: String
+    public lazy var signature: String? = {
+        guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
+                return nil
+        }
+        return Data(hmacBytes).toHexString()
+    }()
     
     public init(link: String, pagination: Int) {
         self.link = link
