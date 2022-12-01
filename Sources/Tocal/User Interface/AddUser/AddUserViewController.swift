@@ -175,7 +175,7 @@ public class AddUserViewController: MainViewController {
             userNameTextField.heightAnchor.constraint(equalToConstant: 44),
             userNameTextField.bottomAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.topAnchor, constant: 28),
             
-            addUsernameButton.topAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.bottomAnchor, constant: 28),
+            addUsernameButton.topAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.bottomAnchor, constant: -28),
             addUsernameButton.heightAnchor.constraint(equalToConstant: 44),
             addUsernameButton.leadingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.leadingAnchor),
             addUsernameButton.trailingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.trailingAnchor),
@@ -187,7 +187,12 @@ public class AddUserViewController: MainViewController {
             findUsernameButton.bottomAnchor.constraint(equalTo: reportAProblemButton.safeAreaLayoutGuide.topAnchor, constant: 120),
             
             reportAProblemButton.widthAnchor.constraint(equalToConstant: 100),
-            reportAProblemButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            reportAProblemButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
+            cannotEnterButton.heightAnchor.constraint(equalToConstant: 30),
+            cannotEnterButton.widthAnchor.constraint(equalToConstant: 112),
+            cannotEnterButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            cannotEnterButton.topAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.bottomAnchor, constant: -16)
             
         ])
     }
