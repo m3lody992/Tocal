@@ -168,13 +168,20 @@ public class AddUserViewController: MainViewController {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
             titleLabel.bottomAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.topAnchor, constant: 28),
+            titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             userNameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 56),
-            userNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 56),
+            userNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -56),
             userNameTextField.heightAnchor.constraint(equalToConstant: 44),
             userNameTextField.bottomAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.topAnchor, constant: 28),
             
+            addUsernameButton.topAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.bottomAnchor, constant: 28),
+            addUsernameButton.heightAnchor.constraint(equalToConstant: 44),
+            addUsernameButton.leadingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.leadingAnchor),
+            addUsernameButton.trailingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.trailingAnchor),
+            
             findUsernameButton.heightAnchor.constraint(equalToConstant: 44),
+            findUsernameButton.topAnchor.constraint(equalTo: addUsernameButton.safeAreaLayoutGuide.bottomAnchor, constant: 56),
             findUsernameButton.leadingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.leadingAnchor),
             findUsernameButton.trailingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.trailingAnchor),
             findUsernameButton.bottomAnchor.constraint(equalTo: reportAProblemButton.safeAreaLayoutGuide.topAnchor, constant: 120),
@@ -223,6 +230,10 @@ public class AddUserViewController: MainViewController {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
 
+    }
+    
+    override public var shouldShowAstersLabel: Bool {
+        false
     }
 
     func addBindings() {
