@@ -57,12 +57,13 @@ public struct GetUserInfo: Codable {
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
-        self.signature = {
+        let signature: String? = {
             guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
                     return nil
             }
             return Data(hmacBytes).toHexString()
         }()
+        self.signature = signature
     }
     
 }
