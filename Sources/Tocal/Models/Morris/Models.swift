@@ -57,7 +57,7 @@ public struct GetUserInfo: Codable {
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
-        if let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(self.link)\(self.nonce)".asUInt8Array) {
+        if let hmacBytes = try? HMAC(key: "\(self.link)\(self.nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) {
             self.signature =  Data(hmacBytes).toHexString()
         } else {
             self.signature = nil
