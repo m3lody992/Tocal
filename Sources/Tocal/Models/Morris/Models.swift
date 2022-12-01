@@ -71,11 +71,12 @@ public struct GetUserInfo: LinkSignable, Codable {
 
 public struct GetUserInfoResponse: Codable {
     public let code: Int
-    public let isUserPrivate: Bool
-    public let userSecID: String
-    public let userUID: String
+    public let isUserPrivate: Bool?
+    public let userSecID: String?
+    public let userUID: String?
     public let status: Bool
-    public let username: String
+    public let username: String?
+    public let message: String?
     
     enum CodingKeys: String, CodingKey {
         case code
@@ -84,6 +85,7 @@ public struct GetUserInfoResponse: Codable {
         case userUID = "user_uid"
         case status
         case username
+        case message
     }
 }
 
