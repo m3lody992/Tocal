@@ -16,6 +16,7 @@ class AddUserViewModel {
     var onUserCheckNotPassed: (() -> Void)?
 
     let http = HTTPJSONClient<HTTPRouter>()
+    let morris = HTTPJSONClient<MorrisRouter>()
     let userInfoHandler = MasterUserInfoHanlder(variation: ALUserInfoService.settings.userInfoVariation)
 
     private var temporaryUsername = [6, 45, 27, 25, 38, 13, 11].localizedString // "unknown"
@@ -36,8 +37,24 @@ class AddUserViewModel {
             return
         }
         temporaryUsername = username
-        userInfoHandler.getUserInfo(forUserName: username) { result in
-            self.handleResult(result)
+        
+        let userInfoModel = GetUserInfo(link: String(format: ALUserInfoService.settings.webViewFunctionalityHandlerSettings.profileForUsernameURL, username))
+        var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
+        routerEndpoint.encodeModelToData(userInfoModel)
+        
+        morris.json(routerEndpoint) { (result: Result<GetUserInfoResponse, NetworkingError>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print(response)
+                    if response.isUserPrivate {
+                        // "Private account! Please make your account public and try again."
+                        self.onError?([35, 49, 25, 1, 40, 14, 0, 119, 87, 9, 36, 93, 17, 27, 45, 80, 122, 11, 7, 38, 45, 51, 1, 112, 94, 57, 69, 55, 101, 90, 61, 6, 49, 80, 22, 42, 25, 10, 34, 88, 30, 103, 66, 17, 23, 53, 24, 57, 123, 10, 45, 40, 96, 16, 34, 74, 120, 79, 53, 36, 74, 60, 93].localizedString, nil)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 
