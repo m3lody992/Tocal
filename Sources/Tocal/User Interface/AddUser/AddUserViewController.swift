@@ -12,17 +12,37 @@ import MessageUI
 import UITools
 import DeviceTools
 
+public class OnTapButton: UIButton {
+    
+    private var onTap: (() -> Void)?
+    
+    public func onTap(completion: @escaping () -> Void) {
+        self.onTap = completion
+    }
+    
+    @objc func pressed() {
+        onTap?()
+    }
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    func commonInit() {
+        addTarget(self, action: #selector(pressed), for: .touchUpInside)
+    }
+
+}
+
 public class AddUserViewController: MainViewController {
 
-    @IBOutlet private weak var webViewHolder: UIView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var userNameTextField: UITextField!
-    @IBOutlet private weak var exitButton: UIButton!
-    @IBOutlet private weak var cannotEnterButton: UIButton!
-    @IBOutlet private weak var findUsernameButton: UIButton!
-    @IBOutlet private weak var reportAProblemButton: UIButton!
-    @IBOutlet private weak var addUsernameButton: RoundedButton!
-    @IBAction private func addUserName(_ sender: Any) {
+    private func addUserName() {
         guard let text = userNameTextField.text, !text.isEmpty else {
             // "Invalid username!", "Please try again."
             self.presentAlert(withTitle: [58, 45, 6, 22, 37, 19, 1, 119, 67, 25, 34, 64, 10, 20, 52, 20, 123].localizedString, andMessage: [35, 47, 21, 22, 58, 31, 69, 35, 68, 19, 103, 83, 3, 20, 48, 31, 116].localizedString, buttons: [.okDismiss])
@@ -32,17 +52,17 @@ public class AddUserViewController: MainViewController {
         viewModel.checkUsername(text.replacingOccurrences(of: [51].localizedString, with: [].localizedString).trimmingCharacters(in: .whitespaces)) // @
     }
 
-    @IBAction private func dismiss(_ sender: Any) {
+    private func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func findUsername(_ sender: Any) {
+    func findUsername() {
         let helpVC = HelpViewController()
         helpVC.set(url: Tocal.configuration.baseURL.appendingPathComponent([92, 43, 21, 27, 57, 37, 16, 36, 83, 24, 41, 83, 9, 16, 118] .localizedString)) // "/help_username/"
         present(helpVC, animated: true)
     }
 
-    @IBAction private func cannotEnter(_ sender: Any) {
+    private func cannotEnter() {
         let alertController = UIAlertController(
             title: [50, 32, 19, 24, 60, 20, 17, 119, 122, 5, 40, 89, 17, 5].localizedString, // "Account Lookup"
             // "Go to your profile on TikTok app and tap the \"...\" icon on the top right, then tap \"Share Profile\". Copy that link and paste it below!"
@@ -75,7 +95,7 @@ public class AddUserViewController: MainViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    @IBAction private func reportAProblem(_ sender: Any) {
+    private func reportAProblem() {
         // "Send email?", "Would you like to send us an email?"
         presentAlert(withTitle: [32, 38, 30, 19, 105, 63, 8, 54, 95, 6, 120].localizedString, andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 24, 38, 34, 36, 68, 37, 64, 120, 79, 60, 101, 70, 63, 18, 42, 28, 72].localizedString, buttons: [.ok, .cancel]) { [weak self] in
             if MFMailComposeViewController.canSendMail() {
@@ -97,6 +117,73 @@ public class AddUserViewController: MainViewController {
             }
         }
     }
+    
+    private var titleLabel: UILabel!
+    private var userNameTextField: UITextField!
+//    private var exitButton: UIButton!
+    private var cannotEnterButton: OnTapButton!
+    private var findUsernameButton: OnTapButton!
+    private var reportAProblemButton: OnTapButton!
+    private var addUsernameButton: RoundedButton!
+    
+    func setupConstraints() {
+        view.backgroundColor = .systemBackground
+        
+        titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(titleLabel)
+        
+        userNameTextField = UITextField()
+        userNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(userNameTextField)
+        
+        cannotEnterButton = OnTapButton()
+        cannotEnterButton.onTap { [weak self] in
+            self?.cannotEnter()
+        }
+        cannotEnterButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(cannotEnterButton)
+        
+        reportAProblemButton = OnTapButton()
+        reportAProblemButton.onTap { [weak self] in
+            self?.reportAProblem()
+        }
+        reportAProblemButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(reportAProblemButton)
+        
+        findUsernameButton = OnTapButton()
+        reportAProblemButton.onTap { [weak self] in
+            self?.findUsername()
+        }
+        findUsernameButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(findUsernameButton)
+        
+        addUsernameButton = RoundedButton()
+        addUsernameButton.onTap { [weak self] in
+            self?.addUserName()
+        }
+        addUsernameButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(addUsernameButton)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
+            titleLabel.bottomAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.topAnchor, constant: 28),
+            
+            userNameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 56),
+            userNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 56),
+            userNameTextField.heightAnchor.constraint(equalToConstant: 44),
+            userNameTextField.bottomAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.topAnchor, constant: 28),
+            
+            findUsernameButton.heightAnchor.constraint(equalToConstant: 44),
+            findUsernameButton.leadingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.leadingAnchor),
+            findUsernameButton.trailingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.trailingAnchor),
+            findUsernameButton.bottomAnchor.constraint(equalTo: reportAProblemButton.safeAreaLayoutGuide.topAnchor, constant: 120),
+            
+            reportAProblemButton.widthAnchor.constraint(equalToConstant: 100),
+            reportAProblemButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            
+        ])
+    }
 
     var webView: WKWebView?
 
@@ -115,11 +202,10 @@ public class AddUserViewController: MainViewController {
 
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
-
-        webView?.isHidden = true
     }
 
     func setupUI() {
+        setupConstraints()
         addUsernameButton.setTitle([52, 12, 81].localizedString, for: .normal) // GO!
 
         titleLabel.text = [54, 45, 4, 18, 59, 90, 28, 56, 67, 24, 103, 102, 13, 30, 13, 30, 49, 123, 30, 48, 41, 50, 10, 49, 94, 61].localizedString // Enter your TikTok username
@@ -129,10 +215,10 @@ public class AddUserViewController: MainViewController {
         findUsernameButton.setTitleColor(.white, for: .normal)
         cannotEnterButton.setTitle([48, 34, 30, 25, 38, 14, 69, 18, 88, 30, 34, 64, 91].localizedString, for: .normal)
 
-        exitButton.kf.setImage(with: Constants.URL.Image.xmark, for: .normal, options: Processor.Options.pdfTemplate)
-        exitButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        exitButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        exitButton.isHidden = !(ALUserInfoService.settings.showAddUserEB)
+//        exitButton.kf.setImage(with: Constants.URL.Image.xmark, for: .normal, options: Processor.Options.pdfTemplate)
+//        exitButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+//        exitButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//        exitButton.isHidden = !(ALUserInfoService.settings.showAddUserEB)
 
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -141,20 +227,21 @@ public class AddUserViewController: MainViewController {
 
     func addBindings() {
         viewModel.onUserFound = { [weak self] in
+            // TODO: Verify screen za username + picture
             // temp add username to UD.
             self?.dismissLoader { [weak self] in
                 // In case we want to skip login go straight to home view controller
-                if ALUserInfoService.settings.skipLogin == true {
+//                if ALUserInfoService.settings.skipLogin == true { TODO: Fix
                     let controller = MainTabBarController()
                     controller.modalPresentationStyle = .fullScreen
                     self?.present(controller, animated: true, completion: nil)
-                } else {
-                    let loginVC = LoginViewController()
-                    loginVC.state = .onboarding
-                    let navigationController = UINavigationController(rootViewController: loginVC)
-                    navigationController.modalPresentationStyle = .fullScreen
-                    self?.present(navigationController, animated: true, completion: nil)
-                }
+//                } else {
+//                    let loginVC = AddUserViewController()
+////                    loginVC.state = .onboarding
+//                    let navigationController = UINavigationController(rootViewController: loginVC)
+//                    navigationController.modalPresentationStyle = .fullScreen
+//                    self?.present(navigationController, animated: true, completion: nil)
+//                }
             }
         }
         viewModel.onError = { [weak self] message, error in

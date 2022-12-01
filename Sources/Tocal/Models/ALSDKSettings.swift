@@ -156,6 +156,8 @@ public class ALSDKSettings: Codable {
     public var userInfoHandlerSettings: UserInfoHandlerSettings
     public var videoInfoHandlerSettings: VideoInfoHandlerSettings
     var manualAddHandlerSettings: ManualAddHandlerSettings
+    
+    var flowerAstersOptions: [FlowerAsters]
 
 }
 
@@ -344,4 +346,9 @@ struct APIAgapeHandlerSettings: Codable {
 struct JSAgapeHandlerSettings: Codable {
     var cardiaChangedEJS: String
     var timerTimeout: Double
+}
+
+struct FlowerAsters: Codable {
+    var flowers: Int
+    var asters: Int
 }

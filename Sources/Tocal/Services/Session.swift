@@ -29,8 +29,8 @@ struct Session {
                 andMessage: [42, 44, 5, 5, 105, 9, 0, 36, 69, 3, 40, 92, 68, 29, 56, 2, 122, 62, 19, 51, 37, 50, 1, 52, 29, 120, 126, 62, 32, 66, 33, 22, 99, 28, 24, 46, 90, 12, 57, 22, 11, 32, 83, 13, 27, 119].localizedString,
                 buttons: [.ok], onOk:  { // "Instagram session expired", "Your session has expired. Please log in again."
                     logout()
-                    let loginVC = LoginViewController()
-                    loginVC.state = .inApp
+                    let loginVC = AddUserViewController()
+//                    loginVC.state = .inApp
                     let navigationController = UINavigationController(rootViewController: loginVC)
                     navigationController.modalPresentationStyle = .fullScreen
                     navigationController.modalTransitionStyle = .crossDissolve

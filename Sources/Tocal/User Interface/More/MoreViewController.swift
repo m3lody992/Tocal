@@ -119,8 +119,8 @@ class MoreViewController: MainViewController {
                                buttons: [.ok, .cancel], onOk: { [weak self] in
                 Session.logout()
                 
-                let loginVC = LoginViewController()
-                loginVC.state = .inApp
+                let loginVC = AddUserViewController()
+//                loginVC.state = .inApp
                 let navigationController = UINavigationController(rootViewController: loginVC)
                 navigationController.modalPresentationStyle = .fullScreen
                 navigationController.modalTransitionStyle = .crossDissolve

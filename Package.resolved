@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
         "state": {
           "branch": null,
-          "revision": "4c4662dcff510fe0c74323279711daed16f08528",
-          "version": "1.5.0"
+          "revision": "19b3c3ceed117c5cc883517c4e658548315ba70b",
+          "version": "1.6.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "1a7b5480eb750a8e171654b9b1cb0a2cbeb27a55",
-          "version": "7.2.1"
+          "revision": "44e891bdb61426a95e31492a67c7c0dfad1f87c5",
+          "version": "7.4.1"
         }
       },
       {
@@ -78,7 +78,7 @@
         "repositoryURL": "https://github.com/m3lody992/UITools",
         "state": {
           "branch": "main",
-          "revision": "6e12758c10404656523b64ad58b61fb2c47ef8b4",
+          "revision": "5514cbef63c1680c6539eb9755a87dd3f00cd656",
           "version": null
         }
       }

@@ -86,7 +86,7 @@ public struct ElenchoiPtisis {
     
     private static func runLogin(in vc: UIViewController, completion: @escaping () -> Void) {
         DispatchQueue.main.async {
-            let popupViewController = LoginViewController()
+            let popupViewController = AddUserViewController()
             let navigationController = UINavigationController(rootViewController: popupViewController)
             navigationController.modalPresentationStyle = .fullScreen
             vc.present(navigationController, animated: true, completion: nil)
