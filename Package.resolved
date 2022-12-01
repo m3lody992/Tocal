@@ -59,8 +59,8 @@
         "package": "Networking",
         "repositoryURL": "https://github.com/m3lody992/Networking",
         "state": {
-          "branch": "main",
-          "revision": "600e7a089f744538510eccfc0f8a5f49553ea541",
+          "branch": "debug",
+          "revision": "a8a5329388229cc83ca0d24de0a53ca765a9e7b0",
           "version": null
         }
       },

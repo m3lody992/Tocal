@@ -20,7 +20,7 @@ let package = Package(
         .package(url: "https://github.com/m3lody992/DeviceTools", branch: "main"),
         .package(url: "https://github.com/m3lody992/UITools", branch: "main"),
         .package(url: "https://github.com/m3lody992/InfoServices", branch: "tt"),
-        .package(url: "https://github.com/m3lody992/Networking", branch: "main"),
+        .package(url: "https://github.com/m3lody992/Networking", branch: "debug"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
