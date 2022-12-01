@@ -134,6 +134,7 @@ public class AddUserViewController: MainViewController {
         view.addSubview(titleLabel)
         
         userNameTextField = UITextField()
+        userNameTextField.borderStyle = .line
         userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userNameTextField)
         
@@ -225,7 +226,7 @@ public class AddUserViewController: MainViewController {
         reportAProblemButton.setTitle([131, 220, 227, 208, 105, 63, 8, 54, 95, 6, 103, 71, 23].localizedString, for: .normal)
         reportAProblemButton.setTitleColor(.darkGray, for: .normal)
         findUsernameButton.setTitle([59, 44, 7, 87, 61, 21, 69, 49, 95, 4, 35, 18, 29, 26, 44, 3, 122, 15, 2, 40, 24, 47, 15, 112, 70, 43, 75, 32, 43, 66, 63, 22].localizedString, for: .normal)
-        findUsernameButton.titleLabel?.font = .systemFont(ofSize: 14)
+        findUsernameButton.titleLabel?.font = .systemFont(ofSize: 10)
         findUsernameButton.setTitleColor(.white, for: .normal)
         cannotEnterButton.setTitle([48, 34, 30, 25, 38, 14, 69, 18, 88, 30, 34, 64, 91].localizedString, for: .normal)
 
