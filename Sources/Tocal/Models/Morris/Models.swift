@@ -12,16 +12,17 @@ import CryptoSwift
 public struct GetVideoInfo: Codable {
     public var link: String
     public var nonce: String
-    public lazy var signature: String? = {
-        guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
-                return nil
-        }
-        return Data(hmacBytes).toHexString()
-    }()
+    public var signature: String?
     
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
+        self.signature = {
+            guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
+                    return nil
+            }
+            return Data(hmacBytes).toHexString()
+        }()
     }
     
 }
@@ -51,16 +52,17 @@ public struct GetVideoInfoResponse: Codable {
 public struct GetUserInfo: Codable {
     public var link: String
     public var nonce: String
-    public lazy var signature: String? = {
-        guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
-                return nil
-        }
-        return Data(hmacBytes).toHexString()
-    }()
+    public var signature: String?
     
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
+        self.signature = {
+            guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
+                    return nil
+            }
+            return Data(hmacBytes).toHexString()
+        }()
     }
     
 }
@@ -89,17 +91,18 @@ public struct GetUserPosts: Codable {
     public var link: String
     public var pagination: Int
     public var nonce: String
-    public lazy var signature: String? = {
-        guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
-                return nil
-        }
-        return Data(hmacBytes).toHexString()
-    }()
+    public var signature: String?
     
     public init(link: String, pagination: Int) {
         self.link = link
         self.pagination = pagination
         self.nonce = UUID().uuidString
+        self.signature = {
+            guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
+                    return nil
+            }
+            return Data(hmacBytes).toHexString()
+        }()
     }
     
 }
