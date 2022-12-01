@@ -134,7 +134,7 @@ public struct ElenchoiPtisis {
     }
 
     public static func run(in viewController: UIViewController, completion: @escaping () -> Void) {
-        guard !Device.wasTampered, !ALUserInfoService.hasLimit, !Device.hasRazhroscevalnik else {
+        guard !Device.wasTampered, !ALUserInfoService.hasLimit else {
             DispatchQueue.main.async {
                 runFial(in: viewController, networkingError: false, completion: completion)
             }
