@@ -171,11 +171,11 @@ public class AddUserViewController: MainViewController {
             titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             userNameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 56),
-            userNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -56),
+            userNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 56),
             userNameTextField.heightAnchor.constraint(equalToConstant: 44),
             userNameTextField.bottomAnchor.constraint(equalTo: findUsernameButton.safeAreaLayoutGuide.topAnchor, constant: 28),
             
-            addUsernameButton.topAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.bottomAnchor, constant: -28),
+            addUsernameButton.topAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.bottomAnchor, constant: 28),
             addUsernameButton.heightAnchor.constraint(equalToConstant: 44),
             addUsernameButton.leadingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.leadingAnchor),
             addUsernameButton.trailingAnchor.constraint(equalTo: userNameTextField.safeAreaLayoutGuide.trailingAnchor),
