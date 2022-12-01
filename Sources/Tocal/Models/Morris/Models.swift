@@ -9,7 +9,7 @@ import Foundation
 import InfoServices
 import CryptoSwift
 
-public protocol LinkSignable {
+public protocol LinkSignable: Codable {
     var link: String { get set }
     var nonce: String { get set }
     var signature: String? { get }
@@ -124,7 +124,7 @@ public struct UserPost: Codable {
     }
 }
 
-public protocol OrderSignable {
+public protocol OrderSignable: Codable {
     var type: Int { get set }
     var count: Int { get set }
     var data: String { get set }
