@@ -17,12 +17,11 @@ public struct GetVideoInfo: Codable {
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
-        self.signature = {
-            guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
-                    return nil
-            }
-            return Data(hmacBytes).toHexString()
-        }()
+        if let hmacBytes = try? HMAC(key: "\(self.link)\(self.nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) {
+            self.signature =  Data(hmacBytes).toHexString()
+        } else {
+            self.signature = nil
+        }
     }
     
 }
@@ -96,12 +95,11 @@ public struct GetUserPosts: Codable {
         self.link = link
         self.pagination = pagination
         self.nonce = UUID().uuidString
-        self.signature = {
-            guard let hmacBytes = try? HMAC(key: "\(link)\(nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) else {
-                    return nil
-            }
-            return Data(hmacBytes).toHexString()
-        }()
+        if let hmacBytes = try? HMAC(key: "\(self.link)\(self.nonce)", variant: .sha2(.sha256)).authenticate("// UInt8 can't store negative numbers".asUInt8Array) {
+            self.signature =  Data(hmacBytes).toHexString()
+        } else {
+            self.signature = nil
+        }
     }
     
 }
