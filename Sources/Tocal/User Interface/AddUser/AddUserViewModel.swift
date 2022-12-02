@@ -38,7 +38,7 @@ class AddUserViewModel {
         }
         temporaryUsername = username
         
-        let userInfoModel = GetUserInfo(link: username)
+        let userInfoModel = GetUserInfo(link: username.lowercased())
         var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
         routerEndpoint.encodeModelToData(userInfoModel)
         
