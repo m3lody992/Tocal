@@ -92,6 +92,7 @@ class FlowerAsterViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             imageView.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.topAnchor, constant: 60),
+            imageView.heightAnchor.constraint(equalToConstant: 60),
             flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 40),
