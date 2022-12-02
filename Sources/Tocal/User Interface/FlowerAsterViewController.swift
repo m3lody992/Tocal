@@ -74,6 +74,7 @@ class FlowerAsterViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.bounds.height / 2
+        view.addSubview(imageView)
         
         flowersLabel = UILabel()
         view.addSubview(flowersLabel)
