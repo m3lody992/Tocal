@@ -26,9 +26,9 @@ public class MainTabBarController: UITabBarController, Instantiable {
 
         UIApplication.shared.statusBarStyle = .default
         
-        let gas = UINavigationController(rootViewController: GetAstersViewController())
-        let gasTabBarItem = UITabBarItem(title: [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString, image: nil, selectedImage: nil)
-        gas.tabBarItem = gasTabBarItem
+        let gf = UINavigationController(rootViewController: FlowerAsterViewController())
+        let gfTabBarItem = UITabBarItem(title: [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString, image: nil, selectedImage: nil)
+        gf.tabBarItem = gfTabBarItem
         
         let gap = UINavigationController(rootViewController: GetAgapesViewController())
         gap.navigationBar.prefersLargeTitles = true
@@ -40,7 +40,7 @@ public class MainTabBarController: UITabBarController, Instantiable {
         let moreTabBarItem = UITabBarItem(title: [62, 44, 2, 18].localizedString, image: nil, selectedImage: nil)
         more.tabBarItem = moreTabBarItem
         
-        viewControllers = [gas, gap, more]
+        viewControllers = [gf, gap, more]
         
         if Tocal.yapService.yapIDs != nil {
             if ALUserInfoService.settings.showAgoraFilos == true {
@@ -54,7 +54,7 @@ public class MainTabBarController: UITabBarController, Instantiable {
             viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 1)
         }
         
-        viewControllers?[0].title = [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString
+        viewControllers?[0].title = "Get Followers"
         viewControllers?[1].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].localizedString
         viewControllers?[2].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].localizedString
         viewControllers?[3].title = [62, 44, 2, 18].localizedString
