@@ -78,7 +78,6 @@ struct MorrisRouter: HTTPEndpoint {
 
     public var queryParameters: HTTPParameters? {
         var parameters = [[26, 42, 20].localizedString: ALUserInfoService.internalID] // "iid"
-        parameters["sigdebug"] = "1"
         switch endpoint {
         case .orderStatus(let username):
             parameters["target"] = username
