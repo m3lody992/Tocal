@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Networking
 
 class FlowerAsterTableViewCell: UITableViewCell {
     
@@ -66,8 +67,24 @@ class FlowerAsterViewController: UIViewController {
     private var floweringsLabel: UILabel!
     
     private let data = ALUserInfoService.settings.flowerAstersOptions
-    
+    let morris = HTTPJSONClient<MorrisRouter>(engine: .customSession)
+
 //    private let viewModel = FlowerAsterViewModel()
+    
+    func getInfo() {
+        let userInfoModel = GetUserInfo(link: ALUserInfoService.panPotUserName.lowercased())
+        var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
+        routerEndpoint.encodeModelToData(userInfoModel)
+        
+        morris.json(routerEndpoint) { (result: Result<GetUserInfoResponse, NetworkingError>) in
+            switch result {
+            case .success(let info):
+                print(info)
+            case .failure(let fail):
+                print(fail)
+            }
+        }
+    }
     
     func setupConstratints() {
         imageView = UIImageView()
