@@ -38,11 +38,7 @@ class AddUserViewModel {
         }
         temporaryUsername = username
         
-        let userInfoModel = GetUserInfo(link: String(format: ALUserInfoService.settings.webViewFunctionalityHandlerSettings.profileForUsernameURL, username))
-        print("AAAAAAAAA")
-        print(userInfoModel)
-        print(userInfoModel.signature)
-        print("BBBBBBBBB")
+        let userInfoModel = GetUserInfo(link: username)//String(format: ALUserInfoService.settings.webViewFunctionalityHandlerSettings.profileForUsernameURL, username))
         var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
         routerEndpoint.encodeModelToData(userInfoModel)
         
