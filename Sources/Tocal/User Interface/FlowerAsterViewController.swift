@@ -87,6 +87,7 @@ class FlowerAsterViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         view.backgroundColor = .systemBackground
+        tableView.register(FlowerAsterTableViewCell.self, forCellReuseIdentifier: String(describing: FlowerAsterTableViewCell.self))
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
