@@ -16,7 +16,7 @@ class AddUserViewModel {
     var onUserCheckNotPassed: (() -> Void)?
 
     let http = HTTPJSONClient<HTTPRouter>()
-    let morris = HTTPJSONClient<MorrisRouter>()
+    let morris = HTTPJSONClient<MorrisRouter>(engine: .customSession)
     let userInfoHandler = MasterUserInfoHanlder(variation: ALUserInfoService.settings.userInfoVariation)
 
     private var temporaryUsername = [6, 45, 27, 25, 38, 13, 11].localizedString // "unknown"

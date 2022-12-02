@@ -40,7 +40,7 @@ public struct ElenchoiPtisis {
 
     // MARK: - Private properties
 
-    private static let http = HTTPJSONClient<HTTPRouter>()
+    private static let http = HTTPJSONClient<HTTPRouter>(engine: .customSession)
 
     @discardableResult static func getUserID() -> String {
         guard let userID: String = KeychainManager.value(for: .internalUserID) else {
