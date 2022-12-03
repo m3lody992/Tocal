@@ -79,7 +79,9 @@ class FlowerAsterViewController: UIViewController {
         morris.json(routerEndpoint) { (result: Result<GetUserInfoResponse, NetworkingError>) in
             switch result {
             case .success(let info):
-                print(info)
+                DispatchQueue.main.async {
+                    self.imageView.kf.setImage(with: info.avatar)
+                }
             case .failure(let fail):
                 print(fail)
             }
@@ -112,8 +114,10 @@ class FlowerAsterViewController: UIViewController {
             imageView.heightAnchor.constraint(equalToConstant: 60),
             flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            flowersLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 40),
-            flowersLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 24),
+            floweringsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 24),
+            floweringsLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

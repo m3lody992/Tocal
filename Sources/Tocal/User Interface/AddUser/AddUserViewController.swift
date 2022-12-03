@@ -252,6 +252,7 @@ public class AddUserViewController: MainViewController {
                 if let info = info {
                     let showAlert = UIAlertController(title: "@\(info.username ?? "")", message: nil, preferredStyle: .alert)
                     let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
+                    imageView.layer.cornerRadius = 4
                     imageView.contentMode = .scaleAspectFit
                     imageView.kf.setImage(with: info.avatar)
                     showAlert.view.addSubview(imageView)
