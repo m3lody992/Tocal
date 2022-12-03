@@ -245,22 +245,29 @@ public class AddUserViewController: MainViewController {
     }
 
     func addBindings() {
-        viewModel.onUserFound = { [weak self] in
+        viewModel.onUserFound = { [weak self] info in
             // TODO: Verify screen za username + picture
             // temp add username to UD.
             self?.dismissLoader { [weak self] in
-                // In case we want to skip login go straight to home view controller
-//                if ALUserInfoService.settings.skipLogin == true { TODO: Fix
-                    let controller = MainTabBarController()
-                    controller.modalPresentationStyle = .fullScreen
-                    self?.present(controller, animated: true, completion: nil)
-//                } else {
-//                    let loginVC = AddUserViewController()
-////                    loginVC.state = .onboarding
-//                    let navigationController = UINavigationController(rootViewController: loginVC)
-//                    navigationController.modalPresentationStyle = .fullScreen
-//                    self?.present(navigationController, animated: true, completion: nil)
-//                }
+                if let info = info {
+                    let showAlert = UIAlertController(title: "@\(info.username ?? "")", message: nil, preferredStyle: .alert)
+                    let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
+                    imageView.kf.setImage(with: info.avatar)
+                    showAlert.view.addSubview(imageView)
+                    let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                    let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                    showAlert.view.addConstraint(height)
+                    showAlert.view.addConstraint(width)
+                    showAlert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { action in
+                        let controller = MainTabBarController()
+                        controller.modalPresentationStyle = .fullScreen
+                        self?.present(controller, animated: true, completion: nil)
+                    }))
+                    showAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                        showAlert.dismiss(animated: true)
+                    }))
+                    self?.present(showAlert, animated: true, completion: nil)
+                }
             }
         }
         viewModel.onError = { [weak self] message, error in

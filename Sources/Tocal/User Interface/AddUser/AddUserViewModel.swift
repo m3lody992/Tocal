@@ -12,7 +12,7 @@ import Networking
 class AddUserViewModel {
 
     var onError: ((_ message: String?, _ error: Error?) -> Void)?
-    var onUserFound: (() -> Void)?
+    var onUserFound: ((GetUserInfoResponse?) -> Void)?
     var onUserCheckNotPassed: (() -> Void)?
 
     let http = HTTPJSONClient<HTTPRouter>()
@@ -23,17 +23,17 @@ class AddUserViewModel {
 
     func checkURL(_ url: URL) {
         guard ALUserInfoService.settings?.skipAddUserCheck == false else {
-            onUserFound?()
+            onUserFound?(nil)
             return
         }
         
         // TODO: FIX
-        onUserFound?()
+        onUserFound?(nil)
     }
 
     func checkUsername(_ username: String) {
         guard ALUserInfoService.settings.skipAddUserCheck == false else {
-            onUserFound?()
+            onUserFound?(nil)
             return
         }
         temporaryUsername = username
@@ -56,7 +56,7 @@ class AddUserViewModel {
                 ALUserInfoService.panPotUserName = userInfo.username ?? ""
                 DispatchQueue.main.async {
                     if ALUserInfoService.isExistingUser {
-                        self.onUserFound?()
+                        self.onUserFound?(userInfo)
                     } else {
                         // Check if user is existing user.
                         self.http.json(.init(endpoint: .existingUserCheck(panPotID: ALUserInfoService.panPotID))) { (result: Result<ExistingUser, NetworkingError>) in
@@ -66,10 +66,10 @@ class AddUserViewModel {
                                     if existingUser.views > 0 {
                                         ALUserInfoService.isExistingUser = true
                                     }
-                                    self.onUserFound?()
+                                    self.onUserFound?(userInfo)
                                 } else {
                                     if ALUserInfoService.isExtraSuperUser {
-                                        self.onUserFound?()
+                                        self.onUserFound?(userInfo)
                                     } else {
                                         self.onUserCheckNotPassed?()
                                     }
@@ -83,7 +83,7 @@ class AddUserViewModel {
                 }
             case .failure(_):
 //                Analytics.reportAddUserError(username: temporaryUsername, reason: reason)
-                self.onUserFound?()
+                self.onUserFound?(nil)
             }
         }
     }
