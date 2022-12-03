@@ -129,6 +129,7 @@ class FlowerAsterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstratints()
+        getInfo()
     }
     
 }
