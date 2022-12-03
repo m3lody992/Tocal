@@ -256,7 +256,7 @@ public class AddUserViewController: MainViewController {
                     imageView.kf.setImage(with: info.avatar)
                     showAlert.view.addSubview(imageView)
                     NSLayoutConstraint.activate([
-                        showAlert.view.heightAnchor.constraint(equalToConstant: 320),
+                        showAlert.view.heightAnchor.constraint(equalToConstant: 350),
                         showAlert.view.widthAnchor.constraint(equalToConstant: 250)
                         ])
                     showAlert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { action in
