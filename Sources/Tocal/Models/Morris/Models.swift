@@ -67,6 +67,7 @@ public struct GetUserInfo: Codable {
 
 public struct GetUserInfoResponse: Codable {
     public let code: Int
+    public let avatar: URL?
     public let isUserPrivate: Bool?
     public let userSecID: String?
     public let userUID: String?
@@ -76,6 +77,7 @@ public struct GetUserInfoResponse: Codable {
     
     enum CodingKeys: String, CodingKey {
         case code
+        case avatar
         case isUserPrivate = "is_user_private"
         case userSecID = "user_secid"
         case userUID = "user_uid"
