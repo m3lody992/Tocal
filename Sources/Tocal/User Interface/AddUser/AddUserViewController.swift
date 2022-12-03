@@ -251,13 +251,14 @@ public class AddUserViewController: MainViewController {
             self?.dismissLoader { [weak self] in
                 if let info = info {
                     let showAlert = UIAlertController(title: "@\(info.username ?? "")", message: nil, preferredStyle: .alert)
-                    let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 230, height: 230))
+                    let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
+                    imageView.contentMode = .scaleAspectFit
                     imageView.kf.setImage(with: info.avatar)
                     showAlert.view.addSubview(imageView)
-                    let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
-                    let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
-                    showAlert.view.addConstraint(height)
-                    showAlert.view.addConstraint(width)
+                    NSLayoutConstraint.activate([
+                        showAlert.view.heightAnchor.constraint(equalToConstant: 320),
+                        showAlert.view.widthAnchor.constraint(equalToConstant: 250)
+                        ])
                     showAlert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { action in
                         let controller = MainTabBarController()
                         controller.modalPresentationStyle = .fullScreen
