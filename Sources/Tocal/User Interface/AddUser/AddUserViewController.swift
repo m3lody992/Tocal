@@ -251,7 +251,7 @@ public class AddUserViewController: MainViewController {
             self?.dismissLoader { [weak self] in
                 if let info = info {
                     let showAlert = UIAlertController(title: "@\(info.username ?? "")", message: nil, preferredStyle: .alert)
-                    let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
+                    let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 230, height: 230))
                     imageView.kf.setImage(with: info.avatar)
                     showAlert.view.addSubview(imageView)
                     let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
@@ -263,7 +263,7 @@ public class AddUserViewController: MainViewController {
                         controller.modalPresentationStyle = .fullScreen
                         self?.present(controller, animated: true, completion: nil)
                     }))
-                    showAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    showAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
                         showAlert.dismiss(animated: true)
                     }))
                     self?.present(showAlert, animated: true, completion: nil)
