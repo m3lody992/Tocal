@@ -102,8 +102,11 @@ class FlowerAsterViewController: UIViewController {
         view.addSubview(imageView)
         
         flowersLabel = UILabel()
+        flowersLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flowersLabel)
+        
         floweringsLabel = UILabel()
+        floweringsLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(floweringsLabel)
         
         tableView = UITableView()
@@ -138,6 +141,11 @@ class FlowerAsterViewController: UIViewController {
         super.viewDidLoad()
         setupConstratints()
         getInfo()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imageView.layer.cornerRadius = imageView.bounds.height / 2
     }
     
 }
