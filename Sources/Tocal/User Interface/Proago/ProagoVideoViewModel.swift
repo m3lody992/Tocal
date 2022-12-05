@@ -73,7 +73,7 @@ class ProagoVideoViewModel {
             case .success(let response):
                 DispatchQueue.main.async {
                     if response.code == 200 && response.message == "success" {
-                        Aster.numberOfAsters -= neededAsters
+                        Aster.numberOfAsters -= self.neededAsters
                         
                         self.onSuccess?()
                         KeychainManager.set(value: true, for: .didProago)
