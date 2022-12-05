@@ -83,8 +83,10 @@ class ProagoVideoViewModel {
                     }
                 }
             case .failure(let fail):
-                // "Failed to make promotion. Please try again later."
-                self.onError?([53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString, fail)
+                DispatchQueue.main.async {
+                    // "Failed to make promotion. Please try again later."
+                    self.onError?([53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString, fail)
+                }
             }
         }
     }

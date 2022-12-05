@@ -203,3 +203,38 @@ public struct SubmitOrderResponse: Codable {
     public let message: String
     public let status: Bool
 }
+
+//{  "data":
+//    [
+//      {
+//         "created_on":"2022-11-22 23:45:39"
+//         "order_count":"2",
+//         "Amount_received":"2",
+//         "Perecnt_done":"1.0000",
+//         "completed":"1"}
+//    ]
+//}
+
+public struct OrderStatusData: Codable {
+    var created: Date
+    var ordered: Int
+    var received: Int
+    var percent: Double
+    var completed: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case created = "created_on"
+        case ordered = "order_count"
+        case received = "Amount_received"
+        case percent = "Perecnt_done"
+        case completed
+    }
+    
+    var asSeiraStatus: SeiraStatus {
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: 0, success: completed)
+    }
+}
+
+public struct OrderStatusResponse: Codable {
+    var data: [OrderStatusData]
+}
