@@ -44,14 +44,14 @@ public class MainTabBarController: UITabBarController, Instantiable {
         
         if Tocal.yapService.yapIDs != nil {
             if ALUserInfoService.settings.showAgoraFilos == true {
-                viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 1)
+                viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 2)
             } else {
                 let navigationController = UINavigationController(rootViewController: YAPAgoraViewController())
                 navigationController.navigationBar.prefersLargeTitles = true
-                viewControllers?.insert(navigationController, at: 1)
+                viewControllers?.insert(navigationController, at: 2)
             }
         } else {
-            viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 1)
+            viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 2)
         }
         
         viewControllers?[0].title = "Get Followers"
