@@ -149,25 +149,6 @@ public struct UserPost: Codable {
     }
 }
 
-public protocol OrderSignable: Codable {
-    var type: Int { get set }
-    var count: Int { get set }
-    var data: String { get set }
-    var nonce: String { get set }
-    var signature: String? { get }
-}
-
-public extension OrderSignable {
-    
-    var signature: String? {
-        guard let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(type)\(count)\(data)\(nonce)".asUInt8Array) else {
-                return nil
-        }
-        return Data(hmacBytes).toHexString()
-    }
-
-}
-
 public struct GetUserPostsResponse: Codable {
     public let code: Int
     public let hasMore: Bool
@@ -190,17 +171,23 @@ public struct GetUserPostsResponse: Codable {
     }
 }
 
-public struct SubmitOrder: Codable, OrderSignable {
+public struct SubmitOrder: Codable {
     public var type: Int
     public var count: Int
     public var data: String
     public var nonce: String
+    public var signature: String?
     
     public init(type: Int, count: Int, data: String) {
         self.type = type
         self.count = count
         self.data = data
         self.nonce = UUID().uuidString
+        if let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(type)\(count)\(data)\(nonce)".asUInt8Array) {
+            self.signature = Data(hmacBytes).toHexString()
+        } else {
+            self.signature = nil
+        }
     }
     
 }
