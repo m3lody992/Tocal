@@ -147,6 +147,10 @@ public struct UserPost: Codable {
         case id = "video_id"
         case thumbURL = "video_thumb_url"
     }
+    
+    var asVideoInfo: VideoInfo {
+        return VideoInfo(statusCode: 0, backupThumbURL: thumbURL, isPrivate: isPrivate, isForFilos: false, isAgaped: false, videoID: id, videoAgapes: agapeCount, videoViews: viewCount, isAccountPrivate: false)
+    }
 }
 
 public struct GetUserPostsResponse: Codable {

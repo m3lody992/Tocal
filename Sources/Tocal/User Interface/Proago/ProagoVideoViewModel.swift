@@ -29,6 +29,8 @@ class ProagoVideoViewModel {
 
     var userVideo: VideoInfo?
     var thumbnailImage: UIImage?
+    
+    let morris = HTTPJSONClient<MorrisRouter>(engine: .customSession)
 
     func proagoCurrentVideo() {
         guard let userVideo = userVideo else {
@@ -61,36 +63,28 @@ class ProagoVideoViewModel {
                 self.onError?([53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString, nil)
                 return
         }
-
-        var endpoint = HTTPRouter(endpoint: .addPost)
-        endpoint.encodeModelToData(seira)
-
-        http.json(endpoint) { (result: Result<NetworkResponse, NetworkingError>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let response):
-                    if response.status == [21, 54, 28, 27].localizedString { // full
-                        // "Maximum number of likes has already been ordered for this video!"
-                        self.onError?([62, 34, 8, 30, 36, 15, 8, 119, 88, 31, 42, 80, 1, 7, 121, 30, 60, 123, 7, 42, 39, 37, 23, 112, 91, 57, 93, 114, 36, 79, 32, 22, 34, 20, 14, 105, 24, 0, 50, 88, 74, 40, 64, 0, 16, 43, 20, 62, 123, 13, 44, 62, 96, 16, 56, 90, 43, 14, 36, 44, 71, 55, 28, 98].localizedString, nil)
-                    } else if response.status == [28, 40].localizedString { // ok
-                        Aster.numberOfAsters -= self.neededAsters
+        
+        let order = SubmitOrder(type: 1, count: neededAgapes, data: userVideo.videoID)
+        var routerEndpoint = MorrisRouter(endpoint: .submitLikeOrder)
+        routerEndpoint.encodeModelToData(order)
+        
+        morris.json(routerEndpoint) { (result: Result<SubmitOrderResponse, NetworkingError>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    if response.code == 200 && response.message == "success" {
+                        Aster.numberOfAsters -= neededAsters
+                        
                         self.onSuccess?()
-                    } else if response.status == [18, 47, 21, 5, 61].localizedString { // "alert"
-                        guard let description = response.description else {
-                            // "Oops, something went wrong! Please try again later."
-                            self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 15, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, nil)
-                            return
-                        }
-                        self.onError?(description, nil)
+                        KeychainManager.set(value: true, for: .didProago)
+                        ALUserInfoService.isExistingUser = true
                     } else {
-                        // "Oops, something went wrong! Please try again later."
                         self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 15, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, nil)
-                        return
                     }
-                case .failure(let error):
-                    // "Failed to make promotion. Please try again later."
-                    self.onError?([53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString, error)
                 }
+            case .failure(let fail):
+                // "Failed to make promotion. Please try again later."
+                self.onError?([53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString, fail)
             }
         }
     }
