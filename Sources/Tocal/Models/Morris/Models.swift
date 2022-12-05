@@ -160,7 +160,7 @@ public struct GetUserPostsResponse: Codable {
     public let pagination: Int
     public let posts: [UserPost]
     public let secUID: String
-    public let status: String
+    public let status: Int
     public let username: String
     
     enum CodingKeys: String, CodingKey {
