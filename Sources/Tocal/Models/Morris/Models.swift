@@ -65,9 +65,27 @@ public struct GetUserInfo: Codable {
     
 }
 
+
+//
+//{
+//    "avatar": "xxxhttps://p77-sign-va.tiktokcdn.com/musically-maliva-obj/1612764934404102~c5_1080x1080.webp?x-expires=1670263200&x-signature=jns3KF0NFV%2Ffts%2FBlgten6GDF0I%3D",
+//    "code": 200,
+//    "digg_count": 544,
+//    "follower_count": 31,
+//    "following_count": 60,
+//    "is_user_private": false,
+//    "status": true,
+//    "user_secid": "MS4wLjABAAAAs8A40NMpvp3qY7B88ZJPY2IoK7xKZpwfqzJ0znc4WJjvK7cnzsKIQc6fJZKH7mot",
+//    "user_uid": "6577664372280459269",
+//    "username": "drakos009"
+//}
+//
 public struct GetUserInfoResponse: Codable {
     public let code: Int
     public let avatar: URL?
+    public let diggsGiven: Int?
+    public let flowerCount: Int?
+    public let floweringsCount: Int?
     public let isUserPrivate: Bool?
     public let userSecID: String?
     public let userUID: String?
@@ -78,6 +96,9 @@ public struct GetUserInfoResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case code
         case avatar
+        case diggsGiven = "digg_count"
+        case flowerCount = "follower_count"
+        case floweringsCount = "following_count"
         case isUserPrivate = "is_user_private"
         case userSecID = "user_secid"
         case userUID = "user_uid"

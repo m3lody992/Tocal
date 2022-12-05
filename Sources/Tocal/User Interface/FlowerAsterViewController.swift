@@ -80,6 +80,7 @@ class FlowerAsterViewController: UIViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
+                    self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
                 }
             case .failure(let fail):
@@ -91,8 +92,9 @@ class FlowerAsterViewController: UIViewController {
     func setupConstratints() {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.masksToBounds = true
+//        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.bounds.height / 2
         view.addSubview(imageView)
         

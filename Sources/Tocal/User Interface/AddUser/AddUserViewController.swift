@@ -254,6 +254,8 @@ public class AddUserViewController: MainViewController {
                     let imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
                     imageView.layer.cornerRadius = 4
                     imageView.contentMode = .scaleAspectFit
+                    imageView.clipsToBounds = true
+                    imageView.kf.indicatorType = .activity
                     imageView.kf.setImage(with: info.avatar)
                     showAlert.view.addSubview(imageView)
                     NSLayoutConstraint.activate([
