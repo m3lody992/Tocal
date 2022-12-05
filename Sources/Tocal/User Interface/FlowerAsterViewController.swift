@@ -94,10 +94,11 @@ class FlowerAsterViewController: UIViewController {
     func setupConstratints() {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.masksToBounds = true
-//        imageView.clipsToBounds = true
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.bounds.height / 2
+        imageView.layer.borderColor = UIColor.systemPink.cgColor
+        imageView.layer.borderWidth = 2
         view.addSubview(imageView)
         
         flowersLabel = UILabel()
@@ -122,9 +123,11 @@ class FlowerAsterViewController: UIViewController {
             flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             flowersLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            flowersLabel.heightAnchor.constraint(equalToConstant: 24),
             floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 40),
             floweringsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 24),
             floweringsLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            floweringsLabel.heightAnchor.constraint(equalToConstant: 24),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
