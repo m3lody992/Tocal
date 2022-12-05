@@ -7,6 +7,9 @@
 
 import UIKit
 import Networking
+import InfoServices
+import UITools
+import DeviceTools
 
 class FlowerAsterTableViewCell: UITableViewCell {
     
@@ -59,7 +62,7 @@ class FlowerAsterTableViewCell: UITableViewCell {
     
 }
 
-class FlowerAsterViewController: UIViewController {
+class FlowerAsterViewController: MainViewController {
     
     private var tableView: UITableView!
     private var imageView: UIImageView!
@@ -82,6 +85,8 @@ class FlowerAsterViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
+                    self.imageView.layer.borderColor = UIColor.systemPink.cgColor
+                    self.imageView.layer.borderWidth = 2
                     self.flowersLabel.text = "\(info.flowerCount ?? 0) Followers"
                     self.floweringsLabel.text = "\(info.floweringsCount ?? 0) Followings"
                 }
@@ -97,8 +102,6 @@ class FlowerAsterViewController: UIViewController {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.bounds.height / 2
-        imageView.layer.borderColor = UIColor.systemPink.cgColor
-        imageView.layer.borderWidth = 2
         view.addSubview(imageView)
         
         flowersLabel = UILabel()
@@ -160,6 +163,59 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
         let cell: FlowerAsterTableViewCell? = tableView.dequeueCell()
         cell?.setup(with: data[indexPath.row])
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        presentAlert(
+            // Order X stars?
+            withTitle: [60, 49, 20, 18, 59, 90].localizedString + "\(data[indexPath.row].flowers)" + "Followers",
+            // Do you want to order X likes for Y stars ?
+            andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].localizedString + "\(data[indexPath.row].flowers)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].localizedString + "\(data[indexPath.row].asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].localizedString,
+            buttons: [.cancel, .ok], onOk:  { [self] in
+                if Aster.numberOfAsters >= self.data[indexPath.row].asters {
+                    self.showLoader()
+                    self.proago(flowers: self.data[indexPath.row].flowers)
+                } else {
+                    self.presentAlert(
+                        // Not enough stars
+                        withTitle: [61, 44, 4, 87, 44, 20, 10, 34, 81, 2, 103, 208, 201, 229, 182, 201, 213].localizedString,
+                        // Would you like to get more ⭐️?
+                        andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 12, 38, 56, 96, 9, 63, 65, 61, 14, 176, 232, 179, 189, 203, 204, 79].localizedString,
+                        buttons: [.later, .ok], onOk:  { [weak self] in
+                            self?.tabBarController?.selectedIndex = 1
+                        })
+                }
+            })
+    }
+    
+    private func proago(flowers: Int) {
+        let orderModel = SubmitOrder(type: 2, count: flowers, data: ALUserInfoService.panPotID)
+        var routerEndpoint = MorrisRouter(endpoint: .submitFollowerOrder)
+        routerEndpoint.encodeModelToData(orderModel)
+        
+        morris.json(routerEndpoint) { (result: Result<SubmitOrderResponse, NetworkingError>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    if response.code == 200 && response.message == "success" {
+                        Aster.numberOfAsters -= flowers * 2
+                        self.dismissLoader()
+                        self.updateAstersLabel()
+                        KeychainManager.set(value: true, for: .didProago)
+                        ALUserInfoService.isExistingUser = true
+                        // Promotion successful!
+                        self.presentAlert(withTitle: [35, 49, 31, 26, 38, 14, 12, 56, 88, 74, 52, 71, 7, 22, 60, 2, 41, 61, 30, 47, 109].localizedString, andMessage: [42, 44, 5, 87, 58, 18, 10, 34, 90, 14, 103, 65, 16, 20, 43, 5, 122, 41, 14, 32, 41, 41, 18, 57, 93, 63, 14, 62, 44, 72, 55, 0, 99, 3, 24, 38, 20, 75, 93, 98, 31, 53, 92, 13, 27, 62, 81, 35, 52, 30, 49, 108, 48, 22, 63, 85, 49, 66, 55, 101, 87, 61, 83, 51, 2, 30, 63, 27, 17, 50, 22, 29, 46, 94, 8, 85, 42, 5, 53, 43, 75, 55, 36, 37, 68, 60, 90, 51, 71, 60, 34, 13].localizedString)
+                    } else {
+                        self.dismissLoader()
+                        self.presentAlert(withTitle: [54, 49, 2, 24, 59, 91].localizedString, andMessage: [60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 15, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString)
+                    }
+                }
+            case .failure:
+                self.dismissLoader()
+                self.presentAlert(withTitle: [54, 49, 2, 24, 59, 91].localizedString, andMessage: [53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].localizedString)
+            }
+        }
     }
     
 }
