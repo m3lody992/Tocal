@@ -82,6 +82,8 @@ class FlowerAsterViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
+                    self.flowersLabel.text = "\(info.flowerCount ?? 0) Followers"
+                    self.floweringsLabel.text = "\(info.floweringsCount ?? 0) Followings"
                 }
             case .failure(let fail):
                 print(fail)
@@ -92,8 +94,8 @@ class FlowerAsterViewController: UIViewController {
     func setupConstratints() {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.layer.masksToBounds = true
-        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+//        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.bounds.height / 2
         view.addSubview(imageView)
