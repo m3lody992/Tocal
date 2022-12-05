@@ -149,7 +149,7 @@ public struct UserPost: Codable {
     }
     
     var asVideoInfo: VideoInfo {
-        return VideoInfo(statusCode: 0, backupThumbURL: thumbURL, isPrivate: isPrivate, isForFilos: false, isAgaped: false, videoID: id, videoAgapes: agapeCount, videoViews: viewCount, isAccountPrivate: false)
+        return VideoInfo(statusCode: 0, backupThumbURL: nil, isPrivate: isPrivate, isForFilos: false, isAgaped: false, videoID: id, adThumbUrl: thumbURL, videoAgapes: agapeCount, videoViews: viewCount, isAccountPrivate: false)
     }
 }
 
