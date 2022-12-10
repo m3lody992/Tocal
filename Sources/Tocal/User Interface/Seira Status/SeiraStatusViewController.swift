@@ -21,7 +21,7 @@ class SeiraStatusViewModel {
     var seiras = [SeiraStatus]()
 
     func getHistory() {
-        var routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotUsername: ALUserInfoService.panPotUserName))
+        var routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotID: ALUserInfoService.panPotID))
         
         morris.json(routerEndpoint) { (result: Result<OrderStatusResponse, NetworkingError>) in
             switch result {

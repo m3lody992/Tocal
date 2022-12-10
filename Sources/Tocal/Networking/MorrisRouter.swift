@@ -21,7 +21,7 @@ struct MorrisRouter: HTTPEndpoint {
         case getUserPosts
         case getUserInfo
         case getVideoInfo
-        case orderStatus(panPotUsername: String)
+        case orderStatus(panPotID: String)
         case settings
         case existingUserCheck(panPotID: String)
         case privacySettings
@@ -79,8 +79,8 @@ struct MorrisRouter: HTTPEndpoint {
     public var queryParameters: HTTPParameters? {
         var parameters = [[26, 42, 20].localizedString: ALUserInfoService.internalID] // "iid"
         switch endpoint {
-        case .orderStatus(let username):
-            parameters["target"] = username
+        case .orderStatus(let id):
+            parameters["target"] = id
         case .existingUserCheck(let panPotID)://, .showFeed(let panPotID):
             parameters[[29, 42, 20].localizedString] = panPotID // "nid"
         case .verifyReceipt(let panPotID, let panPotUserName, let country):
