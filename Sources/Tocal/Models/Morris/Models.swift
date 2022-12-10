@@ -217,6 +217,9 @@ public struct SubmitOrderResponse: Codable {
 //}
 //    ]
 //}
+extension Int {
+    var boolValue: Bool { return self != 0 }
+}
 
 public struct OrderStatusData: Codable {
     var created: String
@@ -238,7 +241,7 @@ public struct OrderStatusData: Codable {
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: Int(ordered) ?? 0, adClicks: Int(received) ?? 0, percent: Double(percent) ?? 0, delay: 0, success: Bool(completed) ?? false)
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: Int(ordered) ?? 0, adClicks: Int(received) ?? 0, percent: Double(percent) ?? 0, delay: 0, success: Int(completed)?.boolValue ?? false)
     }
 }
 
