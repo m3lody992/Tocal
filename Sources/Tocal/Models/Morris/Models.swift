@@ -231,7 +231,7 @@ public struct OrderStatusData: Codable {
         case created = "created_on"
         case ordered = "order_count"
         case received = "amount_received"
-        case percent = "perecnt_done"
+        case percent = "percent_done"
         case completed
         case status = "upstream_status"
         case time = "wait_time_minutes"
