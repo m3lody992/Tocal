@@ -226,7 +226,7 @@ public struct OrderStatusData: Codable {
     var ordered: Int
     var received: Int
     var percent: Double
-    var completed: Bool
+    var completed: Int
     var status: String
     var time: Int
     
@@ -241,7 +241,7 @@ public struct OrderStatusData: Codable {
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed)
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 
