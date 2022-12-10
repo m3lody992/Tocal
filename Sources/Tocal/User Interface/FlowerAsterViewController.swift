@@ -183,7 +183,7 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
                         // Would you like to get more ⭐️?
                         andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 12, 38, 56, 96, 9, 63, 65, 61, 14, 176, 232, 179, 189, 203, 204, 79].localizedString,
                         buttons: [.later, .ok], onOk:  { [weak self] in
-                            self?.tabBarController?.selectedIndex = 1
+                            self?.tabBarController?.selectedIndex = 2
                         })
                 }
             })
@@ -205,7 +205,7 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
                         KeychainManager.set(value: true, for: .didProago)
                         ALUserInfoService.isExistingUser = true
                         // Promotion successful!
-                        self.presentAlert(withTitle: [35, 49, 31, 26, 38, 14, 12, 56, 88, 74, 52, 71, 7, 22, 60, 2, 41, 61, 30, 47, 109].localizedString, andMessage: [42, 44, 5, 87, 58, 18, 10, 34, 90, 14, 103, 65, 16, 20, 43, 5, 122, 41, 14, 32, 41, 41, 18, 57, 93, 63, 14, 62, 44, 72, 55, 0, 99, 3, 24, 38, 20, 75, 93, 98, 31, 53, 92, 13, 27, 62, 81, 35, 52, 30, 49, 108, 48, 22, 63, 85, 49, 66, 55, 101, 87, 61, 83, 51, 2, 30, 63, 27, 17, 50, 22, 29, 46, 94, 8, 85, 42, 5, 53, 43, 75, 55, 36, 37, 68, 60, 90, 51, 71, 60, 34, 13].localizedString)
+                        self.presentAlert(withTitle: [35, 49, 31, 26, 38, 14, 12, 56, 88, 74, 52, 71, 7, 22, 60, 2, 41, 61, 30, 47, 109].localizedString, andMessage: [42, 44, 5, 87, 58, 18, 10, 34, 90, 14, 103, 65, 16, 20, 43, 5, 122, 41, 14, 32, 41, 41, 18, 57, 93, 63, 14, 52, 42, 79, 62, 28, 52, 21, 5, 58, 90, 22, 56, 89, 4].localizedString)
                     } else {
                         self.dismissLoader()
                         self.presentAlert(withTitle: [54, 49, 2, 24, 59, 91].localizedString, andMessage: [60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 15, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString)

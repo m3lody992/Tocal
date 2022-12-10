@@ -223,12 +223,12 @@ extension Int {
 
 public struct OrderStatusData: Codable {
     var created: String
-    var ordered: String
-    var received: String
-    var percent: String
-    var completed: String
+    var ordered: Int
+    var received: Int
+    var percent: Double
+    var completed: Bool
     var status: String
-    var time: String
+    var time: Int
     
     enum CodingKeys: String, CodingKey {
         case created = "created_on"
@@ -241,7 +241,7 @@ public struct OrderStatusData: Codable {
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: Int(ordered) ?? 0, adClicks: Int(received) ?? 0, percent: Double(percent) ?? 0, delay: Int(time) ?? 0, success: Int(completed)?.boolValue ?? false)
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed)
     }
 }
 
