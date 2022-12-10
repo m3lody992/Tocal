@@ -220,8 +220,8 @@ public struct SubmitOrderResponse: Codable {
 
 public struct OrderStatusData: Codable {
     var created: String
-    var ordered: Int
-    var received: Int
+    var ordered: String
+    var received: String
     var percent: String
     var completed: String
     var status: String
@@ -238,7 +238,7 @@ public struct OrderStatusData: Codable {
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: Double(percent) ?? 0, delay: 0, success: Bool(completed) ?? false)
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: Int(ordered) ?? 0, adClicks: Int(received) ?? 0, percent: Double(percent) ?? 0, delay: 0, success: Bool(completed) ?? false)
     }
 }
 
