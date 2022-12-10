@@ -226,6 +226,7 @@ public struct OrderStatusData: Codable {
     var ordered: Int
     var received: Int
     var percent: Double
+    var type: Int
     var completed: Int
     var status: String
     var time: Int
@@ -235,13 +236,14 @@ public struct OrderStatusData: Codable {
         case ordered = "order_count"
         case received = "amount_received"
         case percent = "percent_done"
+        case type = "order_type"
         case completed
         case status = "upstream_status"
         case time = "wait_time_minutes"
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
+        SeiraStatus(type: type, adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 
