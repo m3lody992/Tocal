@@ -55,8 +55,8 @@ public class MainTabBarController: UITabBarController, Instantiable {
         }
         
         viewControllers?[0].title = "Get Followers"
-        viewControllers?[1].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].localizedString
-        viewControllers?[2].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].localizedString
+        viewControllers?[1].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].localizedString
+        viewControllers?[2].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].localizedString
         viewControllers?[3].title = [62, 44, 2, 18].localizedString
 
         KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.aster, options: Processor.Options.template) { [weak self] retrieveResult in
@@ -64,14 +64,14 @@ public class MainTabBarController: UITabBarController, Instantiable {
                 self?.viewControllers?[0].tabBarItem.image = result.image.resize(targetSize: .init(width: 24, height: 24))
             }
         }
-
-        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.katastima, options: Processor.Options.template) { [weak self] retrieveResult in
+        
+        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.kardia, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[1].tabBarItem.image = result.image.resize(targetSize: .init(width: 24, height: 24))
             }
         }
 
-        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.kardia, options: Processor.Options.template) { [weak self] retrieveResult in
+        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.katastima, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[2].tabBarItem.image = result.image.resize(targetSize: .init(width: 24, height: 24))
             }
