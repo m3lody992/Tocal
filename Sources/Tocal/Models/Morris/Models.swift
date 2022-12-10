@@ -207,11 +207,14 @@ public struct SubmitOrderResponse: Codable {
 //{  "data":
 //    [
 //      {
-//         "created_on":"2022-11-22 23:45:39"
-//         "order_count":"2",
-//         "Amount_received":"2",
-//         "Perecnt_done":"1.0000",
-//         "completed":"1"}
+//"created_on": "2022-12-05 08:07:55",
+//"order_count": "10",
+//"amount_received": "0",
+//"perecnt_done": null,
+//"completed": "1",
+//"upstream_status": "3",
+//"wait_time_minutes": "1521"
+//}
 //    ]
 //}
 
@@ -221,13 +224,17 @@ public struct OrderStatusData: Codable {
     var received: Int
     var percent: Double
     var completed: Bool
+    var status: String
+    var time: String
     
     enum CodingKeys: String, CodingKey {
         case created = "created_on"
         case ordered = "order_count"
-        case received = "Amount_received"
-        case percent = "Perecnt_done"
+        case received = "amount_received"
+        case percent = "perecnt_done"
         case completed
+        case status = "upstream_status"
+        case time = "wait_time_minutes"
     }
     
     var asSeiraStatus: SeiraStatus {

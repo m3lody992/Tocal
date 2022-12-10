@@ -102,9 +102,9 @@ class GetAgapesViewController: MainViewController {
         addBindings()
         
         let addManuallyButton = UIButton(type: .system)
-        addManuallyButton.setTitle([50, 39, 20, 87, 4, 27, 11, 34, 87, 6, 43, 75].localizedString, for: .normal)
-        addManuallyButton.addTarget(self, action: #selector(addManually), for: .touchUpInside)
-        navigationItem.setLeftBarButton(.init(customView: addManuallyButton), animated: false)
+//        addManuallyButton.setTitle([50, 39, 20, 87, 4, 27, 11, 34, 87, 6, 43, 75].localizedString, for: .normal)
+//        addManuallyButton.addTarget(self, action: #selector(addManually), for: .touchUpInside)
+//        navigationItem.setLeftBarButton(.init(customView: addManuallyButton), animated: false)
 
         collectionView.delegate = self
         collectionView.dataSource = self
