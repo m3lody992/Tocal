@@ -219,7 +219,7 @@ public struct SubmitOrderResponse: Codable {
 //}
 
 public struct OrderStatusData: Codable {
-    var created: Date
+    var created: String
     var ordered: Int
     var received: Int
     var percent: Double
