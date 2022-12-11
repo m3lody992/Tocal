@@ -226,7 +226,7 @@ public struct OrderStatusData: Codable {
     var ordered: Int
     var received: Int
     var percent: Double
-    var type: Int
+    var type: String
     var completed: Int
     var status: String
     var time: Int
