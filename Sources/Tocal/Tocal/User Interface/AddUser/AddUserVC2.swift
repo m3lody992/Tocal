@@ -8,8 +8,8 @@
 import UIKit
 import WebKit
 import MessageUI
-import UITools
-import DeviceTools
+//import UITools
+//import DeviceTools
 
 public class OnTapButton: UIButton {
     
