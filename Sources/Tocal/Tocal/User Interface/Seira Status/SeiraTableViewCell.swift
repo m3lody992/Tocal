@@ -93,9 +93,9 @@ class UgiUgnYvQcpUianjTFyX1oDC6klqL9mL: UITableViewCell {
             options: Processor.Options.pdfTemplate)
 
         // "Ordered: \(order.neededLikes) ♥️"
-        seiradAgapesLabel.text = [60, 49, 20, 18, 59, 31, 1, 109, 22].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(seira.adTargetClicks)" + [83, 161, 233, 210, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        seiradAgapesLabel.text = [60, 49, 20, 18, 59, 31, 1, 109, 22].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(seira.adTargetClicks)" + (seira.type == "1" ? [83, 161, 233, 210, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG : [83, 179, 239, 230, 237].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
         // "Received: \(order.likeCount) ♥️"
-        deliveredAgapesLabel.text = [33, 38, 19, 18, 32, 12, 0, 51, 12, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(seira.adClicks)" + [83, 161, 233, 210, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        deliveredAgapesLabel.text = [33, 38, 19, 18, 32, 12, 0, 51, 12, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(seira.adClicks)" + (seira.type == "1" ? [83, 161, 233, 210, 166, 194, 234].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG : [83, 179, 239, 230, 237].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
         // "Delivered in: \(order.delay) minutes" : "Progress: \(Int(ceil(order.percent)))%"
         timelLabel.text = seira.success ? [55, 38, 28, 30, 63, 31, 23, 50, 82, 74, 46, 92, 94, 85].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + TT7ihnRU8KTR6sEyLoWhMDAOX01h6xFQ(seira.delay) : [35, 49, 31, 16, 59, 31, 22, 36, 12, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(Int(seira.percent))" + [86].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
     }

@@ -49,21 +49,21 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ)" + [83, 161, 233, 210, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             // Do you want to order X likes for Y stars ?
             andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.EYAj8W635NXKi9m1qFFLxssqzssHJS0S)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
-        buttons: [.ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt, .grb6TiJukBTRVhDCwf7NauTcStn1037q]) { [weak self] in
-            if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= self?.viewModel.EYAj8W635NXKi9m1qFFLxssqzssHJS0S ?? 1000 {
-                self?.zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL()
-                self?.viewModel.K7ckTPnHN8miX0SlZtTQDwnap4DYNmh7()
-            } else {
-                self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
-                    // Not enough stars
-                    withTitle: [61, 44, 4, 87, 44, 20, 10, 34, 81, 2, 103, 208, 201, 229, 182, 201, 213].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
-                    // Would you like to get more ⭐️?
-                    andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 12, 38, 56, 96, 9, 63, 65, 61, 14, 176, 232, 179, 189, 203, 204, 79].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
-                    buttons: [.fmSMx6JT4HOWo9mmomXqGjpuIPFb1IDj, .grb6TiJukBTRVhDCwf7NauTcStn1037q]) { [weak self] in
-                        self?.tabBarController?.selectedIndex = 1
+            buttons: [.ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt, .grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  { [weak self] in
+                if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= self?.viewModel.EYAj8W635NXKi9m1qFFLxssqzssHJS0S ?? 1000 {
+                    self?.zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL()
+                    self?.viewModel.K7ckTPnHN8miX0SlZtTQDwnap4DYNmh7()
+                } else {
+                    self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
+                        // Not enough stars
+                        withTitle: [61, 44, 4, 87, 44, 20, 10, 34, 81, 2, 103, 208, 201, 229, 182, 201, 213].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+                        // Would you like to get more ⭐️?
+                        andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 12, 38, 56, 96, 9, 63, 65, 61, 14, 176, 232, 179, 189, 203, 204, 79].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+                        buttons: [.fmSMx6JT4HOWo9mmomXqGjpuIPFb1IDj, .grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  { [weak self] in
+                            self?.tabBarController?.selectedIndex = 1
+                        })
                 }
-            }
-        }
+            })
     }
 
     var viewModel = GYqVeVs5JCmSpHTVOkyd3aLJrmxTyUpE()

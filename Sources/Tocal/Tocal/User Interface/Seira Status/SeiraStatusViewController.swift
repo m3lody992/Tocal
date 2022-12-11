@@ -20,7 +20,7 @@ class cgK6eZ7nL4memavPIlAAmo71uuYJxtks {
     var ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = [nJABHWKQALbz0dS2a8NMIX9DLknT2EG3]()
 
     func GsXN5uzv1OEI63b6LlLt8kvubOOVeMCz() {
-        var routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa))
+        let routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa))
         
         morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<OrderStatusResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
             switch result {
