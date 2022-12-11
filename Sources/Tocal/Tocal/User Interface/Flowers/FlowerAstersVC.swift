@@ -159,7 +159,7 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: FlowerAsterTableViewCell? = tableView.dequeueCell()
+        let cell: FlowerAsterTableViewCell? = tableView.T7sj2lbFrFBsLjDcHsO02W2Z07rmJMdJ()
         cell?.setup(with: data[indexPath.row])
         return cell ?? UITableViewCell()
     }
