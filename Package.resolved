@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
         "state": {
           "branch": null,
-          "revision": "039f56c5d7960f277087a0be51f5eb04ed0ec073",
-          "version": "1.5.1"
+          "revision": "19b3c3ceed117c5cc883517c4e658548315ba70b",
+          "version": "1.6.0"
         }
       },
       {
@@ -30,11 +30,11 @@
       },
       {
         "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {
           "branch": null,
-          "revision": "1a7b5480eb750a8e171654b9b1cb0a2cbeb27a55",
-          "version": "7.2.1"
+          "revision": "44e891bdb61426a95e31492a67c7c0dfad1f87c5",
+          "version": "7.4.1"
         }
       },
       {
