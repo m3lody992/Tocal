@@ -228,7 +228,7 @@ public struct OrderStatusData: Codable {
     var percent: Double
     var type: String
     var completed: Int
-    var status: String
+    var status: Int
     var time: Int
     
     enum CodingKeys: String, CodingKey {
