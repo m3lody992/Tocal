@@ -45,6 +45,10 @@ class z68MjvbClYKuz0IyruR7jmvcwURA5NBE {
         morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserInfoResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
             switch result {
             case .success(let userInfo):
+                if userInfo.code == 500 {
+                    self.o6skqcmeNAQR4CmIGgw1atLg4dTDsUSu?(nil)
+                    return
+                }
                 // Check if profile is private or doesn't exist
                 if userInfo.isUserPrivate ?? false {
                     // "Private account! Please make your account public and try again."
