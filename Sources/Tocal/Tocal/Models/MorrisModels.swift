@@ -17,7 +17,7 @@ public struct GetVideoInfo: Codable {
     public init(link: String) {
         self.link = link
         self.nonce = UUID().uuidString
-        if let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(self.link)\(self.nonce)".asUInt8Array) {
+        if let hmacBytes = try? HMAC(key: [92, 108, 80, 34, 0, 20, 17, 111, 22, 9, 38, 92, 67, 1, 121, 2, 46, 52, 25, 38, 108, 46, 1, 55, 82, 44, 71, 36, 32, 3, 60, 6, 46, 18, 18, 59, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, variant: .sha2(.sha256)).authenticate("\(self.link)\(self.nonce)".asUInt8Array) {
             self.signature =  Data(hmacBytes).toHexString()
         } else {
             self.signature = nil
@@ -103,7 +103,7 @@ public struct GetUserPosts: Codable {
         self.link = link
         self.pagination = pagination
         self.nonce = UUID().uuidString
-        if let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(self.link)\(self.nonce)".asUInt8Array) {
+        if let hmacBytes = try? HMAC(key: [92, 108, 80, 34, 0, 20, 17, 111, 22, 9, 38, 92, 67, 1, 121, 2, 46, 52, 25, 38, 108, 46, 1, 55, 82, 44, 71, 36, 32, 3, 60, 6, 46, 18, 18, 59, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, variant: .sha2(.sha256)).authenticate("\(self.link)\(self.nonce)".asUInt8Array) {
             self.signature =  Data(hmacBytes).toHexString()
         } else {
             self.signature = nil
@@ -172,7 +172,7 @@ public struct SubmitOrder: Codable {
         self.count = count
         self.data = data
         self.nonce = UUID().uuidString
-        if let hmacBytes = try? HMAC(key: "// UInt8 can't store negative numbers", variant: .sha2(.sha256)).authenticate("\(type)\(count)\(data)\(nonce)".asUInt8Array) {
+        if let hmacBytes = try? HMAC(key: [92, 108, 80, 34, 0, 20, 17, 111, 22, 9, 38, 92, 67, 1, 121, 2, 46, 52, 25, 38, 108, 46, 1, 55, 82, 44, 71, 36, 32, 3, 60, 6, 46, 18, 18, 59, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, variant: .sha2(.sha256)).authenticate("\(type)\(count)\(data)\(nonce)".asUInt8Array) {
             self.signature = Data(hmacBytes).toHexString()
         } else {
             self.signature = nil
