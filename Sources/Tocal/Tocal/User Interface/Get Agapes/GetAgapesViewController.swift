@@ -102,10 +102,10 @@ class gafyy5xMN1llfA1274RBKO9j1JUiFlD8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         fb8K0d3h8meoTm0TXh3Q0J7BEomwuTPN()
         DnSVEKu9S5jeIZzQQyzqZ2R3iHMvZzBq()
         
-        let addManuallyButton = UIButton(type: .system)
-        addManuallyButton.setTitle([50, 39, 20, 87, 4, 27, 11, 34, 87, 6, 43, 75].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
-        addManuallyButton.addTarget(self, action: #selector(YHAPvuZHDwiiqKAYbJgqRZhnJS8MG68Q), for: .touchUpInside)
-        navigationItem.setLeftBarButton(.init(customView: addManuallyButton), animated: false)
+//        let addManuallyButton = UIButton(type: .system)
+//        addManuallyButton.setTitle([50, 39, 20, 87, 4, 27, 11, 34, 87, 6, 43, 75].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
+//        addManuallyButton.addTarget(self, action: #selector(YHAPvuZHDwiiqKAYbJgqRZhnJS8MG68Q), for: .touchUpInside)
+//        navigationItem.setLeftBarButton(.init(customView: addManuallyButton), animated: false)
 
         collectionView.delegate = self
         collectionView.dataSource = self

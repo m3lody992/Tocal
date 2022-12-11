@@ -20,6 +20,7 @@ class SwofemewWEYfi96nB7knqDLIJ8txRv7A: NSObject {
     var userVideos = [BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]()
     var userInfoHandler: TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf? = TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf(variation: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoVariation)
     var manualAddHandler: nFBH75UtiJ2N6PMlezWbrRCvBdbVzJay? = nFBH75UtiJ2N6PMlezWbrRCvBdbVzJay()
+    let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
 
     override init() {
         super.init()
@@ -28,23 +29,26 @@ class SwofemewWEYfi96nB7knqDLIJ8txRv7A: NSObject {
             self.manualAddHandler = nil
         }
     }
-
-    func ijW42yUfmG40CwXRz7auy1gnnEgjF5KH() {
-        userInfoHandler?.qzqHVHhWvgbyg1kiJ9GG8LOK7J6D40Tv(forUsername: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL) { result in
+    
+    var pagination = 0
+    var hasMore = false
+    
+    func ijW42yUfmG40CwXRz7auy1gnnEgjF5KH(page: Int = 0) {
+        let getVideos = GetUserPosts(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased(), pagination: page)
+        var routerEndpoint = MorrisRouter(endpoint: .getUserPosts)
+        routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(getVideos)
+            
+        morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserPostsResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
             switch result {
-            case .success(let userVideos):
-                self.userVideos = userVideos
+            case .success(let response):
                 DispatchQueue.main.async {
+                    self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
+                    self.pagination = response.pagination
+                    self.hasMore = response.hasMore
                     self.onVideoFeedRefreshed?()
                 }
-            case .failure(let reason):
-                if case .b5MsEX5Ktj6WMpaxpP48tn1iKoR8jrSy = reason {
-                    // "Unable to load video feed. \nPlease tap on \"Add Manually\" button."
-                    self.onError?(nil, [38, 45, 17, 21, 37, 31, 69, 35, 89, 74, 43, 93, 5, 17, 121, 7, 51, 63, 14, 44, 108, 38, 1, 53, 87, 118, 14, 88, 21, 79, 55, 18, 48, 21, 87, 61, 27, 21, 119, 89, 4, 103, 16, 37, 17, 61, 81, 23, 58, 5, 54, 45, 44, 8, 41, 17, 120, 76, 39, 49, 87, 61, 29, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
-                } else {
-                    // "We are having trouble loading your videos. Please try again later."
-                    self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
-                }
+            case .failure:
+                self.onError?(nil, [53, 34, 25, 27, 44, 30, 69, 35, 89, 74, 42, 83, 15, 16, 121, 1, 40, 52, 6, 44, 56, 41, 11, 62, 29, 120, 126, 62, 32, 66, 33, 22, 99, 4, 5, 48, 90, 4, 48, 87, 3, 41, 18, 8, 20, 45, 20, 40, 117].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
             }
         }
     }

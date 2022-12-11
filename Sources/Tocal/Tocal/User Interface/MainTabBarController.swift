@@ -26,7 +26,7 @@ public class b7gRtY6i1M7BkFYE0WrWckidWT0Rzpw0: UITabBarController {
 
         UIApplication.shared.statusBarStyle = .default
         
-        let gas = UINavigationController(rootViewController: rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8())
+        let gas = UINavigationController(rootViewController: FlowerAsterViewController())
         let gasTabBarItem = UITabBarItem(title: [52, 38, 4, 87, 26, 14, 4, 37, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, image: nil, selectedImage: nil)
         gas.tabBarItem = gasTabBarItem
         
@@ -44,19 +44,19 @@ public class b7gRtY6i1M7BkFYE0WrWckidWT0Rzpw0: UITabBarController {
         
         if pMma9Oyp1904TuxLtYut9STx35uO4cmO.PJVqRaVMjYUdHjPRNrh4pTjtvENejT1I.BTUMEHQ2k275o3VT9majn37Rqo6GnmTz != nil {
             if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.showAgoraFilos == true {
-                viewControllers?.insert(UINavigationController(rootViewController: PH2KvuhmBrpy5stkiTNAQf7xbUCNYDNS()), at: 1)
+                viewControllers?.insert(UINavigationController(rootViewController: PH2KvuhmBrpy5stkiTNAQf7xbUCNYDNS()), at: 2)
             } else {
                 let navigationController = UINavigationController(rootViewController: HSfEs8EdlQsg2OhzoDSSgImK9eUe0fyv())
                 navigationController.navigationBar.prefersLargeTitles = true
-                viewControllers?.insert(navigationController, at: 1)
+                viewControllers?.insert(navigationController, at: 2)
             }
         } else {
-            viewControllers?.insert(UINavigationController(rootViewController: PH2KvuhmBrpy5stkiTNAQf7xbUCNYDNS()), at: 1)
+            viewControllers?.insert(UINavigationController(rootViewController: PH2KvuhmBrpy5stkiTNAQf7xbUCNYDNS()), at: 2)
         }
         
-        viewControllers?[0].title = [52, 38, 4, 87, 26, 14, 4, 37, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
-        viewControllers?[1].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
-        viewControllers?[2].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        viewControllers?[0].title = "Get Followers"
+        viewControllers?[1].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        viewControllers?[2].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
         viewControllers?[3].title = [62, 44, 2, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
 
         KingfisherManager.shared.retrieveImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.iYbdISi9hu5Ynkyv85mkyYCyxyBwPpHx, options: Processor.Options.template) { [weak self] retrieveResult in
@@ -65,13 +65,13 @@ public class b7gRtY6i1M7BkFYE0WrWckidWT0Rzpw0: UITabBarController {
             }
         }
 
-        KingfisherManager.shared.retrieveImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.YHbxB0HM6SabenKbI2cFJsjU93wRk1AE, options: Processor.Options.template) { [weak self] retrieveResult in
+        KingfisherManager.shared.retrieveImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.fT5O8jSJ5lLVuU11T2Y1tZSy0ZJXqjAF, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[1].tabBarItem.image = result.image.XSQjLArNGpC5V9g91y0RDn8Yo2uueWPA(targetSize: .init(width: 24, height: 24))
             }
         }
 
-        KingfisherManager.shared.retrieveImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.fT5O8jSJ5lLVuU11T2Y1tZSy0ZJXqjAF, options: Processor.Options.template) { [weak self] retrieveResult in
+        KingfisherManager.shared.retrieveImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.YHbxB0HM6SabenKbI2cFJsjU93wRk1AE, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[2].tabBarItem.image = result.image.XSQjLArNGpC5V9g91y0RDn8Yo2uueWPA(targetSize: .init(width: 24, height: 24))
             }

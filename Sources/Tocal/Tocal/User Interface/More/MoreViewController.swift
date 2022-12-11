@@ -119,8 +119,8 @@ class Cibs6KBgwIZD68PqIn02UVZDfASdstmk: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
                                buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q, .ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt], onOk: { [weak self] in
                 InuQKHcUy4mbiZ4ZGgQmYSSO5VSJWGq7.tKJflyWH1ypRNmzzBPOcSH08kTlwQthJ()
                 
-                let loginVC = c3luhj95klDgTgnK5IBcmpo7MrCTn1Ob()
-                loginVC.state = .BeZn2JVaAqZPmTew0fZkhcmibPXIamrL
+                let loginVC = AddUserViewController()
+//                loginVC.state = .BeZn2JVaAqZPmTew0fZkhcmibPXIamrL
                 let navigationController = UINavigationController(rootViewController: loginVC)
                 navigationController.modalPresentationStyle = .fullScreen
                 navigationController.modalTransitionStyle = .crossDissolve

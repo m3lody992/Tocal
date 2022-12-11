@@ -40,7 +40,7 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
 
     // MARK: - Private properties
 
-    private static let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>()
+    private static let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
 
     @discardableResult static func HnZX85EtEx5reK7n2Flefohp7ge4f8lN() -> String {
         guard let userID: String = p38tislEkDmfaM5Trf2CDA3uaTpqRNLe.GbR8SmF1xXRisrMmXjUPXkrOdQLpVxTp(for: .J1gO5CBFmNltV9t8lQxYJbThQAoHhHGD) else {
@@ -86,7 +86,7 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
     
     private static func Y0pnRotwgssi7Nq7jCOWILZL7n7QaPM0(in vc: UIViewController, completion: @escaping () -> Void) {
         DispatchQueue.main.async {
-            let popupViewController = c3luhj95klDgTgnK5IBcmpo7MrCTn1Ob()
+            let popupViewController = AddUserViewController()
             let navigationController = UINavigationController(rootViewController: popupViewController)
             navigationController.modalPresentationStyle = .fullScreen
             vc.present(navigationController, animated: true, completion: nil)

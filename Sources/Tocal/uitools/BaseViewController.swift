@@ -11,6 +11,10 @@ import Reachability
 import JGProgressHUD
 
 public enum AdIl2vezyKJkhIcHCfb0FfTGhhJ7Dcpn: String {
+//    case cancel
+//    case later
+//    case okDismiss
+//    case ok
     case ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt
     case fmSMx6JT4HOWo9mmomXqGjpuIPFb1IDj
     case Ql11graq1e1ZiiAQ6FmPP8G7bgXgV8s6

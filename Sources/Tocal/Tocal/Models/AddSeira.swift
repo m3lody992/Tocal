@@ -22,6 +22,7 @@ public struct Dg7XuCvFUZ0GvO57HiQpbV2Fvlf6eFZq: Codable {
 
 public struct u2xvd93SSFkoiarBJTBomSMyOuW86jsR: Codable {
 
+    
     var adThumbUrl: String
 //    var adUrl: String
     var categoryName: String
