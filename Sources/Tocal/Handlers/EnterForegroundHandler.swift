@@ -2,8 +2,8 @@
 //  EnterForegroundHandler.swift
 //  AppLovinSwift
 //
-//  Created by Miha Perne on 29/10/2020.
-//  Copyright © 2020 Miha Perne. All rights reserved.
+//  Created by caiesrton 29/10/2020.
+//  Copyright © 2020 rsitemarsitema. All rights reserved.
 //
 
 import UIKit
