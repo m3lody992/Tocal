@@ -122,7 +122,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     private var cannotEnterButton: OnTapButton!
     private var findUsernameButton: OnTapButton!
     private var reportAProblemButton: OnTapButton!
-    private var addUsernameButton: RoundedButton!
+    private var addUsernameButton: x5LlNVLCxuPUigI3MYAPViqEiJwvUtoj!
     
     func setupConstraints() {
         view.backgroundColor = .systemBackground
@@ -157,8 +157,8 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         findUsernameButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(findUsernameButton)
         
-        addUsernameButton = RoundedButton()
-        addUsernameButton.onTap { [weak self] in
+        addUsernameButton = x5LlNVLCxuPUigI3MYAPViqEiJwvUtoj()
+        addUsernameButton.QgvPF5iAhqHCp044T7UGLCn2begXVgSb { [weak self] in
             self?.addUserName()
         }
         addUsernameButton.translatesAutoresizingMaskIntoConstraints = false
