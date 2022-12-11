@@ -143,6 +143,7 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         super.viewDidLoad()
         setupConstratints()
         getInfo()
+        navigationItem.title = [51].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL // @
     }
 
     override func viewDidLayoutSubviews() {

@@ -77,7 +77,7 @@ public class Vz3j6kKxsD0Ax6fPe5Gr4Aj8xoxQzDsu: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
 
     @IBAction private func NWiO6FNm4jGaKYBRLm2cpWY4dbrIDVNu(_ sender: Any) {
         // "Send email?", "Would you like to send us an email?"
-        ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [32, 38, 30, 19, 105, 63, 8, 54, 95, 6, 120].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 24, 38, 34, 36, 68, 37, 64, 120, 79, 60, 101, 70, 63, 18, 42, 28, 72].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q, .ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt]) { [weak self] in
+        ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [32, 38, 30, 19, 105, 63, 8, 54, 95, 6, 120].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 24, 38, 34, 36, 68, 37, 64, 120, 79, 60, 101, 70, 63, 18, 42, 28, 72].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q, .ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt], onOk:  { [weak self] in
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
@@ -90,12 +90,12 @@ public class Vz3j6kKxsD0Ax6fPe5Gr4Aj8xoxQzDsu: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
                                            RdXhUuFovgT0fGXD1JFd3rA4LnK7rxWV.gL0sNTnnLimbnEsUJMS0GupSeaMvk3mO,
                                            OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.adv47DQ8TCJfxb6oOECpPCxATRwklqua ? pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.DLibXxJp5dXlLkgbPnBW5NmpYxtGSfUk + [83, 110, 80, 27, 125, 22].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG : pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.DLibXxJp5dXlLkgbPnBW5NmpYxtGSfUk),
                                     isHTML: false)
-
+                
                 self?.present(mail, animated: true)
             } else {
                 self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [36, 34, 2, 25, 32, 20, 2, 118].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [42, 44, 5, 87, 39, 31, 0, 51, 22, 30, 40, 18, 23, 16, 45, 4, 42, 123, 10, 45, 108, 37, 73, 61, 82, 49, 66, 114, 36, 64, 49, 28, 54, 30, 3, 105, 19, 11, 119, 89, 24, 35, 87, 22, 85, 45, 30, 122, 40, 14, 45, 40, 96, 5, 112, 113, 45, 73, 114, 23, 70, 34, 28, 49, 4, 86].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.Ql11graq1e1ZiiAQ6FmPP8G7bgXgV8s6])
             }
-        }
+        })
     }
 
     var webView: WKWebView?

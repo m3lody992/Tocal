@@ -138,7 +138,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         
         cannotEnterButton = OnTapButton()
         cannotEnterButton.onTap { [weak self] in
-            self?.cannotEnter()
+            self?.findUsername()
         }
         cannotEnterButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cannotEnterButton)
@@ -152,7 +152,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         
         findUsernameButton = OnTapButton()
         reportAProblemButton.onTap { [weak self] in
-            self?.findUsername()
+            self?.reportAProblem()
         }
         findUsernameButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(findUsernameButton)
@@ -190,7 +190,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             reportAProblemButton.topAnchor.constraint(equalTo: cannotEnterButton.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             cannotEnterButton.heightAnchor.constraint(equalToConstant: 30),
-            cannotEnterButton.widthAnchor.constraint(equalToConstant: 112),
+            cannotEnterButton.widthAnchor.constraint(equalToConstant: 150),
             cannotEnterButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             cannotEnterButton.topAnchor.constraint(equalTo: addUsernameButton.safeAreaLayoutGuide.bottomAnchor, constant: 16)
             
