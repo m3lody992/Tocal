@@ -17,7 +17,11 @@ struct InuQKHcUy4mbiZ4ZGgQmYSSO5VSJWGq7 {
     }
 
     static var H6Kzf0rH5nW58DmCfiz0eBryIw5ch5pp: Bool {
-        !oflSbgiFZAPLJP1qWTctGWTgs1wqcUjw.BORTovMuBeQ8iEXBx3mGudcqMA4PiJn8(for: [7, 42, 27, 3, 38, 17] .cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG) && !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.isEmpty && !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa.isEmpty
+        !oflSbgiFZAPLJP1qWTctGWTgs1wqcUjw.BORTovMuBeQ8iEXBx3mGudcqMA4PiJn8(for: [7, 42, 27, 3, 38, 17] .cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+    }
+    
+    static var usernameAndIDValid: Bool {
+        !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.isEmpty && !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa.isEmpty
     }
 
     static func Z5bd5YBZI0FpRYvmYc709c3zV6YjwVPv() {

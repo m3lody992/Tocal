@@ -284,6 +284,9 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
 //                    completion(addUserOrLogin)
                     Y0pnRotwgssi7Nq7jCOWILZL7n7QaPM0(in: viewController, completion: completion)
                     return
+                } else if !InuQKHcUy4mbiZ4ZGgQmYSSO5VSJWGq7.usernameAndIDValid {
+                    Y0pnRotwgssi7Nq7jCOWILZL7n7QaPM0(in: viewController, completion: completion)
+                    return
                 }
             }
 
