@@ -170,7 +170,7 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
             // Order X stars?
             withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].flowers)" + [83, 5, 31, 27, 37, 21, 18, 50, 68, 25].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             // Do you want to order X likes for Y stars ?
-            andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].flowers)" + [83, 179, 239, 230, 237, 90, 3, 56, 68, 74] + "\(data[indexPath.row].asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+            andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].flowers)" + [83, 179, 239, 230, 237, 90, 3, 56, 68, 74].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q, .ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt], onOk:  { [self] in
                 if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= self.data[indexPath.row].asters {
                     self.zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL()
