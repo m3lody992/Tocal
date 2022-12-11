@@ -5,10 +5,10 @@
 //  Created by st on 30/11/2022.
 //
 import UIKit
-import Networking
-import InfoServices
-import UITools
-import DeviceTools
+//import Networking
+//import InfoServices
+//import UITools
+//import DeviceTools
 
 class FlowerAsterTableViewCell: UITableViewCell {
 
@@ -172,7 +172,7 @@ extension FlowerAsterViewController: UITableViewDelegate, UITableViewDataSource 
             // Do you want to order X likes for Y stars ?
             andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].flowers)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(data[indexPath.row].asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q, .ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt], onOk:  { [self] in
-                if Aster.numberOfAsters >= self.data[indexPath.row].asters {
+                if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= self.data[indexPath.row].asters {
                     self.zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL()
                     self.proago(flowers: self.data[indexPath.row].flowers)
                 } else {

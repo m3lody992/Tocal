@@ -6,8 +6,8 @@
 //  Copyright © 2020 Eric Cartmenez All rights reserved.
 //
 import Foundation
-import DeviceTools
-import Networking
+//import DeviceTools
+//import Networking
 
 // MARK: - Endpoint routing
 struct MorrisRouter: S68IzldiTLt1jnUpi2P6XineLZbfhiPI {
