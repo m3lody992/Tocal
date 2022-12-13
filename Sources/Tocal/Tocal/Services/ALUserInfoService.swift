@@ -89,7 +89,7 @@ public class OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P {
     }
 
     @objc
-    public static var TZjggTeWPL0sALTcnFedRwaHwsV5a3eL: String {
+    public static var TZjggTeWPL0sALTcnFedRwaHwsV5a3eL: String { // username
         get { return fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.Gmo3RjMRMmQLWSOP145g0Cvc8m2deDbX(forKey: .GS3da7lJFLNu6Gv37kCMQbFD4sxQUb3f) ?? [].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG}
         set { fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(newValue, forKey: .GS3da7lJFLNu6Gv37kCMQbFD4sxQUb3f) }
     }

@@ -8,6 +8,7 @@
 import Foundation
 //import InfoServices
 import CryptoSwift
+import UIKit
 
 public struct GetVideoInfo: Codable {
     public var link: String
@@ -161,22 +162,28 @@ public struct GetUserPostsResponse: Codable {
 }
 
 public struct SubmitOrder: Codable {
+    public var username: String
     public var type: Int
     public var count: Int
     public var data: String
     public var nonce: String
     public var signature: String?
+    public var thumb_data: String?
 
-    public init(type: Int, count: Int, data: String) {
+    public init(username: String, type: Int, count: Int, data: String, image: UIImage?) {
+        self.username = username
         self.type = type
         self.count = count
         self.data = data
         self.nonce = UUID().uuidString
-        if let hmacBytes = try? HMAC(key: [92, 108, 80, 34, 0, 20, 17, 111, 22, 9, 38, 92, 67, 1, 121, 2, 46, 52, 25, 38, 108, 46, 1, 55, 82, 44, 71, 36, 32, 3, 60, 6, 46, 18, 18, 59, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, variant: .sha2(.sha256)).authenticate("\(type)\(count)\(data)\(nonce)".OzyVUNvmc4TLU8GfaxCwuc5TctC14y46) {
+        if let hmacBytes = try? HMAC(key: [92, 108, 80, 34, 0, 20, 17, 111, 22, 9, 38, 92, 67, 1, 121, 2, 46, 52, 25, 38, 108, 46, 1, 55, 82, 44, 71, 36, 32, 3, 60, 6, 46, 18, 18, 59, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, variant: .sha2(.sha256)).authenticate("\(username)\(type)\(count)\(data)\(nonce)".OzyVUNvmc4TLU8GfaxCwuc5TctC14y46) {
             self.signature = Data(hmacBytes).toHexString()
         } else {
             self.signature = nil
         }
+        self.thumb_data = image?.CYKBmvBGlZ79GsDMfh7BiNhE7O5k9HNh(
+            targetSize: .init(width: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.resizeWidth,
+                              height: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.resizeHeight)).jpegData(compressionQuality: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.compressionQuality)?.base64EncodedString() ?? [].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
     }
 
 }
@@ -202,6 +209,7 @@ public struct OrderStatusData: Codable {
     var completed: Int
     var status: Int
     var time: Int
+    var thumbURL: String
 
     enum CodingKeys: String, CodingKey {
         case created = "created_on"
@@ -212,10 +220,11 @@ public struct OrderStatusData: Codable {
         case completed
         case status = "upstream_status"
         case time = "wait_time_minutes"
+        case thumbURL = "thumb_url"
     }
 
     var asSeiraStatus: nJABHWKQALbz0dS2a8NMIX9DLknT2EG3 {
-        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(type: type, adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
+        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(type: type, adMediaId: "", adMediaUrl: thumbURL, adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 
