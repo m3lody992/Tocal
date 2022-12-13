@@ -19,7 +19,7 @@ struct MorrisRouter: S68IzldiTLt1jnUpi2P6XineLZbfhiPI {
         case getUserPosts
         case getUserInfo
         case getVideoInfo
-        case orderStatus(panPotID: String)
+        case orderStatus(panPotUsername: String)
         case settings
         case existingUserCheck(panPotID: String)
         case privacySettings
@@ -75,8 +75,8 @@ struct MorrisRouter: S68IzldiTLt1jnUpi2P6XineLZbfhiPI {
     public var sU8wgXTIPd3t8flaxUjXJo3FRJmMP1Qu: HTTPParameters? {
         var parameters = [[26, 42, 20].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.tN03UaWnBTTyOpxwoH8AAjZUAYL6h0Zq] // "iid"
         switch endpoint {
-        case .orderStatus(let id):
-            parameters["target"] = id
+        case .orderStatus(let username):
+            parameters["username"] = username
         case .existingUserCheck(let panPotID)://, .showFeed(let panPotID):
             parameters[[29, 42, 20].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG] = panPotID // "nid"
         case .verifyReceipt(let panPotID, let panPotUserName, let country):
