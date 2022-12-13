@@ -75,7 +75,7 @@ public struct GetUserInfoResponse: Codable {
     public let isUserPrivate: Bool?
     public let userSecID: String?
     public let userUID: String?
-    public let status: Bool
+//    public let status: Bool
     public let username: String?
     public let message: String?
 
@@ -88,7 +88,7 @@ public struct GetUserInfoResponse: Codable {
         case isUserPrivate = "is_user_private"
         case userSecID = "user_secid"
         case userUID = "user_uid"
-        case status
+//        case status
         case username
         case message
     }
