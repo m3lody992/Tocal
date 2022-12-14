@@ -82,6 +82,8 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         spinner1.startAnimating()
         spinner2.startAnimating()
         spinner3.startAnimating()
+        flowersLabel.text = nil
+        floweringsLabel = nil
         let userInfoModel = GetUserInfo(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased())
         var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
         routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(userInfoModel)
