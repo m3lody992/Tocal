@@ -224,7 +224,7 @@ class Cibs6KBgwIZD68PqIn02UVZDfASdstmk: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         super.viewDidLoad()
         fb8K0d3h8meoTm0TXh3Q0J7BEomwuTPN()
         title = [62, 44, 2, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
-        seiraHistory.setTitle([63, 42, 27, 18, 105, 41, 17, 54, 66, 31, 52].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
+        seiraHistory.setTitle([60, 49, 20, 18, 59, 90, 54, 35, 87, 30, 50, 65].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
         switchAccounts.setTitle([32, 52, 25, 3, 42, 18, 69, 22, 85, 9, 40, 71, 10, 1, 42, 81, 117, 123, 39, 44, 43, 47, 17, 36].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
         getAstersButton.setTitle([52, 38, 4, 87, 15, 40, 32, 18, 22, 57, 51, 83, 22, 6].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
         rateUs.setTitle([33, 34, 4, 18, 105, 47, 22].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
