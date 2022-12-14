@@ -167,6 +167,18 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             spinner3.centerYAnchor.constraint(equalTo: floweringsLabel.safeAreaLayoutGuide.centerYAnchor),
         ])
         
+        spinner1.translatesAutoresizingMaskIntoConstraints = false
+        spinner1.hidesWhenStopped = true
+        spinner1.startAnimating()
+        
+        spinner2.translatesAutoresizingMaskIntoConstraints = false
+        spinner2.hidesWhenStopped = true
+        spinner2.startAnimating()
+        
+        spinner3.translatesAutoresizingMaskIntoConstraints = false
+        spinner3.hidesWhenStopped = true
+        spinner3.startAnimating()
+        
         imageView.layer.borderColor = UIColor.systemPink.cgColor
         imageView.layer.borderWidth = 2
         navigationItem.title = [51].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL // @
