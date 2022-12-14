@@ -155,6 +155,9 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         getInfo()
         
         imageView.addSubview(spinner1)
+        flowersLabel.addSubview(spinner2)
+        floweringsLabel.addSubview(spinner3)
+        
         NSLayoutConstraint.activate([
             spinner1.centerXAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerXAnchor),
             spinner1.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor),
