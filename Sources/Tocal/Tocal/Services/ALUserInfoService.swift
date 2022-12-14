@@ -112,7 +112,7 @@ public class OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P {
         set { fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(newValue, forKey: .hBZ1QkrUPtTBgrwqoIB1tjZ2Oo0nAB2q) }
     }
 
-    static func wCBP0QZRYejPge85NNHcqwrqUveSkJAq() {
+    public static func wCBP0QZRYejPge85NNHcqwrqUveSkJAq() {
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa)
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .GS3da7lJFLNu6Gv37kCMQbFD4sxQUb3f)
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .nMgm4tQFBVlsdDyjyNqBbmFFJbWjGOJW)
