@@ -94,8 +94,8 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 //                    self.spinner3 = nil
                     self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
-                    self.flowersLabel.text = "\(info.flowerCount ?? 0) Followers"
-                    self.floweringsLabel.text = "\(info.floweringsCount ?? 0) Followings"
+                    self.flowersLabel.text = "\(info.flowerCount ?? 0)\nFollowers"
+                    self.floweringsLabel.text = "\(info.floweringsCount ?? 0)\nFollowings"
                 }
             case .failure(let fail):
                 print(fail)
@@ -114,11 +114,13 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         flowersLabel = UILabel()
         flowersLabel.translatesAutoresizingMaskIntoConstraints = false
         flowersLabel.textAlignment = .right
+        flowersLabel.numberOfLines = 2
         view.addSubview(flowersLabel)
 
         floweringsLabel = UILabel()
         floweringsLabel.translatesAutoresizingMaskIntoConstraints = false
         floweringsLabel.textAlignment = .left
+        floweringsLabel.numberOfLines = 2
         view.addSubview(floweringsLabel)
 
         tableView = UITableView()
@@ -135,12 +137,12 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             imageView.heightAnchor.constraint(equalToConstant: 80),
             imageView.widthAnchor.constraint(equalToConstant: 80),
             imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0),
-            flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: -40),
-            flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: -16),
+            flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             flowersLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             flowersLabel.heightAnchor.constraint(equalToConstant: 24),
-            floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 40),
-            floweringsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 16),
+            floweringsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             floweringsLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             floweringsLabel.heightAnchor.constraint(equalToConstant: 24),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
