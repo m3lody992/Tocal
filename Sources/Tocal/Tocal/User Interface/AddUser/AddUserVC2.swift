@@ -133,6 +133,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         
         userNameTextField = UITextField()
         userNameTextField.borderStyle = .line
+        userNameTextField.autocapitalizationType = .none
         userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userNameTextField)
         
@@ -224,7 +225,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         reportAProblemButton.setTitleColor(.darkGray, for: .normal)
         findUsernameButton.setTitle([59, 44, 7, 87, 61, 21, 69, 49, 95, 4, 35, 18, 29, 26, 44, 3, 122, 15, 2, 40, 24, 47, 15, 112, 70, 43, 75, 32, 43, 66, 63, 22].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
         findUsernameButton.titleLabel?.font = .systemFont(ofSize: 10)
-        findUsernameButton.setTitleColor(.white, for: .normal)
+//        findUsernameButton.setTitleColor(.white, for: .normal)
         cannotEnterButton.setTitle([48, 34, 30, 25, 38, 14, 69, 18, 88, 30, 34, 64, 91].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
 
 //        exitButton.kf.setImage(with: Constants.URL.Image.xmark, for: .normal, options: Processor.Options.pdfTemplate)
@@ -257,7 +258,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
                         showAlert.view.heightAnchor.constraint(equalToConstant: 350),
                         showAlert.view.widthAnchor.constraint(equalToConstant: 250)
                         ])
-                    showAlert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { action in
+                    showAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
                         let controller = b7gRtY6i1M7BkFYE0WrWckidWT0Rzpw0()
                         controller.modalPresentationStyle = .fullScreen
                         self?.present(controller, animated: true, completion: nil)

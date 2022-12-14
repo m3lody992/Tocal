@@ -82,10 +82,8 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    self.imageView.kf.indicatorType = .activity
+                    
                     self.imageView.kf.setImage(with: info.avatar)
-                    self.imageView.layer.borderColor = UIColor.systemPink.cgColor
-                    self.imageView.layer.borderWidth = 2
                     self.flowersLabel.text = "\(info.flowerCount ?? 0) Followers"
                     self.floweringsLabel.text = "\(info.floweringsCount ?? 0) Followings"
                 }
@@ -105,10 +103,12 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 
         flowersLabel = UILabel()
         flowersLabel.translatesAutoresizingMaskIntoConstraints = false
+        flowersLabel.textAlignment = .right
         view.addSubview(flowersLabel)
 
         floweringsLabel = UILabel()
         floweringsLabel.translatesAutoresizingMaskIntoConstraints = false
+        floweringsLabel.textAlignment = .left
         view.addSubview(floweringsLabel)
 
         tableView = UITableView()
@@ -143,6 +143,9 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         super.viewDidLoad()
         setupConstratints()
         getInfo()
+        imageView.kf.indicatorType = .activity
+        imageView.layer.borderColor = UIColor.systemPink.cgColor
+        imageView.layer.borderWidth = 2
         navigationItem.title = [51].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL // @
     }
 

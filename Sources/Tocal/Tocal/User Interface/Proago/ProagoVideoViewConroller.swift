@@ -60,7 +60,7 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
                         // Would you like to get more ⭐️?
                         andMessage: [36, 44, 5, 27, 45, 90, 28, 56, 67, 74, 43, 91, 15, 16, 121, 5, 53, 123, 12, 38, 56, 96, 9, 63, 65, 61, 14, 176, 232, 179, 189, 203, 204, 79].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
                         buttons: [.fmSMx6JT4HOWo9mmomXqGjpuIPFb1IDj, .grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  { [weak self] in
-                            self?.tabBarController?.selectedIndex = 1
+                            self?.tabBarController?.selectedIndex = 2
                         })
                 }
             })
@@ -166,9 +166,9 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             p38tislEkDmfaM5Trf2CDA3uaTpqRNLe.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(value: true, for: .pqgHJYEFZ8xz5LHJzvcUpLomJJqWw9Vk)
             OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.adv47DQ8TCJfxb6oOECpPCxATRwklqua = true
             // Promotion successful!
-            self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [35, 49, 31, 26, 38, 14, 12, 56, 88, 74, 52, 71, 7, 22, 60, 2, 41, 61, 30, 47, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [42, 44, 5, 87, 58, 18, 10, 34, 90, 14, 103, 65, 16, 20, 43, 5, 122, 41, 14, 32, 41, 41, 18, 57, 93, 63, 14, 62, 44, 72, 55, 0, 99, 3, 24, 38, 20, 75, 93, 98, 31, 53, 92, 13, 27, 62, 81, 35, 52, 30, 49, 108, 48, 22, 63, 85, 49, 66, 55, 101, 87, 61, 83, 51, 2, 30, 63, 27, 17, 50, 22, 29, 46, 94, 8, 85, 42, 5, 53, 43, 75, 55, 36, 37, 68, 60, 90, 51, 71, 60, 34, 13].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q]) {
+            self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [35, 49, 31, 26, 38, 14, 12, 56, 88, 74, 52, 71, 7, 22, 60, 2, 41, 61, 30, 47, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [42, 44, 5, 87, 58, 18, 10, 34, 90, 14, 103, 65, 16, 20, 43, 5, 122, 41, 14, 32, 41, 41, 18, 57, 93, 63, 14, 62, 44, 72, 55, 0, 99, 3, 24, 38, 20, 75, 93, 98, 31, 53, 92, 13, 27, 62, 81, 35, 52, 30, 49, 108, 48, 22, 63, 85, 49, 66, 55, 101, 87, 61, 83, 51, 2, 30, 63, 27, 17, 50, 22, 29, 46, 94, 8, 85, 42, 5, 53, 43, 75, 55, 36, 37, 68, 60, 90, 51, 71, 60, 34, 13].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  {
                 self?.navigationController?.popViewController(animated: true)
-            }
+            })
         }
 
         viewModel.cZRBEN3TmU53Gbz5ykxXvL0UG8dGmsmV = { [weak self] message, error in
