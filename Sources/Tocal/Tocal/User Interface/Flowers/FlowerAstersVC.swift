@@ -140,11 +140,11 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             flowersLabel.trailingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.leadingAnchor, constant: -16),
             flowersLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             flowersLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            flowersLabel.heightAnchor.constraint(equalToConstant: 24),
+//            flowersLabel.heightAnchor.constraint(equalToConstant: 24),
             floweringsLabel.leadingAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.trailingAnchor, constant: 16),
             floweringsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             floweringsLabel.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            floweringsLabel.heightAnchor.constraint(equalToConstant: 24),
+//            floweringsLabel.heightAnchor.constraint(equalToConstant: 24),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
