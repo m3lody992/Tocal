@@ -227,6 +227,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         findUsernameButton.titleLabel?.font = .systemFont(ofSize: 10)
         findUsernameButton.setTitleColor(.darkGray, for: .normal)
         cannotEnterButton.setTitle([48, 34, 30, 25, 38, 14, 69, 18, 88, 30, 34, 64, 91].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal)
+        cannotEnterButton.setTitleColor(.darkGray, for: .normal)
 
 //        exitButton.kf.setImage(with: Constants.URL.Image.xmark, for: .normal, options: Processor.Options.pdfTemplate)
 //        exitButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
