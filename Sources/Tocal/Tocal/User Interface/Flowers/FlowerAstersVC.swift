@@ -67,6 +67,10 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     private var imageView: UIImageView!
     private var flowersLabel: UILabel!
     private var floweringsLabel: UILabel!
+    
+    let spinner1 = UIActivityIndicatorView()
+    let spinner2 = UIActivityIndicatorView()
+    let spinner3 = UIActivityIndicatorView()
 
     private let data = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.flowerAstersOptions
     let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
@@ -82,7 +86,13 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    
+                    self.spinner1.stopAnimating()
+//                    self.spinner1 = nil
+                    self.spinner2.stopAnimating()
+//                    self.spinner2 = nil
+                    self.spinner3.stopAnimating()
+//                    self.spinner3 = nil
+                    self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
                     self.flowersLabel.text = "\(info.flowerCount ?? 0) Followers"
                     self.floweringsLabel.text = "\(info.floweringsCount ?? 0) Followings"
@@ -143,7 +153,17 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         super.viewDidLoad()
         setupConstratints()
         getInfo()
-        imageView.kf.indicatorType = .activity
+        
+        imageView.addSubview(spinner1)
+        NSLayoutConstraint.activate([
+            spinner1.centerXAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerXAnchor),
+            spinner1.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor),
+            spinner2.centerXAnchor.constraint(equalTo: flowersLabel.safeAreaLayoutGuide.centerXAnchor),
+            spinner2.centerYAnchor.constraint(equalTo: flowersLabel.safeAreaLayoutGuide.centerYAnchor),
+            spinner3.centerXAnchor.constraint(equalTo: floweringsLabel.safeAreaLayoutGuide.centerXAnchor),
+            spinner3.centerYAnchor.constraint(equalTo: floweringsLabel.safeAreaLayoutGuide.centerYAnchor),
+        ])
+        
         imageView.layer.borderColor = UIColor.systemPink.cgColor
         imageView.layer.borderWidth = 2
         navigationItem.title = [51].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL // @
