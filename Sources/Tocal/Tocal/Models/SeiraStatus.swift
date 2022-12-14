@@ -10,6 +10,7 @@ import Foundation
 
 struct nJABHWKQALbz0dS2a8NMIX9DLknT2EG3: Codable {
 
+    var created: Date
     var type: String
     var adMediaId: String
     var adMediaUrl: String

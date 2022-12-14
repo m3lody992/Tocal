@@ -26,7 +26,7 @@ class cgK6eZ7nL4memavPIlAAmo71uuYJxtks {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = response.data.compactMap({$0.asSeiraStatus})
+                    self.ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = response.data.compactMap({$0.asSeiraStatus}).sorted(by: { $0.created.compare($1.created) == .orderedDescending })
                     self.l026bQzvx12f6LvdlfUjfd0Meu3JlGgk?()
                 }
             case .failure:

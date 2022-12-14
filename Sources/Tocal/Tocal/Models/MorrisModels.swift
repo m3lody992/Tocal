@@ -200,6 +200,10 @@ extension Int {
     var boolValue: Bool { return self != 0 }
 }
 
+public struct DateForm {
+    public static var formatter = DateFormatter()
+}
+
 public struct OrderStatusData: Codable {
     var created: String
     var ordered: Int
@@ -224,7 +228,7 @@ public struct OrderStatusData: Codable {
     }
 
     var asSeiraStatus: nJABHWKQALbz0dS2a8NMIX9DLknT2EG3 {
-        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(type: type, adMediaId: "", adMediaUrl: thumbURL, adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
+        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(created: DateForm.formatter.date(from: created) ?? Date() ,type: type, adMediaId: "", adMediaUrl: thumbURL, adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 
