@@ -113,13 +113,13 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 
         flowersLabel = UILabel()
         flowersLabel.translatesAutoresizingMaskIntoConstraints = false
-        flowersLabel.textAlignment = .right
+        flowersLabel.textAlignment = .center
         flowersLabel.numberOfLines = 2
         view.addSubview(flowersLabel)
 
         floweringsLabel = UILabel()
         floweringsLabel.translatesAutoresizingMaskIntoConstraints = false
-        floweringsLabel.textAlignment = .left
+        floweringsLabel.textAlignment = .center
         floweringsLabel.numberOfLines = 2
         view.addSubview(floweringsLabel)
 
