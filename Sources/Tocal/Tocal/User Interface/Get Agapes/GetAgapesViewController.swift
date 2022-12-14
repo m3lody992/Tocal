@@ -56,7 +56,7 @@ class gafyy5xMN1llfA1274RBKO9j1JUiFlD8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     var isAutomaticRefresh = false
 
     override var shouldShowAstersLabel: Bool {
-        false
+        true
     }
     
     func fb8K0d3h8meoTm0TXh3Q0J7BEomwuTPN() {
@@ -116,14 +116,14 @@ class gafyy5xMN1llfA1274RBKO9j1JUiFlD8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         title = [52, 38, 4, 87, 5, 19, 14, 50, 69].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
 //        addManuallyButton.title = [50, 39, 20, 87, 4, 27, 11, 34, 87, 6, 43, 75].localizedString
 
-        navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
         let button = UIButton(type: .custom)
         button.addTarget(self, action: #selector(CTZotWd5D2ietHvDLfXBfsc2h35Uga7e), for: .touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
         button.heightAnchor.constraint(equalToConstant: 24).isActive = true
         button.widthAnchor.constraint(equalToConstant: 24).isActive = true
         button.kf.setImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.WERn0NEDKXbjw1izj5lvVwLlvouRo5z5, for: .normal, options: Processor.Options.pdfTemplate)
-        navigationItem.setRightBarButton(.init(customView: button), animated: false)
+        navigationItem.setLeftBarButton(.init(customView: button), animated: false)
 
         zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL(withText: nil, blockTouches: false)
         hJuypWYs3hrI2p9siQ5r3GI6591HOxNE()

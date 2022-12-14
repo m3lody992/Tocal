@@ -77,7 +77,11 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 
 //    private let viewModel = FlowerAsterViewModel()
     
+    @objc
     func getInfo() {
+        spinner1.startAnimating()
+        spinner2.startAnimating()
+        spinner3.startAnimating()
         let userInfoModel = GetUserInfo(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased())
         var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
         routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(userInfoModel)
@@ -171,19 +175,25 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         
         spinner1.translatesAutoresizingMaskIntoConstraints = false
         spinner1.hidesWhenStopped = true
-        spinner1.startAnimating()
         
         spinner2.translatesAutoresizingMaskIntoConstraints = false
         spinner2.hidesWhenStopped = true
-        spinner2.startAnimating()
         
         spinner3.translatesAutoresizingMaskIntoConstraints = false
         spinner3.hidesWhenStopped = true
-        spinner3.startAnimating()
         
         imageView.layer.borderColor = UIColor.systemPink.cgColor
         imageView.layer.borderWidth = 2
         navigationItem.title = [51].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL // @
+        
+        navigationItem.leftBarButtonItem = nil
+        let button = UIButton(type: .custom)
+        button.addTarget(self, action: #selector(getInfo), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        button.kf.setImage(with: CbSByOZWj5lKojSe9DofebyNclyVTtj8.HuxBkvQ5E3APJGVCWJDMxkCbu2gEtRUf.f6yi9rSAGayXi2dJwXyQsc0mWvnh0bOg.WERn0NEDKXbjw1izj5lvVwLlvouRo5z5, for: .normal, options: Processor.Options.pdfTemplate)
+        navigationItem.setLeftBarButton(.init(customView: button), animated: false)
     }
 
     override func viewDidLayoutSubviews() {
