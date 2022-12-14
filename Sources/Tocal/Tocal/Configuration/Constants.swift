@@ -58,6 +58,7 @@ public struct CbSByOZWj5lKojSe9DofebyNclyVTtj8 {
             static let IyxslZyc2RmjCXXuJUJIe9WhvifWZkuC = pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.s3URL.appendingPathComponent([92, 48, 31, 2, 39, 30, 72, 56, 88, 68, 55, 92, 3].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG) // "/sound-on.png"
             static let UI1GFGIVkDS5qeoNUmO6fgjnRRboBWGU = pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.s3URL.appendingPathComponent([92, 48, 31, 2, 39, 30, 72, 56, 80, 12, 105, 66, 10, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG) // "/sound-off.png"
             static let YbJAq4n3AaXim9HlVzZAoujdo25ovJPr = pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.s3URL.appendingPathComponent([92, 36, 25, 17, 61, 84, 21, 51, 80] .cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG) // "/gift.pdf"
+            static let user = pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.s3URL.appendingPathComponent("/user.png") // "/user.png"
         }
     }
 

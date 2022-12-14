@@ -79,7 +79,6 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     
     @objc
     func getInfo() {
-        spinner1.startAnimating()
         spinner2.startAnimating()
         spinner3.startAnimating()
         flowersLabel.text = nil
