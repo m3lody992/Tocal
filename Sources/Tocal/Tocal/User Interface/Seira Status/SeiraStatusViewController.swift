@@ -65,7 +65,7 @@ class VJWd7lODTDpJdR7zJRMqdzpGP18t4B6e: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         super.viewDidLoad()
         fb8K0d3h8meoTm0TXh3Q0J7BEomwuTPN()
         DnSVEKu9S5jeIZzQQyzqZ2R3iHMvZzBq()
-        title = [63, 42, 27, 18, 105, 41, 17, 54, 66, 31, 52].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+        title = [60, 49, 20, 18, 59, 90, 54, 35, 87, 30, 50, 65].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none

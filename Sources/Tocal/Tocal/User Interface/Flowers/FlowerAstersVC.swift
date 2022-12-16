@@ -99,11 +99,17 @@ class FlowerAsterViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 //                    self.spinner3 = nil
                     self.imageView.kf.indicatorType = .activity
                     self.imageView.kf.setImage(with: info.avatar)
-                    self.flowersLabel.text = "\(info.flowerCount ?? 0)\nFollowers"
-                    self.floweringsLabel.text = "\(info.floweringsCount ?? 0)\nFollowings"
+                    self.flowersLabel.text = "\(info.flowerCount ?? 0)" + [121, 5, 31, 27, 37, 21, 18, 50, 68, 25].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
+                    self.floweringsLabel.text = "\(info.floweringsCount ?? 0)" + [121, 5, 31, 27, 37, 21, 18, 62, 88, 13, 52].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
                 }
             case .failure(let fail):
                 print(fail)
+                self.spinner1.stopAnimating()
+//                    self.spinner1 = nil
+                self.spinner2.stopAnimating()
+//                    self.spinner2 = nil
+                self.spinner3.stopAnimating()
+//                    self.spinner3 = nil
             }
         }
     }
