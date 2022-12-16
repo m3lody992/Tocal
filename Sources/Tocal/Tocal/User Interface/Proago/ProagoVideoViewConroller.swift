@@ -44,13 +44,14 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     }
 
     private func nIPxHNX1Y4H9Brq4PZ0XAP4uGXo4oMP8() {
+        let selectedAgapeAster = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[viewModel.selectedIndex]
         ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
             // Order X stars?
-            withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ)" + [83, 161, 233, 210, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+            withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.asters)" + [83, 161, 233, 210, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             // Do you want to order X likes for Y stars ?
-            andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(viewModel.EYAj8W635NXKi9m1qFFLxssqzssHJS0S)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+            andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.agapes)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             buttons: [.ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt, .grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  { [weak self] in
-                if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= self?.viewModel.EYAj8W635NXKi9m1qFFLxssqzssHJS0S ?? 1000 {
+                if maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G >= selectedAgapeAster.asters {
                     self?.zaIiMqyp8Vr9YCwK9cVAF5Pciq3YsGDL()
                     self?.viewModel.K7ckTPnHN8miX0SlZtTQDwnap4DYNmh7()
                 } else {
@@ -195,12 +196,12 @@ extension ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: UIPickerViewDelegate, UIPickerViewDa
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        viewModel.yGX08IRLyZxpidkIsyMXK46E73PiOqMZ = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
+        viewModel.selectedIndex = row
         pickerViewMotionEnded()
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let agapesNumber = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row]
+        let agapesNumber = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[row].agapes
         if !pickerInMotion {
             pickerInMotion = true
             self.pickerViewMotionStart()

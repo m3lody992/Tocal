@@ -160,11 +160,16 @@ public class zHOQQcOAadeuiYD6RtfJHyRDssayC3ZL: Codable {
     var checkNvp: Bool
     var overridePicker: Bool
     var flowerAstersOptions: [FlowerAsters]
+    var agapeAstersOptions: [AgapeAsters]
 
 }
 
 struct FlowerAsters: Codable {
     var flowers: Int
+    var asters: Int
+}
+struct AgapeAsters: Codable {
+    var agapes: Int
     var asters: Int
 }
 
