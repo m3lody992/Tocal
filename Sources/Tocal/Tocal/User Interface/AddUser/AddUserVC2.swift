@@ -218,6 +218,7 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
     }
 
     func setupUI() {
+        UIApplication.shared.statusBarStyle = .default
         setupConstraints()
         addUsernameButton.setTitle([52, 12, 81].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, for: .normal) // GO!
         titleLabel.text = [54, 45, 4, 18, 59, 90, 28, 56, 67, 24, 103, 102, 13, 30, 13, 30, 49, 123, 30, 48, 41, 50, 10, 49, 94, 61].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG // Enter your TikTok username
