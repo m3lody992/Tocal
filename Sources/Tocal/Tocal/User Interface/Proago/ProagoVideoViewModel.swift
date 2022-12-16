@@ -25,7 +25,7 @@ class GYqVeVs5JCmSpHTVOkyd3aLJrmxTyUpE {
 //        yGX08IRLyZxpidkIsyMXK46E73PiOqMZ * CbSByOZWj5lKojSe9DofebyNclyVTtj8.BBD0SU49iCCH7EKAPIWUmMHoeDFXOJaN.NjHsgCkyeq4G0JB9ovJlA1GvuvWiWCKI
 //    }
 //    var yGX08IRLyZxpidkIsyMXK46E73PiOqMZ = 40
-    var selectedIndex = 3
+    var selectedIndex = 2
     var kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.agapeAstersOptions
     
     let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
