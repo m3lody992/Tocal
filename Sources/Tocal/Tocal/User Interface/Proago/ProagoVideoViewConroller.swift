@@ -47,7 +47,7 @@ class ODlpQRsjAHiyIjIpWVTB4EwYWGZngTaS: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
         let selectedAgapeAster = viewModel.kLeWKrnNwjOtSrARraJzGt61IEh8Eyfn[viewModel.selectedIndex]
         ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(
             // Order X stars?
-            withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.asters)" + [83, 161, 233, 210, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
+            withTitle: [60, 49, 20, 18, 59, 90].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.agapes)" + [83, 161, 233, 210, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             // Do you want to order X likes for Y stars ?
             andMessage: [55, 44, 80, 14, 38, 15, 69, 32, 87, 4, 51, 18, 16, 26, 121, 30, 40, 63, 14, 49, 108].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.agapes)" + [83, 161, 233, 210, 166, 194, 234, 93, 80, 5, 53, 18].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG + "\(selectedAgapeAster.asters)" + [83, 161, 221, 231, 166, 194, 234, 119, 9].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG,
             buttons: [.ctAycuUpcqLUeLm6lTTZ7BqWroSqULmt, .grb6TiJukBTRVhDCwf7NauTcStn1037q], onOk:  { [weak self] in
