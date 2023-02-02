@@ -43,6 +43,7 @@ public extension UserDefaultsManager {
         
         case panPotUsername
         case panPotID
+        case userSecID
         case panPotUniqueID
 
         case installedApps
@@ -79,6 +80,7 @@ public extension UserDefaultsManager {
             case .asters: return Tocal.configuration.udKey ?? [29, 54, 18, 18, 59, 53, 3, 20, 89, 3, 41, 65].localizedString
             case .astersSignature: return [22, 34, 2, 25, 44, 30, 58, 59, 95, 1, 34, 65, 59, 6, 48, 22, 52, 58, 31, 54, 62, 37].localizedString
             case .panPotUsername: return [7, 42, 27, 35, 38, 17, 48, 36, 83, 24, 41, 83, 9, 16].localizedString
+            case .userSecID: return "userSecIDaeilnrshtnharsbthnersk"
             case .panPotID: return [7, 42, 27, 35, 38, 17, 44, 19].localizedString
             case .panPotUniqueID: return [7, 42, 27, 35, 38, 17, 48, 57, 95, 27, 50, 87, 45, 49].localizedString
 

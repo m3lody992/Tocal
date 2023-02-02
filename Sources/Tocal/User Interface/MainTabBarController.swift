@@ -26,9 +26,9 @@ public class MainTabBarController: UITabBarController, Instantiable {
 
         UIApplication.shared.statusBarStyle = .default
         
-        let gf = UINavigationController(rootViewController: FlowerAsterViewController())
-        let gfTabBarItem = UITabBarItem(title: [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString, image: nil, selectedImage: nil)
-        gf.tabBarItem = gfTabBarItem
+        let gas = UINavigationController(rootViewController: GetAstersViewController())
+        let gasTabBarItem = UITabBarItem(title: [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString, image: nil, selectedImage: nil)
+        gas.tabBarItem = gasTabBarItem
         
         let gap = UINavigationController(rootViewController: GetAgapesViewController())
         gap.navigationBar.prefersLargeTitles = true
@@ -40,23 +40,23 @@ public class MainTabBarController: UITabBarController, Instantiable {
         let moreTabBarItem = UITabBarItem(title: [62, 44, 2, 18].localizedString, image: nil, selectedImage: nil)
         more.tabBarItem = moreTabBarItem
         
-        viewControllers = [gf, gap, more]
+        viewControllers = [gas, gap, more]
         
         if Tocal.yapService.yapIDs != nil {
             if ALUserInfoService.settings.showAgoraFilos == true {
-                viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 2)
+                viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 1)
             } else {
                 let navigationController = UINavigationController(rootViewController: YAPAgoraViewController())
                 navigationController.navigationBar.prefersLargeTitles = true
-                viewControllers?.insert(navigationController, at: 2)
+                viewControllers?.insert(navigationController, at: 1)
             }
         } else {
-            viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 2)
+            viewControllers?.insert(UINavigationController(rootViewController: AgoraViewController()), at: 1)
         }
         
-        viewControllers?[0].title = "Get Followers"
-        viewControllers?[1].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].localizedString
-        viewControllers?[2].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].localizedString
+        viewControllers?[0].title = [52, 38, 4, 87, 26, 14, 4, 37, 69].localizedString
+        viewControllers?[1].title = [49, 54, 9, 87, 26, 14, 4, 37, 69].localizedString
+        viewControllers?[2].title = [52, 38, 4, 87, 5, 19, 14, 50, 69].localizedString
         viewControllers?[3].title = [62, 44, 2, 18].localizedString
 
         KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.aster, options: Processor.Options.template) { [weak self] retrieveResult in
@@ -65,13 +65,13 @@ public class MainTabBarController: UITabBarController, Instantiable {
             }
         }
         
-        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.kardia, options: Processor.Options.template) { [weak self] retrieveResult in
+        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.katastima, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[1].tabBarItem.image = result.image.resize(targetSize: .init(width: 24, height: 24))
             }
         }
 
-        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.katastima, options: Processor.Options.template) { [weak self] retrieveResult in
+        KingfisherManager.shared.retrieveImage(with: Constants.URL.Image.kardia, options: Processor.Options.template) { [weak self] retrieveResult in
             if case .success(let result) = retrieveResult {
                 self?.viewControllers?[2].tabBarItem.image = result.image.resize(targetSize: .init(width: 24, height: 24))
             }

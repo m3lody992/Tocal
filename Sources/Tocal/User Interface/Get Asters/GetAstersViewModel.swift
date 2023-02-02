@@ -20,6 +20,10 @@ class GetAstersViewModel: NSObject {
     private var agapedItem: QueueItem?
     private var queue: [QueueItem]?
     private var agapedItems = [QueueItem]()
+    
+    private var moduloCounter: Int = 0
+    private var agapesBetweenChecks: Int = 0
+    private var lastAgapeCount: Int = 0
 
     var onSuccessfulAgape: (() -> Void)?
     var onChangeAgapeMode: (() -> Void)?
@@ -33,6 +37,8 @@ class GetAstersViewModel: NSObject {
     var onNoNewVideos: (() -> Void)?
     var onError: ((_ message: String, _ autoDismiss: Bool) -> Void)?
     var forceLoader: (() -> Void)?
+    
+    let morris = HTTPJSONClient<MorrisRouter>(engine: .customSession)
 
     private lazy var userInfoHandler: MasterUserInfoHanlder? = MasterUserInfoHanlder(variation: ALUserInfoService.settings.userInfoVariation)
     private lazy var videoInfoAgapeHandler: MasterVideoInfoAgapeHandler? = MasterVideoInfoAgapeHandler(
@@ -112,7 +118,7 @@ extension GetAstersViewModel {
                         agapedItems.append(presentingItem)
                         Analytics.reportAgapeSuccess(forQueueItem: presentingItem, source: .web)
                         DispatchQueue.main.async {
-                            onSuccessfulAgape?()
+                            self.onSuccessfulAgape?()
                         }
                         loadNext()
                     case .notAgaped:
@@ -162,86 +168,129 @@ extension GetAstersViewModel {
 
 extension GetAstersViewModel {
     
+    private func agapeCheckLogicMorris() {
+        
+    }
+    
     private func agapeCheckLogic() {
         forceLoader?()
-        switch ALUserInfoService.settings.panPotAgapeCheck {
-        case .api:
-            checkIsAgapedItemAgaped() { [weak self] result in
-                switch result {
-                case .success(let isAgaped):
-                    if isAgaped {
-                        self?.wasSuccessfulAgape()
-                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
-                            self?.handleUserInfoResult(result: result)
-                        }
-                    } else {
-                        self?.wasFailedAgape(withReason: .agapeCountDidntIncrease)
-                    }
-                case .failure(let reason):
-                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
-                            self?.handleUserInfoResult(result: result)
-                        }
-                    } else {
-                        self?.wasFailedAgape(withReason: reason)
-                    }
+        if let agapedItem = agapedItem, moduloCounter % ALUserInfoService.settings.modulo == 0 {
+            let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard error == nil else {
+                    // Try backup
+                    return
                 }
+                
+                guard let data = data,
+                      let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
+                    // Try backup
+                    return
+                }
+                
+                let items = ["items"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
+                let firstItem = items?.first
+                let authorStats = ["authorStats"].compactMap({ items?.first?[keyPath: KeyPath($0)] }).first as? [String: Int]
+                let diggCount = authorStats?["diggCount"]
+                print(diggCount)
+//                private var moduloCounter: Int = 0
+//                private var agapesBetweenChecks: Int = 0
+//                private var lastAgapeCount: Int = 0
+                if self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+                    print("OFFSET DETECTED")
+                }
+                self.lastAgapeCount = diggCount ?? 0
+                self.agapesBetweenChecks = 0
+                let dc2 = ["items[0].authorStats.diggCount"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
+                print(dc2)
             }
-        case .classic:
-            self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { [weak self] result in
-                switch result {
-                case .success(let userInfo):
-                    // If count didin't increase (which is a successful like)
-                     if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
-                        // Successful like
-                        self?.handleUserInfoResult(result: result)
-                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-                        // Call backup
-                        self?.checkIsAgapedItemAgaped() { result in
-                            switch result {
-                            case .success(let isAgaped):
-                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
-                            case .failure(let reason):
-                                self?.wasFailedAgape(withReason: reason)
-                            }
-                        }
-                    } else {
-                        self?.handleUserInfoResult(result: result)
-                    }
-                case .failure(let reason):
-                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-                        self?.checkIsAgapedItemAgaped() { result in
-                            switch result {
-                            case .success(let isAgaped):
-                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
-                            case .failure(let reason):
-                                self?.wasFailedAgape(withReason: reason)
-                            }
-                        }
-                    } else {
-                        self?.wasFailedAgape(withReason: reason)
-                    }
-                }
+            task.resume()
+            //        switch ALUserInfoService.settings.panPotAgapeCheck {
+            //        case .api:
+            //            checkIsAgapedItemAgaped() { [weak self] result in
+            //                switch result {
+            //                case .success(let isAgaped):
+            //                    if isAgaped {
+            //                        self?.wasSuccessfulAgape()
+            //                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+            //                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
+            //                            self?.handleUserInfoResult(result: result)
+            //                        }
+            //                    } else {
+            //                        self?.wasFailedAgape(withReason: .agapeCountDidntIncrease)
+            //                    }
+            //                case .failure(let reason):
+            //                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+            //                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
+            //                            self?.handleUserInfoResult(result: result)
+            //                        }
+            //                    } else {
+            //                        self?.wasFailedAgape(withReason: reason)
+            //                    }
+            //                }
+            //            }
+            //        case .classic:
+            //            self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { [weak self] result in
+            //                switch result {
+            //                case .success(let userInfo):
+            //                    // If count didin't increase (which is a successful like)
+            //                     if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
+            //                        // Successful like
+            //                        self?.handleUserInfoResult(result: result)
+            //                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+            //                        // Call backup
+            //                        self?.checkIsAgapedItemAgaped() { result in
+            //                            switch result {
+            //                            case .success(let isAgaped):
+            //                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
+            //                            case .failure(let reason):
+            //                                self?.wasFailedAgape(withReason: reason)
+            //                            }
+            //                        }
+            //                    } else {
+            //                        self?.handleUserInfoResult(result: result)
+            //                    }
+            //                case .failure(let reason):
+            //                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+            //                        self?.checkIsAgapedItemAgaped() { result in
+            //                            switch result {
+            //                            case .success(let isAgaped):
+            //                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
+            //                            case .failure(let reason):
+            //                                self?.wasFailedAgape(withReason: reason)
+            //                            }
+            //                        }
+            //                    } else {
+            //                        self?.wasFailedAgape(withReason: reason)
+            //                    }
+            //                }
+            //            }
+            //        }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
+                self.onHideLoader?()
+                self.agapesBetweenChecks += 1
+                self.moduloCounter += 1
             }
         }
     }
     
-    private func checkIsAgapedItemAgaped(completion: @escaping (InfoResult<Bool>) -> Void) {
-        if let agapedItem = agapedItem {
-            VideoInfoAPIHandler.getVideoInfo(forItem: agapedItem) { result in
-                switch result {
-                case .success(let videoInfo):
-                    completion(.success(videoInfo.isAgaped))
-                case .failure(let reason):
-                    completion(.failure(reason))
-                }
-            }
-        } else {
-            // "Oops, something went wrong. Please try again later."
-            self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
-        }
-    }
+
+//    private func checkIsAgapedItemAgaped(completion: @escaping (InfoResult<Bool>) -> Void) {
+//
+//            VideoInfoAPIHandler.getVideoInfo(forItem: agapedItem) { result in
+//                switch result {
+//                case .success(let videoInfo):
+//                    completion(.success(videoInfo.isAgaped))
+//                case .failure(let reason):
+//                    completion(.failure(reason))
+//                }
+//            }
+//        } else {
+//            // "Oops, something went wrong. Please try again later."
+//            self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
+//        }
+    
     
     func handleUserInfoResult(result: InfoResult<UserInfo>) {
         guard let agapedItem = agapedItem else {
@@ -349,20 +398,20 @@ extension GetAstersViewModel {
                             if ALUserInfoService.settings.skipUnavailableVideos == false {
                                 return
                             } else {
-                                loadNext()
+                                self.loadNext()
                                 return
                             }
                         }
                         
                         guard videoInfo.isAgaped == false else {
                             Analytics.reportError(eventName: .videoLoadError, reason: .alreadyAgaped)
-                            loadNext()
+                            self.loadNext()
                             return
                         }
 
                         DispatchQueue.main.async {
-                            presentingItem = item
-                            onNewVideoLoaded?(videoInfo)
+                            self.presentingItem = item
+                            self.onNewVideoLoaded?(videoInfo)
                         }
                         ItemDetailLogic.itemDetailFailCount = 0
                         ItemDetailLogic.itemDetailTimeoutCount = 0
@@ -374,7 +423,7 @@ extension GetAstersViewModel {
                             if ALUserInfoService.settings.skipUnavailableVideos == false {
                                 return
                             } else {
-                                loadNext()
+                                self.loadNext()
                                 return
                             }
                         }
@@ -387,7 +436,7 @@ extension GetAstersViewModel {
                         } else {
                             ItemDetailLogic.itemDetailFailCount += 1
                         }
-                        loadNext()
+                        self.loadNext()
                     }
                 }
             } else {
@@ -395,11 +444,11 @@ extension GetAstersViewModel {
                     switch result {
                     case .success:
                         DispatchQueue.main.async {
-                            presentingItem = item
-                            onNewVideoLoaded?(item)
+                            self.presentingItem = item
+                            self.onNewVideoLoaded?(item)
                         }
                     case .failure:
-                        loadNext()
+                        self.loadNext()
                     }
                 }
             }
