@@ -68,26 +68,28 @@ public struct GetUserInfo: Codable {
 public struct GetUserInfoResponse: Codable {
     public let code: Int
     public let avatar: URL?
+    public let diggsGotten: Int?
     public let diggsGiven: Int?
     public let flowerCount: Int?
     public let floweringsCount: Int?
     public let isUserPrivate: Bool?
     public let userSecID: String?
     public let userUID: String?
-    public let status: Bool
+//    public let status: Bool
     public let username: String?
     public let message: String?
     
     enum CodingKeys: String, CodingKey {
         case code
         case avatar
-        case diggsGiven = "digg_count"
+        case diggsGotten = "digg_count"
+        case diggsGiven = "favoriting_count"
         case flowerCount = "follower_count"
         case floweringsCount = "following_count"
         case isUserPrivate = "is_user_private"
         case userSecID = "user_secid"
         case userUID = "user_uid"
-        case status
+//        case status
         case username
         case message
     }
