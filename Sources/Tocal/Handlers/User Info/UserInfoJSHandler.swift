@@ -9,6 +9,7 @@
 import WebKit
 
 class UserInfoJSHandler: UserInfoHandler {
+    
     private var temporaryUserVideosCompletionHolder: ((InfoResult<[VideoInfo]>) -> Void)?
     private var temporaryBackupUserInfoCompletionHandler: ((InfoResult<UserInfo>) -> Void)?
 
@@ -18,6 +19,10 @@ class UserInfoJSHandler: UserInfoHandler {
     var loader = WebViewFunctionalityHandler()
     
     // MARK: - Interface
+    
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        return
+    }
 
     public func getUserInfo(forURL url: URL, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingForBackupUserInfoResponse = true
@@ -33,7 +38,7 @@ class UserInfoJSHandler: UserInfoHandler {
         }
     }
 
-    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingForBackupUserInfoResponse = true
         temporaryBackupUserInfoCompletionHandler = completion
 

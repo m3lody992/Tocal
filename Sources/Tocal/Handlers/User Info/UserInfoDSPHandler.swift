@@ -30,6 +30,10 @@ class UserInfoDSPHandler: UserInfoHandler {
     }
 
     // MARK: - Interface
+    
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        return
+    }
 
     public func getUserInfo(forURL url: URL, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingUserInfoResponse = true
@@ -48,7 +52,7 @@ class UserInfoDSPHandler: UserInfoHandler {
         }
     }
     
-    func getUserInfo(forUserName username: String, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+    func getUserInfo(forUserName username: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingUserInfoResponse = true
         temporaryUserInfoCompletionHandler = completion
         loader.loadUserProfile(forUsername: username, forDSP: true) { result in

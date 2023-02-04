@@ -11,8 +11,8 @@ import WebKit
 
 class UserInfoAPIHandler: UserInfoHandler {
     
-    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
-        getUserInfo(forUsername: username, secUID: secUID) { data, error in
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        getUserInfo(forUserID: userID, secUID: secUID) { data, error in
             guard let data = data,
                   error == nil,
                   let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
@@ -71,6 +71,10 @@ class UserInfoAPIHandler: UserInfoHandler {
                 completion(.success(userInfo))
             }
         }
+    }
+    
+    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        return
     }
 
     public func getUserVideos(forUsername username: String = ALUserInfoService.panPotUserName, completion: @escaping (InfoResult<[VideoInfo]>) -> Void) {
@@ -140,8 +144,8 @@ class UserInfoAPIHandler: UserInfoHandler {
 
     // MARK: - Private Functions
 
-    @discardableResult private func getUserInfo(forUsername username: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
-        let url = URL(string: String(format: ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.url, username, secUID))!
+    @discardableResult private func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
+        let url = URL(string: String(format: ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.url, userID, secUID))!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {

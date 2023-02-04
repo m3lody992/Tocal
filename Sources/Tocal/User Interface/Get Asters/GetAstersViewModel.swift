@@ -224,7 +224,7 @@ extension GetAstersViewModel {
             //            }
             //            task.resume()
             
-            self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName, secUID: ALUserInfoService.userSecID) { result in
+            self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
                 self.handleUserInfoResult(result: result)
             }
             
