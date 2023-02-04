@@ -15,7 +15,7 @@ class UserInfoAPIHandler: UserInfoHandler {
         getUserInfo(forUserID: userID, secUID: secUID) { data, error in
             guard let data = data,
                   error == nil,
-                  let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
+                  var responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
                       DispatchQueue.main.async {
                           completion(.failure(.dictNotFound))
                       }
@@ -33,8 +33,15 @@ class UserInfoAPIHandler: UserInfoHandler {
             
             if ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.useItemPathIndex {
                 let index = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.itemIndex
-                let items = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.itemPath.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
-                guard let diggCount = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ items?[index][keyPath: KeyPath($0)] }).first as? Int else {
+                guard let items = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.itemPath.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]] else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.dictNotFound))
+                    }
+                    return
+                }
+                // Update response dictionary so we uses the indexed part further on.
+                responseDictionary = items[index]
+                guard let diggCount = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ items[index][keyPath: KeyPath($0)] }).first as? Int else {
                     DispatchQueue.main.async {
                         completion(.failure(.wrongAgapePath))
                     }
