@@ -24,6 +24,7 @@ class GetAstersViewModel: NSObject {
     private var moduloCounter: Int = 0
     private var agapesBetweenChecks: Int = 0
     private var lastAgapeCount: Int = 0
+    private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?
     var onChangeAgapeMode: (() -> Void)?
@@ -179,13 +180,12 @@ extension GetAstersViewModel {
             case .success(let userInfo):
                 let diggCount = userInfo.diggsGiven
                 
-                if self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
                     print("OFFSET DETECTED")
                 }
                 self.lastAgapeCount = diggCount ?? 0
                 self.agapesBetweenChecks = 0
-                self.onHideLoader?()
-                
+                self.isFirstCheck = false
             case .failure(_):
                 print("FAIL")
             }
@@ -199,31 +199,28 @@ extension GetAstersViewModel {
             let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=1988&id=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil else {
-                    // Try backup
+                    self.agapeCheckLogicMorris()
                     return
                 }
                 
                 guard let data = data,
                       let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
-                    // Try backup
+                    self.agapeCheckLogicMorris()
                     return
                 }
                 
                 let items = ["items"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
-                let firstItem = items?.first
-                let authorStats = ["authorStats"].compactMap({ items?.first?[keyPath: KeyPath($0)] }).first as? [String: Int]
-                let diggCount = authorStats?["diggCount"]
-                print(diggCount)
-//                private var moduloCounter: Int = 0
-//                private var agapesBetweenChecks: Int = 0
-//                private var lastAgapeCount: Int = 0
-                if self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+                guard let diggCount = ["authorStats.diggCount"].compactMap({ items?[0][keyPath: KeyPath($0)] }).first as? Int else {
+                    self.agapeCheckLogicMorris()
+                    return
+                }
+
+                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
                     print("OFFSET DETECTED")
                 }
-                self.lastAgapeCount = diggCount ?? 0
+                self.lastAgapeCount = diggCount
                 self.agapesBetweenChecks = 0
-                let dc2 = ["items[0].authorStats.diggCount"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
-                print(dc2)
+                self.isFirstCheck = false
                 self.onHideLoader?()
             }
             task.resume()
