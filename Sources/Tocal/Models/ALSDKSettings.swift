@@ -268,6 +268,9 @@ struct APIUserInfoHandlerSettings: Codable {
 struct APIUserInfoSettings: Codable {
     var url: String
     var statusPaths: [String]
+    var useItemPathIndex: Bool
+    var itemIndex: Int
+    var itemPath: [String]
     var usernamePaths: [String]
     var userIDPaths: [String]
     var agapeCountPaths: [String]
