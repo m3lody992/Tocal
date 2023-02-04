@@ -203,7 +203,6 @@ extension GetAstersViewModel {
                 self.wasSuccessfulAgape()
                 ALUserInfoService.totalNumberOfAgapes += 1
                 self.agapesBetweenChecks += 1
-                self.moduloCounter += 1
                 self.onHideLoader?()
             }
         }
@@ -244,7 +243,16 @@ extension GetAstersViewModel {
                 onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .currentAgapesIsZero)
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
-                wasSuccessfulAgape()
+                if self.isFirstCheck == false, userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks {
+                    wasSuccessfulAgape()
+                } else if isFirstCheck {
+                    wasSuccessfulAgape()
+                    isFirstCheck = false
+                } else {
+                    let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount
+                    Aster.numberOfAsters -= delta
+                    onAgapeRemoved?()
+                }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
                 noAgapeCount += 1
                 if !ALUserInfoService.canAgape || self.noAgapeCount > (ALUserInfoService.settings.failToleranceFactor) {
@@ -273,6 +281,7 @@ extension GetAstersViewModel {
     private func wasSuccessfulAgape() {
         ALUserInfoService.canAgape = true
         Aster.numberOfAsters += 1
+        self.moduloCounter += 1
         self.noAgapeCount = 0
         self.didClickAgape = false
         self.agapedItem = nil
