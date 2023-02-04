@@ -51,6 +51,10 @@ class UserInfoAPIHandler: UserInfoHandler {
                 agapeCount = diggCount
             }
             
+            let userID = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.userIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
+            let username = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.usernamePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
+            let isPrivate = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.isPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
+            
             guard let userID = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.userIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
                   let username = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.usernamePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
                   let isPrivate = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.isPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool else {
