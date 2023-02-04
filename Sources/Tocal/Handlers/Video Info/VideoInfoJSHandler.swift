@@ -146,11 +146,16 @@ class VideoInfoJSHandler: VideoInfoHandler {
             }
 
             dispatchGroup.notify(queue: .main) {
-                guard let statusCode = statusCode,
-                      let videoID = videoID else {
-                          completion(.failure(.statusCodeNotInDict))
-                          return
-                      }
+                guard let statusCode = statusCode, statusCode == 0 else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.statusCodeNotZero(statusCode: statusCode ?? 9999)))
+                    }
+                    return
+                }
+                guard let videoID = videoID else {
+                    completion(.failure(.statusCodeNotInDict))
+                    return
+                }
                 
                 let info = VideoInfo(
                     statusCode: statusCode,

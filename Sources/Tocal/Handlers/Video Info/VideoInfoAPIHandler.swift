@@ -76,17 +76,24 @@ class VideoInfoAPIHandler: VideoInfoHandler {
                   }
             
             let statusCode = ALUserInfoService.settings.videoInfoHandlerSettings.api.statusCodePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
-                let adThumbUrl = ALUserInfoService.settings.videoInfoHandlerSettings.api.coverURLPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
-                let isPrivate = ALUserInfoService.settings.videoInfoHandlerSettings.api.isPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
-                let isForFilos = ALUserInfoService.settings.videoInfoHandlerSettings.api.isForFilosPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
-                let isAgaped = ALUserInfoService.settings.videoInfoHandlerSettings.api.isAgapedPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
-                let videoID = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
-                let videoAgapes = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoAgapesPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
-                let videoViews = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoViewsPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
-                let isAccountPrivate = ALUserInfoService.settings.videoInfoHandlerSettings.api.isAccountPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
+            
+            guard let statusCode = statusCode, statusCode == 0 else {
+                DispatchQueue.main.async {
+                    completion(.failure(.statusCodeNotZero(statusCode: statusCode ?? 9999)))
+                }
+                return
+            }
+            
+            let adThumbUrl = ALUserInfoService.settings.videoInfoHandlerSettings.api.coverURLPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
+            let isPrivate = ALUserInfoService.settings.videoInfoHandlerSettings.api.isPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
+            let isForFilos = ALUserInfoService.settings.videoInfoHandlerSettings.api.isForFilosPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
+            let isAgaped = ALUserInfoService.settings.videoInfoHandlerSettings.api.isAgapedPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
+            let videoID = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String
+            let videoAgapes = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoAgapesPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
+            let videoViews = ALUserInfoService.settings.videoInfoHandlerSettings.api.videoViewsPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
+            let isAccountPrivate = ALUserInfoService.settings.videoInfoHandlerSettings.api.isAccountPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
 
-            guard let statusCode = statusCode,
-            let videoID = videoID,
+            guard let videoID = videoID,
                 let adThumbURL = adThumbUrl else {
                     DispatchQueue.main.async {
                         completion(.failure(.statusCodeNotInDict))

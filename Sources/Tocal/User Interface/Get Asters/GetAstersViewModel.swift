@@ -446,6 +446,16 @@ extension GetAstersViewModel {
                                 return
                             }
                         }
+                        
+                        else if case .statusCodeNotZero(let statusCode) = reason {
+                            Analytics.reportVideoError(forQueueItem: item, statusCode: statusCode)
+                            if ALUserInfoService.settings.skipUnavailableVideos == false {
+                                return
+                            } else {
+                                self.loadNext()
+                                return
+                            }
+                        }
 
                         Analytics.reportVideoLoadError(forQueueItem: item, reason: reason)
 

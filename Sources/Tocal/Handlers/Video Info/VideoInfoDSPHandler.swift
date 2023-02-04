@@ -96,12 +96,20 @@ class VideoInfoDSPHandler: VideoInfoHandler {
         let videoViews = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.videoViewsPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
         let isAccountPrivate = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.isAccountPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool
         
-        guard let statusCode = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.statusCodePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int,
-              let videoID = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.videoIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
+        let statusCode = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.statusCodePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int
+        
+        guard let statusCode = statusCode, statusCode == 0 else {
+            DispatchQueue.main.async {
+                self.sharedFailCompletion(withReason: .statusCodeNotZero(statusCode: statusCode ?? 9999))
+            }
+            return
+        }
+        
+        guard let videoID = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.videoIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
               let coverURL = ALUserInfoService.settings.videoInfoHandlerSettings.dsp.coverURLPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String else {
-                  sharedFailCompletion(withReason: .statusCodeNotInDict)
-                  return
-              }
+            sharedFailCompletion(withReason: .statusCodeNotInDict)
+            return
+        }
         
         DispatchQueue.main.async { [self] in
             // Disable listening for DSP and return success
