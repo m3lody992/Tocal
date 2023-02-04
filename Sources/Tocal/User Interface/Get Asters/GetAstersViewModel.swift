@@ -23,7 +23,6 @@ class GetAstersViewModel: NSObject {
     
     private var moduloCounter: Int = 0
     private var agapesBetweenChecks: Int = 0
-    private var lastAgapeCount: Int = 0
     private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?
@@ -180,9 +179,9 @@ extension GetAstersViewModel {
             case .success(let userInfo):
                 let diggCount = userInfo.diggsGiven
                 
-                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
-                    print("OFFSET DETECTED")
-                }
+//                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+//                    print("OFFSET DETECTED")
+//                }
                 self.lastAgapeCount = diggCount ?? 0
                 self.agapesBetweenChecks = 0
                 self.isFirstCheck = false
@@ -195,102 +194,107 @@ extension GetAstersViewModel {
     
     private func agapeCheckLogic() {
         forceLoader?()
-        if let agapedItem = agapedItem, moduloCounter % 4 == 0 {
-            let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=1988&id=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard error == nil else {
-                    self.agapeCheckLogicMorris()
-                    return
-                }
-                
-                guard let data = data,
-                      let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
-                    self.agapeCheckLogicMorris()
-                    return
-                }
-                
-                let items = ["items"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
-                guard let diggCount = ["authorStats.diggCount"].compactMap({ items?[0][keyPath: KeyPath($0)] }).first as? Int else {
-                    self.agapeCheckLogicMorris()
-                    return
-                }
-
-                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
-                    print("OFFSET DETECTED")
-                }
-                self.lastAgapeCount = diggCount
-                self.agapesBetweenChecks = 0
-                self.isFirstCheck = false
-                self.onHideLoader?()
+        if moduloCounter % 4 == 0 {
+//            let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=1988&id=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
+//            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//                guard error == nil else {
+//                    self.agapeCheckLogicMorris()
+//                    return
+//                }
+//
+//                guard let data = data,
+//                      let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
+//                    self.agapeCheckLogicMorris()
+//                    return
+//                }
+//
+//                let items = ["items"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
+//                guard let diggCount = ["authorStats.diggCount"].compactMap({ items?[0][keyPath: KeyPath($0)] }).first as? Int else {
+//                    self.agapeCheckLogicMorris()
+//                    return
+//                }
+//
+//                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+//                    print("OFFSET DETECTED")
+//                }
+//                self.lastAgapeCount = diggCount
+//                self.agapesBetweenChecks = 0
+//                self.isFirstCheck = false
+//                self.onHideLoader?()
+//            }
+//            task.resume()
+            
+            self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName, secUID: ALUserInfoService.userSecID) { result in
+                self.handleUserInfoResult(result: result)
             }
-            task.resume()
-            //        switch ALUserInfoService.settings.panPotAgapeCheck {
-            //        case .api:
-            //            checkIsAgapedItemAgaped() { [weak self] result in
-            //                switch result {
-            //                case .success(let isAgaped):
-            //                    if isAgaped {
-            //                        self?.wasSuccessfulAgape()
-            //                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-            //                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
-            //                            self?.handleUserInfoResult(result: result)
-            //                        }
-            //                    } else {
-            //                        self?.wasFailedAgape(withReason: .agapeCountDidntIncrease)
-            //                    }
-            //                case .failure(let reason):
-            //                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-            //                        self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
-            //                            self?.handleUserInfoResult(result: result)
-            //                        }
-            //                    } else {
-            //                        self?.wasFailedAgape(withReason: reason)
-            //                    }
-            //                }
-            //            }
-            //        case .classic:
-            //            self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { [weak self] result in
-            //                switch result {
-            //                case .success(let userInfo):
-            //                    // If count didin't increase (which is a successful like)
-            //                     if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
-            //                        // Successful like
-            //                        self?.handleUserInfoResult(result: result)
-            //                    } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-            //                        // Call backup
-            //                        self?.checkIsAgapedItemAgaped() { result in
-            //                            switch result {
-            //                            case .success(let isAgaped):
-            //                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
-            //                            case .failure(let reason):
-            //                                self?.wasFailedAgape(withReason: reason)
-            //                            }
-            //                        }
-            //                    } else {
-            //                        self?.handleUserInfoResult(result: result)
-            //                    }
-            //                case .failure(let reason):
-            //                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-            //                        self?.checkIsAgapedItemAgaped() { result in
-            //                            switch result {
-            //                            case .success(let isAgaped):
-            //                                isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
-            //                            case .failure(let reason):
-            //                                self?.wasFailedAgape(withReason: reason)
-            //                            }
-            //                        }
-            //                    } else {
-            //                        self?.wasFailedAgape(withReason: reason)
-            //                    }
-            //                }
-            //            }
-            //        }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
-                self.onHideLoader?()
-                self.agapesBetweenChecks += 1
-                self.moduloCounter += 1
-            }
+            
+//            switch ALUserInfoService.settings.panPotAgapeCheck {
+//            case .api:
+//                checkIsAgapedItemAgaped() { [weak self] result in
+//                    switch result {
+//                    case .success(let isAgaped):
+//                        if isAgaped {
+//                            self?.wasSuccessfulAgape()
+//                        } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+//                            self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
+//                                self?.handleUserInfoResult(result: result)
+//                            }
+//                        } else {
+//                            self?.wasFailedAgape(withReason: .agapeCountDidntIncrease)
+//                        }
+//                    case .failure(let reason):
+//                        if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+//                            self?.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { result in
+//                                self?.handleUserInfoResult(result: result)
+//                            }
+//                        } else {
+//                            self?.wasFailedAgape(withReason: reason)
+//                        }
+//                    }
+//                }
+//            case .classic:
+//                self.userInfoHandler?.getUserInfo(forUserName: ALUserInfoService.panPotUserName) { [weak self] result in
+//                    switch result {
+//                    case .success(let userInfo):
+//                        // If count didin't increase (which is a successful like)
+//                        if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
+//                            // Successful like
+//                            self?.handleUserInfoResult(result: result)
+//                        } else if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+//                            // Call backup
+//                            self?.checkIsAgapedItemAgaped() { result in
+//                                switch result {
+//                                case .success(let isAgaped):
+//                                    isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
+//                                case .failure(let reason):
+//                                    self?.wasFailedAgape(withReason: reason)
+//                                }
+//                            }
+//                        } else {
+//                            self?.handleUserInfoResult(result: result)
+//                        }
+//                    case .failure(let reason):
+//                        if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+//                            self?.checkIsAgapedItemAgaped() { result in
+//                                switch result {
+//                                case .success(let isAgaped):
+//                                    isAgaped ? self?.wasSuccessfulAgape() : self?.wasFailedAgape()
+//                                case .failure(let reason):
+//                                    self?.wasFailedAgape(withReason: reason)
+//                                }
+//                            }
+//                        } else {
+//                            self?.wasFailedAgape(withReason: reason)
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
+//                self.onHideLoader?()
+//                self.agapesBetweenChecks += 1
+//                self.moduloCounter += 1
+//            }
         }
     }
     
@@ -348,6 +352,8 @@ extension GetAstersViewModel {
             }
             // Update our storage of agape count.
             ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
+            self.agapesBetweenChecks += 1
+            self.moduloCounter += 1
             finishPanPotAgape()
 
         case .failure(let reason):

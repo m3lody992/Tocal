@@ -19,8 +19,8 @@ class MasterUserInfoHanlder: UserInfoHandler {
         handler = variation.userInfoHandler
     }
     
-    func getUserInfo(forUserName username: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
-        handler.getUserInfo(forUserName: username, completion: completion)
+    func getUserInfo(forUserName username: String, secUID: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        handler.getUserInfo(forUserName: username, secUID: secUID, completion: completion)
     }
     
     func getUserVideos(forUsername username: String, completion: @escaping (InfoResult<[VideoInfo]>) -> Void) {

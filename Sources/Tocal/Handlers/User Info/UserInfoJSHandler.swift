@@ -33,7 +33,7 @@ class UserInfoJSHandler: UserInfoHandler {
         }
     }
 
-    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingForBackupUserInfoResponse = true
         temporaryBackupUserInfoCompletionHandler = completion
 

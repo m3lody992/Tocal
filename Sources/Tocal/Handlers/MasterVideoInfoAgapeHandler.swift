@@ -14,7 +14,7 @@ protocol AgapeHandler {
 }
 
 protocol UserInfoHandler {
-    func getUserInfo(forUserName username: String, completion: @escaping (InfoResult<UserInfo>) -> Void)
+    func getUserInfo(forUserName username: String, secUID: String, completion: @escaping (InfoResult<UserInfo>) -> Void)
     func getUserVideos(forUsername username: String, completion: @escaping (InfoResult<[VideoInfo]>) -> Void)
 }
 

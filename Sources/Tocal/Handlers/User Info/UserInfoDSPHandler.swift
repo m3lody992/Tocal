@@ -48,7 +48,7 @@ class UserInfoDSPHandler: UserInfoHandler {
         }
     }
     
-    func getUserInfo(forUserName username: String, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+    func getUserInfo(forUserName username: String, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
         isWaitingUserInfoResponse = true
         temporaryUserInfoCompletionHandler = completion
         loader.loadUserProfile(forUsername: username, forDSP: true) { result in

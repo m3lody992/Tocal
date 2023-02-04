@@ -11,8 +11,8 @@ import WebKit
 
 class UserInfoAPIHandler: UserInfoHandler {
     
-    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, completion: @escaping (InfoResult<UserInfo>) -> Void) {
-        getUserInfo(forUsername: username) { data, error in
+    public func getUserInfo(forUserName username: String = ALUserInfoService.panPotUserName, secUID: String = ALUserInfoService.userSecID, completion: @escaping (InfoResult<UserInfo>) -> Void) {
+        getUserInfo(forUsername: username, secUID: secUID) { data, error in
             guard let data = data,
                   error == nil,
                   let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
@@ -28,14 +28,29 @@ class UserInfoAPIHandler: UserInfoHandler {
                 }
                 return
             }
-
-            guard let agapeCount = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int else {
-                DispatchQueue.main.async {
-                    completion(.failure(.wrongAgapePath))
+            
+            var agapeCount = 0
+            
+            if ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.useItemPathIndex {
+                let index = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.itemIndex
+                let items = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.itemPath.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
+                guard let diggCount = ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ items?[index][keyPath: KeyPath($0)] }).first as? Int else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.wrongAgapePath))
+                    }
+                    return
                 }
-                return
+                agapeCount = diggCount
+            } else {
+                guard let diggCount = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Int else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.wrongAgapePath))
+                    }
+                    return
+                }
+                agapeCount = diggCount
             }
-
+            
             guard let userID = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.userIDPaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
                   let username = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.usernamePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? String,
                   let isPrivate = ALUserInfoService.settings?.userInfoHandlerSettings.api.userInfo.isPrivatePaths.compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? Bool else {
@@ -125,8 +140,8 @@ class UserInfoAPIHandler: UserInfoHandler {
 
     // MARK: - Private Functions
 
-    @discardableResult private func getUserInfo(forUsername username: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
-        let url = URL(string: String(format: ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.url, username))!
+    @discardableResult private func getUserInfo(forUsername username: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
+        let url = URL(string: String(format: ALUserInfoService.settings.userInfoHandlerSettings.api.userInfo.url, username, secUID))!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
