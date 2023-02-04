@@ -247,11 +247,13 @@ extension GetAstersViewModel {
                     wasSuccessfulAgape()
                 } else if isFirstCheck {
                     wasSuccessfulAgape()
+                    ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
                     isFirstCheck = false
                 } else {
                     let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount
                     Aster.numberOfAsters -= delta
                     onAgapeRemoved?()
+                    wasDeltaAgape()
                 }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
                 noAgapeCount += 1
@@ -275,6 +277,15 @@ extension GetAstersViewModel {
 
         case .failure(let reason):
             Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: reason)
+        }
+    }
+    
+    private func wasDeltaAgape() {
+        self.moduloCounter += 1
+        self.didClickAgape = false
+        self.agapedItem = nil
+        if let agapedItem = self.agapedItem {
+            Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDecreased)
         }
     }
     
