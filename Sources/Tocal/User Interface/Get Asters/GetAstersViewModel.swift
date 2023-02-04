@@ -196,7 +196,7 @@ extension GetAstersViewModel {
     private func agapeCheckLogic() {
         forceLoader?()
         if let agapedItem = agapedItem, moduloCounter % 4 == 0 {
-            let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
+            let url = URL(string: "https://m.tiktok.com/api/item_list/?aid=1988&id=\(ALUserInfoService.panPotID)&secUid=\(ALUserInfoService.userSecID)&count=1&maxCursor=0&minCursor=0&sourceType=8")!
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil else {
                     // Try backup
