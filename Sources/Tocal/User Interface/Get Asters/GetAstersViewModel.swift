@@ -169,7 +169,28 @@ extension GetAstersViewModel {
 extension GetAstersViewModel {
     
     private func agapeCheckLogicMorris() {
+        forceLoader?()
+        let userInfoModel = GetUserInfo(link: ALUserInfoService.panPotUserName.lowercased())
+        var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
+        routerEndpoint.encodeModelToData(userInfoModel)
         
+        morris.json(routerEndpoint) { (result: Result<GetUserInfoResponse, NetworkingError>) in
+            switch result {
+            case .success(let userInfo):
+                let diggCount = userInfo.diggsGiven
+                
+                if self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
+                    print("OFFSET DETECTED")
+                }
+                self.lastAgapeCount = diggCount ?? 0
+                self.agapesBetweenChecks = 0
+                self.onHideLoader?()
+                
+            case .failure(_):
+                print("FAIL")
+            }
+            self.onHideLoader?()
+        }
     }
     
     private func agapeCheckLogic() {
@@ -203,6 +224,7 @@ extension GetAstersViewModel {
                 self.agapesBetweenChecks = 0
                 let dc2 = ["items[0].authorStats.diggCount"].compactMap({ responseDictionary[keyPath: KeyPath($0)] }).first as? [[String: Any]]
                 print(dc2)
+                self.onHideLoader?()
             }
             task.resume()
             //        switch ALUserInfoService.settings.panPotAgapeCheck {
