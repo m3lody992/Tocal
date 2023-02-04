@@ -115,7 +115,7 @@ class VideoInfoAPIHandler: VideoInfoHandler {
     }
 
     static func getVideoInfo(forItem item: QueueItem, completion: @escaping (InfoResult<VideoInfo>) -> Void) {
-        let url = URL(string: String(format: ALUserInfoService.settings.videoInfoHandlerSettings.api.url, item.adName,item.adMediaId))!
+        let url = URL(string: String(format: ALUserInfoService.settings.videoInfoHandlerSettings.api.url, item.adMediaId))!
         getVideoInfo(forURL: url, queueItem: item, completion: completion)
     }
 
