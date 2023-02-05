@@ -22,7 +22,11 @@ class GetAstersViewModel: NSObject {
     private var agapedItems = [QueueItem]()
     
     private var moduloCounter: Int = 0
-    private var agapesBetweenChecks: Int = 0
+    private var agapesBetweenChecks: Int = 0 {
+        didSet {
+            print("SETTING agapesBetweenChecks: \(agapesBetweenChecks)")
+        }
+    }
     private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?

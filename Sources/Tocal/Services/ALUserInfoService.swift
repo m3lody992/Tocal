@@ -27,7 +27,10 @@ public class ALUserInfoService {
 
     static var totalNumberOfAgapes: Int {
         get { KeychainManager.value(for: .totalNumberOfAgapes) ?? 0 }
-        set { KeychainManager.set(value: newValue, for: .totalNumberOfAgapes) }
+        set {
+            print("SETTING TOTAL NUMBER: \(newValue)")
+            KeychainManager.set(value: newValue, for: .totalNumberOfAgapes)
+        }
     }
 
     static var isExtraSuperUser: Bool {
