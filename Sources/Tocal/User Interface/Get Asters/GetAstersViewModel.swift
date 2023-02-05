@@ -243,17 +243,23 @@ extension GetAstersViewModel {
                 onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .currentAgapesIsZero)
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
-                if self.isFirstCheck == false, userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks {
-                    wasSuccessfulAgape()
-                } else if isFirstCheck {
+                if isFirstCheck {
                     wasSuccessfulAgape()
                     ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
                     isFirstCheck = false
                 } else {
                     let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount
-                    Aster.numberOfAsters -= delta
-                    onAgapeRemoved?()
-                    wasDeltaAgape()
+                    print("Stored Agapes: \(ALUserInfoService.totalNumberOfAgapes)")
+                    print("New Agapes: \(self.agapesBetweenChecks)")
+                    print("Agapes between: \(self.agapesBetweenChecks)")
+                    print("Delta: \(delta)")
+                    if delta > 0 {
+                        Aster.numberOfAsters -= delta
+                        onAgapeRemoved?()
+                        wasDeltaAgape()
+                    } else {
+                        wasSuccessfulAgape()
+                    }
                 }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
                 noAgapeCount += 1
@@ -264,13 +270,14 @@ extension GetAstersViewModel {
                     onHideLoader?()
                 }
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDidntIncrease)
-            } else if userInfo.agapeCount < ALUserInfoService.totalNumberOfAgapes {
-                Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDecreased)
-                onAgapeRemoved?()
-                if ALUserInfoService.settings.takeDrachme == true, (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount) > ALUserInfoService.settings.takeDrachmeLimit {
-                    Aster.numberOfAsters -= (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount)
-                }
             }
+//            else if userInfo.agapeCount < ALUserInfoService.totalNumberOfAgapes {
+//                Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDecreased)
+//                onAgapeRemoved?()
+//                if ALUserInfoService.settings.takeDrachme == true, (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount) > ALUserInfoService.settings.takeDrachmeLimit {
+//                    Aster.numberOfAsters -= (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount)
+//                }
+//            }
             // Update our storage of agape count.
             ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
             finishPanPotAgape()
