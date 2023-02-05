@@ -251,17 +251,21 @@ extension GetAstersViewModel {
                     ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
                     isFirstCheck = false
                 } else {
-                    let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount
+                    let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
                     print("Stored Agapes: \(ALUserInfoService.totalNumberOfAgapes)")
-                    print("New Agapes: \(self.agapesBetweenChecks)")
+                    print("New Agapes: \(userInfo.agapeCount)")
                     print("Agapes between: \(self.agapesBetweenChecks)")
                     print("Delta: \(delta)")
                     if delta > 0 {
                         Aster.numberOfAsters -= delta
                         onAgapeRemoved?()
                         wasDeltaAgape()
+                        self.agapesBetweenChecks = 0
+                    } else if delta < 0 {
+                        print("LESS THAN 0")
                     } else {
                         wasSuccessfulAgape()
+                        self.agapesBetweenChecks = 0
                     }
                 }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
