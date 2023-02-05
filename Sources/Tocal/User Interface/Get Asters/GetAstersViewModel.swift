@@ -205,7 +205,6 @@ extension GetAstersViewModel {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
                 self.wasSuccessfulAgape()
-                ALUserInfoService.totalNumberOfAgapes += 1
                 self.agapesBetweenChecks += 1
                 self.onHideLoader?()
             }
