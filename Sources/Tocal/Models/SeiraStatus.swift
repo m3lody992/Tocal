@@ -10,7 +10,6 @@ import Foundation
 
 struct SeiraStatus: Codable {
 
-    var type: String
     var adMediaId: String
     var adMediaUrl: String
     var adTargetClicks: Int
