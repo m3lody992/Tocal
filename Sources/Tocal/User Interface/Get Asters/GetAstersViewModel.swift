@@ -60,6 +60,8 @@ class GetAstersViewModel: NSObject {
     var shouldShowAd: Bool {
         tapCount % adFrequency == 0
     }
+    
+    private var isLoadingNewVideo = false
 
     override init() {
         super.init()
@@ -186,7 +188,9 @@ extension GetAstersViewModel {
             case .failure(_):
                 completion(.failure(.failed))
             }
-            self.onHideLoader?()
+            if self.isLoadingNewVideo == false {
+                self.onHideLoader?()
+            }
         }
     }
     
@@ -224,7 +228,9 @@ extension GetAstersViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
                 self.wasSuccessfulAgape()
                 self.agapesBetweenChecks += 1
-                self.onHideLoader?()
+                if self.isLoadingNewVideo == false {
+                    self.onHideLoader?()
+                }
             }
         }
     }
@@ -274,7 +280,9 @@ extension GetAstersViewModel {
                     noAgapeCount = 0
                     onChangeAgapeMode?()
                 } else {
-                    onHideLoader?()
+                    if self.isLoadingNewVideo == false {
+                        onHideLoader?()
+                    }
                 }
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDidntIncrease)
             }
@@ -336,7 +344,6 @@ extension GetAstersViewModel {
         appStateHanlder?.onWillEnterBackgound {
             ALUserInfoService.wentIntoBackgroundTimestamp = Date()
         }
-
     }
 
 }
@@ -350,6 +357,7 @@ extension GetAstersViewModel {
             guard let item = item else { return }
 
             if ItemDetailLogic.shouldCheckVideoDetails {
+                isLoadingNewVideo = true
                 videoInfoAgapeHandler?.loadVideoAndGetInfo(forItem: item) { result in
                     switch result {
                     case .success(let videoInfo):
@@ -357,6 +365,7 @@ extension GetAstersViewModel {
                         if videoInfo.statusCode != Constants.PanPot.okCode {
                             Analytics.reportVideoError(forQueueItem: item, statusCode: videoInfo.statusCode)
                             if ALUserInfoService.settings.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
                                 return
                             } else {
                                 self.loadNext()
@@ -376,12 +385,14 @@ extension GetAstersViewModel {
                         }
                         ItemDetailLogic.itemDetailFailCount = 0
                         ItemDetailLogic.itemDetailTimeoutCount = 0
+                        self.isLoadingNewVideo = false
                     case .failure(let reason):
                         // In case we have a http status code not in 200...299, we check the skip flag.
                         // In case flag is set to false we don't load the next video.
                         if case .responseStatusCodeNotOk(let statusCode) = reason {
                             Analytics.reportVideoError(forQueueItem: item, statusCode: statusCode)
                             if ALUserInfoService.settings.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
                                 return
                             } else {
                                 self.loadNext()
@@ -392,6 +403,7 @@ extension GetAstersViewModel {
                         else if case .statusCodeNotZero(let statusCode) = reason {
                             Analytics.reportVideoError(forQueueItem: item, statusCode: statusCode)
                             if ALUserInfoService.settings.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
                                 return
                             } else {
                                 self.loadNext()
@@ -411,12 +423,14 @@ extension GetAstersViewModel {
                     }
                 }
             } else {
+                isLoadingNewVideo = true
                 videoInfoAgapeHandler?.loadVideo(forItem: item) { result in
                     switch result {
                     case .success:
                         DispatchQueue.main.async {
                             self.presentingItem = item
                             self.onNewVideoLoaded?(item)
+                            self.isLoadingNewVideo = false
                         }
                     case .failure:
                         self.loadNext()
