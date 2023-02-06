@@ -159,6 +159,8 @@ public class ALSDKSettings: Codable {
     
     var flowerAstersOptions: [FlowerAsters]
     var modulo: [Int]
+    var sessionChecks: Int
+    var minutesAwayPeriod: Int
 }
 
 struct ManualAddHandlerSettings: Codable {

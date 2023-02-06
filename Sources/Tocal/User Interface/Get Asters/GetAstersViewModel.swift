@@ -24,6 +24,7 @@ class GetAstersViewModel: NSObject {
     private var moduloCounter: Int = 0
     private let currentModuloNumber = Int.random(in: ALUserInfoService.settings.modulo[0]...ALUserInfoService.settings.modulo[1])
     private var agapesBetweenChecks: Int = 0
+    private var currentSessionChecks: Int = 0
     private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?
@@ -197,7 +198,7 @@ extension GetAstersViewModel {
     
     private func agapeCheckLogic() {
         forceLoader?()
-        if moduloCounter % currentModuloNumber == 0 {
+        if currentSessionChecks < ALUserInfoService.settings.sessionChecks || (currentSessionChecks > ALUserInfoService.settings.sessionChecks && moduloCounter % currentModuloNumber == 0) {
             switch ALUserInfoService.settings.panPotAgapeCheck {
             case .api:
                 self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
@@ -364,15 +365,17 @@ extension GetAstersViewModel {
         appStateHanlder?.onEnteredForeground { [weak self] in
             if self?.didClickAgape == true {
                 self?.forceLoader?()
-                self?.recordCurrentApapeCount()
                 self?.agapeCheckLogic()
+            }
+            
+            if Date().timeIntervalSince(ALUserInfoService.wentIntoBackgroundTimestamp) > Double(ALUserInfoService.settings.minutesAwayPeriod) * Double(60) {
+                self?.currentSessionChecks = 0
             }
 
             if Date().timeIntervalSince(ALUserInfoService.wentIntoBackgroundTimestamp) > 60 {
                 self?.queue?.removeAll()
                 self?.loadNext()
-                // Update agape count.
-                
+                self?.recordCurrentApapeCount()
                 self?.forceLoader?()
             }
         }
