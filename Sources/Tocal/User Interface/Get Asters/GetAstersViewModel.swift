@@ -23,11 +23,7 @@ class GetAstersViewModel: NSObject {
     
     private var moduloCounter: Int = 0
     private let currentModuloNumber = Int.random(in: ALUserInfoService.settings.modulo[0]...ALUserInfoService.settings.modulo[1])
-    private var agapesBetweenChecks: Int = 0 {
-        didSet {
-            print("SETTING agapesBetweenChecks: \(agapesBetweenChecks)")
-        }
-    }
+    private var agapesBetweenChecks: Int = 0
     private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?
@@ -71,6 +67,7 @@ class GetAstersViewModel: NSObject {
             self.videoInfoAgapeHandler = nil
             self.appStateHanlder = nil
         }
+        recordCurrentApapeCount()
     }
 
     private var isFetchInProgress = false
@@ -261,7 +258,9 @@ extension GetAstersViewModel {
                     let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
 
                     if delta > 0 {
-                        Aster.numberOfAsters -= delta
+                        if ALUserInfoService.settings.takeDrachme {
+                            Aster.numberOfAsters -= delta
+                        }
                         onAgapeRemoved?()
                         wasDeltaAgape()
                         self.agapesBetweenChecks = 0
@@ -325,18 +324,55 @@ extension GetAstersViewModel {
             Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: reason ?? .agapeCountDidntIncrease)
         }
     }
+    
+    func recordCurrentApapeCount() {
+        switch ALUserInfoService.settings.panPotAgapeCheck {
+        case .api:
+            self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
+                switch result {
+                case .success(let info):
+                    ALUserInfoService.totalNumberOfAgapes = info.agapeCount
+                case .failure(_):
+                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+                        self.agapeCheckLogicMorris { result2 in
+                            if case .success(let info) = result2 {
+                                ALUserInfoService.totalNumberOfAgapes = info.agapeCount
+                            }
+                        }
+                    }
+                }
+            }
+        case .classic:
+            self.agapeCheckLogicMorris { result2 in
+                switch result2 {
+                case .success(let info):
+                    ALUserInfoService.totalNumberOfAgapes = info.agapeCount
+                case .failure(_):
+                    if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+                        self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
+                            if case .success(let info) = result {
+                                ALUserInfoService.totalNumberOfAgapes = info.agapeCount
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     func setupAppStateHandler() {
         appStateHanlder?.onEnteredForeground { [weak self] in
             if self?.didClickAgape == true {
                 self?.forceLoader?()
-
+                self?.recordCurrentApapeCount()
                 self?.agapeCheckLogic()
             }
 
             if Date().timeIntervalSince(ALUserInfoService.wentIntoBackgroundTimestamp) > 60 {
                 self?.queue?.removeAll()
                 self?.loadNext()
+                // Update agape count.
+                
                 self?.forceLoader?()
             }
         }
