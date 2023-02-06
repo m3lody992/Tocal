@@ -25,7 +25,6 @@ class GetAstersViewModel: NSObject {
     private let currentModuloNumber = Int.random(in: ALUserInfoService.settings.modulo[0]...ALUserInfoService.settings.modulo[1])
     private var agapesBetweenChecks: Int = 0
     private var currentSessionChecks: Int = 0
-    private var isFirstCheck = true
 
     var onSuccessfulAgape: (() -> Void)?
     var onChangeAgapeMode: (() -> Void)?
@@ -199,6 +198,7 @@ extension GetAstersViewModel {
     private func agapeCheckLogic() {
         forceLoader?()
         if currentSessionChecks < ALUserInfoService.settings.sessionChecks || (currentSessionChecks > ALUserInfoService.settings.sessionChecks && moduloCounter % currentModuloNumber == 0) {
+            currentSessionChecks += 1
             switch ALUserInfoService.settings.panPotAgapeCheck {
             case .api:
                 self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
@@ -252,27 +252,22 @@ extension GetAstersViewModel {
                 onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .currentAgapesIsZero)
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
-                if isFirstCheck {
-                    wasSuccessfulAgape()
-                    isFirstCheck = false
-                } else {
-                    let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
-
-                    if delta > 0 {
-                        if ALUserInfoService.settings.takeDrachme {
-                            Aster.numberOfAsters -= delta
-                        }
-                        onAgapeRemoved?()
-                        wasDeltaAgape()
-                        self.agapesBetweenChecks = 0
-                    } else if delta < 0 {
-                        print("LESS THAN 0")
-                        wasSuccessfulAgape()
-                        self.agapesBetweenChecks = 0
-                    } else {
-                        wasSuccessfulAgape()
-                        self.agapesBetweenChecks = 0
+                let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
+                
+                if delta > 0 {
+                    if ALUserInfoService.settings.takeDrachme {
+                        Aster.numberOfAsters -= delta
                     }
+                    onAgapeRemoved?()
+                    wasDeltaAgape()
+                    self.agapesBetweenChecks = 0
+                } else if delta < 0 {
+                    print("LESS THAN 0")
+                    wasSuccessfulAgape()
+                    self.agapesBetweenChecks = 0
+                } else {
+                    wasSuccessfulAgape()
+                    self.agapesBetweenChecks = 0
                 }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
                 noAgapeCount += 1
