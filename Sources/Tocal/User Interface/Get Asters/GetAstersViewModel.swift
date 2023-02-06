@@ -197,7 +197,7 @@ extension GetAstersViewModel {
     
     private func agapeCheckLogic() {
         forceLoader?()
-        if currentSessionChecks < ALUserInfoService.settings.sessionChecks || (currentSessionChecks > ALUserInfoService.settings.sessionChecks && moduloCounter % currentModuloNumber == 0) {
+        if currentSessionChecks < ALUserInfoService.settings.sessionChecks || (currentSessionChecks >= ALUserInfoService.settings.sessionChecks && moduloCounter % currentModuloNumber == 0) {
             currentSessionChecks += 1
             switch ALUserInfoService.settings.panPotAgapeCheck {
             case .api:
