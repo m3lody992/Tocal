@@ -26,7 +26,6 @@ struct MorrisRouter: HTTPEndpoint {
         case existingUserCheck(panPotID: String)
         case privacySettings
         case verifyReceipt(panPotID: String, panPotUserName: String, country: String)
-        case checkAgapeTTAPI(panPotID: String, secUID: String)
     }
 
     var endpoint: EndPoint
@@ -43,8 +42,6 @@ struct MorrisRouter: HTTPEndpoint {
             return Tocal.configuration.apiURL
         case .privacySettings, .verifyReceipt:
             return Tocal.configuration.logURL
-        case .checkAgapeTTAPI:
-            return URL(string: "https://m.tiktok.com")!
         }
     }
 
@@ -59,7 +56,6 @@ struct MorrisRouter: HTTPEndpoint {
         case .existingUserCheck: return [92, 38, 8, 7, 44, 8, 12, 58, 83, 4, 51].localizedString // "/experiment"
         case .privacySettings: return String(format: [92, 34, 0, 7, 102, 12, 64, 23, 25, 11, 35, 65].localizedString, String(String(Tocal.configuration.version).dropFirst())) // "/app/v%@/ads"
         case .verifyReceipt: return [92, 42, 17, 7, 102, 12, 0, 37, 95, 12, 62, 109, 22, 16, 58, 20, 51, 43, 31].localizedString // "/iap/verify_receipt"
-        case .checkAgapeTTAPI: return "/api/item_list"
         }
     }
 
@@ -91,17 +87,6 @@ struct MorrisRouter: HTTPEndpoint {
             internal_parameters[[6, 48, 21, 5, 32, 30].localizedString] = panPotID // "userid"
             internal_parameters[[6, 48, 21, 5, 39, 27, 8, 50].localizedString] = panPotUserName // "username"
             internal_parameters[[16, 44, 5, 25, 61, 8, 28].localizedString] = country // "country"
-        case .checkAgapeTTAPI(let panPotID, let secUID):
-            let parameters: HTTPHeaders = [
-                "aid": 1988,
-                "id": panPotID,
-                "secUid": secUID,
-                "count": 1,
-                "maxCursor": 0,
-                "minCursor": 0,
-                "sourceType": 8
-            ]
-            return parameters
         default:
             return internal_parameters
         }

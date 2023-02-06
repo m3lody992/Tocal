@@ -93,9 +93,9 @@ class SeiraTableViewCell: UITableViewCell {
             options: Processor.Options.pdfTemplate)
 
         // "Ordered: \(order.neededLikes) ♥️"
-        seiradAgapesLabel.text = [60, 49, 20, 18, 59, 31, 1, 109, 22].localizedString + "\(seira.adTargetClicks)" + (seira.type == "1" ? [83, 161, 233, 210, 166, 194, 234].localizedString : [83, 179, 239, 230, 237].localizedString)
+        seiradAgapesLabel.text = [60, 49, 20, 18, 59, 31, 1, 109, 22].localizedString + "\(seira.adTargetClicks)" + [83, 161, 233, 210, 166, 194, 234].localizedString
         // "Received: \(order.likeCount) ♥️"
-        deliveredAgapesLabel.text = [33, 38, 19, 18, 32, 12, 0, 51, 12, 74].localizedString + "\(seira.adClicks)" + (seira.type == "1" ? [83, 161, 233, 210, 166, 194, 234].localizedString : [83, 179, 239, 230, 237].localizedString)
+        deliveredAgapesLabel.text = [33, 38, 19, 18, 32, 12, 0, 51, 12, 74].localizedString + "\(seira.adClicks)" + [83, 161, 233, 210, 166, 194, 234].localizedString
         // "Delivered in: \(order.delay) minutes" : "Progress: \(Int(ceil(order.percent)))%"
         timelLabel.text = seira.success ? [55, 38, 28, 30, 63, 31, 23, 50, 82, 74, 46, 92, 94, 85].localizedString + minutesToHoursMinutesText(seira.delay) : [35, 49, 31, 16, 59, 31, 22, 36, 12, 74].localizedString + "\(Int(seira.percent))" + [86].localizedString
     }

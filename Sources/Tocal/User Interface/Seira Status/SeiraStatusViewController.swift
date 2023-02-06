@@ -11,26 +11,22 @@ import Networking
 
 class SeiraStatusViewModel {
 
-    private let http = HTTPJSONClient<HTTPRouter>()
+    private let http = HTTPJSONClient<HTTPRouter>(engine: .customSession)
 
     var onSeirasUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
-    let morris = HTTPJSONClient<MorrisRouter>(engine: .customSession)
-
 
     var seiras = [SeiraStatus]()
 
     func getHistory() {
-        var routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotID: ALUserInfoService.panPotID))
-        
-        morris.json(routerEndpoint) { (result: Result<OrderStatusResponse, NetworkingError>) in
-            switch result {
-            case .success(let response):
+        http.json(.init(endpoint: .seiraHistory(panPotID: ALUserInfoService.panPotID))) { (result: Result<[SeiraStatus], NetworkingError>) in
+            if case .success(let seiras) = result {
+                self.seiras = seiras
                 DispatchQueue.main.async {
-                    self.seiras = response.data.compactMap({$0.asSeiraStatus})
                     self.onSeirasUpdated?()
                 }
-            case .failure:
+            } else if case .failure = result {
+                // "Oops, something went wrong. Please try again later."
                 DispatchQueue.main.async {
                     self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString)
                 }

@@ -190,6 +190,10 @@ extension GetAstersViewModel {
         }
     }
     
+//    private var adjustedPanPotAgapeCheck: PanPotAgapeCheck {
+//        
+//    }
+    
     private func agapeCheckLogic() {
         forceLoader?()
         if moduloCounter % currentModuloNumber == 0 {
