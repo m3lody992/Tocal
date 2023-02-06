@@ -68,6 +68,7 @@ public struct GetUserInfo: Codable {
 public struct GetUserInfoResponse: Codable {
     public let code: Int
     public let avatar: URL?
+    public let videoCount: Int?
     public let diggsGotten: Int?
     public let diggsGiven: Int?
     public let flowerCount: Int?
@@ -82,6 +83,7 @@ public struct GetUserInfoResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case code
         case avatar
+        case videoCount = "aweme_count"
         case diggsGotten = "digg_count"
         case diggsGiven = "favoriting_count"
         case flowerCount = "follower_count"

@@ -283,7 +283,7 @@ public class AddUserViewController: MainViewController {
         viewModel.onUserCheckNotPassed = { [weak self] in
             DispatchQueue.main.async {
                 self?.dismissLoader {
-                    self?.dismiss(animated: true)
+                    self?.presentAlert(withTitle: "Info", andMessage: "Please make sure you have a profile picture set and at least one video loaded on your profile.", buttons: [.okDismiss])
                 }
             }
         }

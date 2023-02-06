@@ -54,7 +54,8 @@ class AddUserViewModel {
                 
                 guard let userSecID = userInfo.userSecID,
                       let panPotID = userInfo.userUID,
-                      let panPotUserName = userInfo.username else {
+                      let panPotUserName = userInfo.username,
+                      let videoCount = userInfo.videoCount, videoCount > 0 else {
                     self.onUserCheckNotPassed?()
                     return
                 }
