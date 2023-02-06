@@ -230,7 +230,7 @@ public struct OrderStatusData: Codable {
     }
     
     var asSeiraStatus: SeiraStatus {
-        SeiraStatus(type: type, adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
+        SeiraStatus(adMediaId: "", adMediaUrl: "", adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 
