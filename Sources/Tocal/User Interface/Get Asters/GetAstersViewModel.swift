@@ -202,12 +202,17 @@ extension GetAstersViewModel {
             switch ALUserInfoService.settings.panPotAgapeCheck {
             case .api:
                 self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
-                    if case .failure = result, ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
-                        self.agapeCheckLogicMorris { result2 in
-                            self.handleUserInfoResult(result: result2)
-                        }
-                    } else {
+                    switch result {
+                    case .success(let userInfo):
                         self.handleUserInfoResult(result: result)
+                    case .failure(_):
+                        if ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+                            self.agapeCheckLogicMorris { result2 in
+                                self.handleUserInfoResult(result: result2)
+                            }
+                        } else {
+                            self.handleUserInfoResult(result: result)
+                        }
                     }
                 }
             case .classic:
