@@ -158,7 +158,7 @@ public class ALSDKSettings: Codable {
     var manualAddHandlerSettings: ManualAddHandlerSettings
     
     var flowerAstersOptions: [FlowerAsters]
-
+    var modulo: [Int]
 }
 
 struct ManualAddHandlerSettings: Codable {

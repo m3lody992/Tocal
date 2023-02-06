@@ -22,6 +22,7 @@ class GetAstersViewModel: NSObject {
     private var agapedItems = [QueueItem]()
     
     private var moduloCounter: Int = 0
+    private let currentModuloNumber = Int.random(in: ALUserInfoService.settings.modulo[0]...ALUserInfoService.settings.modulo[1])
     private var agapesBetweenChecks: Int = 0 {
         didSet {
             print("SETTING agapesBetweenChecks: \(agapesBetweenChecks)")
@@ -172,7 +173,7 @@ extension GetAstersViewModel {
 
 extension GetAstersViewModel {
     
-    private func agapeCheckLogicMorris() {
+    private func agapeCheckLogicMorris(completion: @escaping (InfoResult<UserInfo>) -> Void) {
         forceLoader?()
         let userInfoModel = GetUserInfo(link: ALUserInfoService.panPotUserName.lowercased())
         var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
@@ -181,16 +182,9 @@ extension GetAstersViewModel {
         morris.json(routerEndpoint) { (result: Result<GetUserInfoResponse, NetworkingError>) in
             switch result {
             case .success(let userInfo):
-                let diggCount = userInfo.diggsGiven
-                
-//                if self.isFirstCheck == false, self.agapesBetweenChecks + self.lastAgapeCount != diggCount {
-//                    print("OFFSET DETECTED")
-//                }
-//                self.lastAgapeCount = diggCount ?? 0
-                self.agapesBetweenChecks = 0
-                self.isFirstCheck = false
+                completion(.success(UserInfo(statusCode: 0, username: userInfo.username ?? "", userID: userInfo.userUID ?? "", agapeCount: userInfo.diggsGiven ?? 0, isPrivate: userInfo.isUserPrivate ?? false)))
             case .failure(_):
-                print("FAIL")
+                completion(.failure(.failed))
             }
             self.onHideLoader?()
         }
@@ -198,10 +192,30 @@ extension GetAstersViewModel {
     
     private func agapeCheckLogic() {
         forceLoader?()
-        if moduloCounter % 4 == 0 {
-            self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
-                self.handleUserInfoResult(result: result)
+        if moduloCounter % currentModuloNumber == 0 {
+            switch ALUserInfoService.settings.panPotAgapeCheck {
+            case .api:
+                self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
+                    if case .failure = result, ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+                        self.agapeCheckLogicMorris { result2 in
+                            self.handleUserInfoResult(result: result2)
+                        }
+                    } else {
+                        self.handleUserInfoResult(result: result)
+                    }
+                }
+            case .classic:
+                self.agapeCheckLogicMorris { result2 in
+                    if case .failure = result2, ALUserInfoService.settings.automaticBackupPanPotAgapeCheck {
+                        self.userInfoHandler?.getUserInfo(forUserID: ALUserInfoService.panPotID, secUID: ALUserInfoService.userSecID) { result in
+                            self.handleUserInfoResult(result: result)
+                        }
+                    } else {
+                        self.handleUserInfoResult(result: result2)
+                    }
+                }
             }
+            
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
                 self.wasSuccessfulAgape()
@@ -210,23 +224,7 @@ extension GetAstersViewModel {
             }
         }
     }
-    
-
-//    private func checkIsAgapedItemAgaped(completion: @escaping (InfoResult<Bool>) -> Void) {
-//
-//            VideoInfoAPIHandler.getVideoInfo(forItem: agapedItem) { result in
-//                switch result {
-//                case .success(let videoInfo):
-//                    completion(.success(videoInfo.isAgaped))
-//                case .failure(let reason):
-//                    completion(.failure(reason))
-//                }
-//            }
-//        } else {
-//            // "Oops, something went wrong. Please try again later."
-//            self.onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
-//        }
-    
+       
     
     func handleUserInfoResult(result: InfoResult<UserInfo>) {
         guard let agapedItem = agapedItem else {
@@ -248,14 +246,10 @@ extension GetAstersViewModel {
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
                 if isFirstCheck {
                     wasSuccessfulAgape()
-                    ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
                     isFirstCheck = false
                 } else {
                     let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
-                    print("Stored Agapes: \(ALUserInfoService.totalNumberOfAgapes)")
-                    print("New Agapes: \(userInfo.agapeCount)")
-                    print("Agapes between: \(self.agapesBetweenChecks)")
-                    print("Delta: \(delta)")
+
                     if delta > 0 {
                         Aster.numberOfAsters -= delta
                         onAgapeRemoved?()
@@ -263,6 +257,8 @@ extension GetAstersViewModel {
                         self.agapesBetweenChecks = 0
                     } else if delta < 0 {
                         print("LESS THAN 0")
+                        wasSuccessfulAgape()
+                        self.agapesBetweenChecks = 0
                     } else {
                         wasSuccessfulAgape()
                         self.agapesBetweenChecks = 0
@@ -278,13 +274,6 @@ extension GetAstersViewModel {
                 }
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDidntIncrease)
             }
-//            else if userInfo.agapeCount < ALUserInfoService.totalNumberOfAgapes {
-//                Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDecreased)
-//                onAgapeRemoved?()
-//                if ALUserInfoService.settings.takeDrachme == true, (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount) > ALUserInfoService.settings.takeDrachmeLimit {
-//                    Aster.numberOfAsters -= (ALUserInfoService.totalNumberOfAgapes - userInfo.agapeCount)
-//                }
-//            }
             // Update our storage of agape count.
             ALUserInfoService.totalNumberOfAgapes = userInfo.agapeCount
             finishPanPotAgape()
