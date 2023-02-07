@@ -258,12 +258,11 @@ extension GetAstersViewModel {
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .currentAgapesIsZero)
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
                 let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
-                
                 if delta > 0 {
                     if ALUserInfoService.settings.takeDrachme {
                         Aster.numberOfAsters -= delta
                     }
-                    onAgapeRemoved?()
+                    onChangeAgapeMode?()
                     wasDeltaAgape()
                     self.agapesBetweenChecks = 0
                 } else if delta < 0 {
