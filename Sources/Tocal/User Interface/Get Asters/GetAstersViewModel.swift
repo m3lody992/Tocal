@@ -57,7 +57,7 @@ class GetAstersViewModel: NSObject {
         tapCount % adFrequency == 0
     }
     
-    private var isLoadingNewVideo = false
+    var isLoadingNewVideo = false
 
     override init() {
         super.init()

@@ -218,12 +218,12 @@ public class GetAstersViewController: MainViewController {
                 self?.imageView.image = nil
                 self?.dismissLoader()
                 self?.reloadButton.isHidden = false
-                self?.presentAlert(withTitle: "Info", andMessage: "No new videos. Pleas try again later.", buttons: [.okDismiss])
+                self?.presentAlert(withTitle: "Info", andMessage: "No new videos. Please try again later.", buttons: [.okDismiss])
             }
         }
 
         viewModel.onSuccessfulAgape = { [weak self] in
-            if AgapeLogic.shouldUseInAppLikes == false && self?.viewModel.isPresentingItemFallbackItem == false {
+            if AgapeLogic.shouldUseInAppLikes == false && self?.viewModel.isPresentingItemFallbackItem == false && self?.viewModel.isLoadingNewVideo == false {
                 self?.dismissLoader()
             }
             if ALUserInfoService.isHapticFeedbackEnabled {
