@@ -214,7 +214,7 @@ public class GetAstersViewController: MainViewController {
             DispatchQueue.main.async {
                 // Remove current webview
                 self?.removePresentingWebView()
-                self?.unavailableVideoImageView.isHidden = true
+                self?.unavailableVideoImageView.isHidden = false
                 self?.imageView.image = nil
                 self?.dismissLoader()
                 self?.reloadButton.isHidden = false
