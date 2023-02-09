@@ -27,12 +27,14 @@ public class ALUserInfoService {
 
     static var totalNumberOfAgapes: Int {
         get { KeychainManager.value(for: .totalNumberOfAgapes) ?? 0 }
-        set {
-            print("SETTING TOTAL NUMBER: \(newValue)")
-            KeychainManager.set(value: newValue, for: .totalNumberOfAgapes)
-        }
+        set { KeychainManager.set(value: newValue, for: .totalNumberOfAgapes) }
     }
 
+    static var totalNumberOfSuccessfulAppAgapes: Int {
+        get { KeychainManager.value(for: .totalNumberOfSuccessfulAppAgapes) ?? 0 }
+        set { KeychainManager.set(value: newValue, for: .totalNumberOfSuccessfulAppAgapes) }
+    }
+    
     static var isExtraSuperUser: Bool {
         get { UserDefaultsManager.object(forKey: .isExtraSuperUser) ?? false }
         set { UserDefaultsManager.set(newValue, forKey: .isExtraSuperUser) }
@@ -149,6 +151,7 @@ public class ALUserInfoService {
         KeychainManager.remove(key: .isAgoraUser)
         KeychainManager.remove(key: .didRateAppButNotGottenRewardYet)
         KeychainManager.remove(key: .didGetReviewReward)
+        KeychainManager.remove(key: .totalNumberOfSuccessfulAppAgapes)
     }
 
     public static var shouldCheckForUpdate: Bool {

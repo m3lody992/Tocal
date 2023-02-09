@@ -77,8 +77,6 @@ class GetAstersViewModel: NSObject {
         presentingItem?.adMeta == [53, 2, 60, 59, 11, 59, 38, 28].localizedString && ALUserInfoService.settings.useFallback == true
     }
 
-    private var noAgapeCount = 0
-
 }
 
 // MARK: - Likes functionality
@@ -114,7 +112,6 @@ extension GetAstersViewModel {
                         // Reset stuff
                         didClickAgape = false
                         agapedItem = nil
-                        noAgapeCount = 0
                         AgapeLogic.agapeFailCount = 0
                         AgapeLogic.agapeVideoTimeoutCount = 0
 
@@ -257,12 +254,15 @@ extension GetAstersViewModel {
                 onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].localizedString, false)
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .currentAgapesIsZero)
             } else if userInfo.agapeCount > ALUserInfoService.totalNumberOfAgapes {
+                ALUserInfoService.totalNumberOfSuccessfulAppAgapes += 1
                 let delta = ALUserInfoService.totalNumberOfAgapes + self.agapesBetweenChecks - userInfo.agapeCount + 1 // +1 because last like is not yet counted as agapesBetweenChecks.
                 if delta > 0 {
                     if ALUserInfoService.settings.takeDrachme {
                         Aster.numberOfAsters -= delta
+                        onAgapeRemoved?()
+                    } else {
+                        onChangeAgapeMode?()
                     }
-                    onChangeAgapeMode?()
                     wasDeltaAgape()
                     self.agapesBetweenChecks = 0
                 } else if delta < 0 {
@@ -274,14 +274,10 @@ extension GetAstersViewModel {
                     self.agapesBetweenChecks = 0
                 }
             } else if userInfo.agapeCount == ALUserInfoService.totalNumberOfAgapes {
-                noAgapeCount += 1
-                if !ALUserInfoService.canAgape || self.noAgapeCount > (ALUserInfoService.settings.failToleranceFactor) {
-                    noAgapeCount = 0
-                    onChangeAgapeMode?()
-                } else {
-                    if self.isLoadingNewVideo == false {
-                        onHideLoader?()
-                    }
+                onChangeAgapeMode?()
+                
+                if self.isLoadingNewVideo == false {
+                    onHideLoader?()
                 }
                 Analytics.reportAgapeFailure(forQueueItem: agapedItem, source: .app, reason: .agapeCountDidntIncrease)
             }
@@ -307,7 +303,6 @@ extension GetAstersViewModel {
         ALUserInfoService.canAgape = true
         Aster.numberOfAsters += 1
         self.moduloCounter += 1
-        self.noAgapeCount = 0
         self.didClickAgape = false
         self.agapedItem = nil
         self.onSuccessfulAgape?()
