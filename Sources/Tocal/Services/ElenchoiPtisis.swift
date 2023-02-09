@@ -280,7 +280,7 @@ public struct ElenchoiPtisis {
                 }
 
                 // In case username or id are missing we need AddUserVC
-                if settings.checkCookiesExpired, !Session.isSessionValid {
+                if (settings.checkCookiesExpired && !Session.isSessionValid) || ALUserInfoService.panPotID.isEmpty || ALUserInfoService.panPotUserName.isEmpty || ALUserInfoService.userSecID.isEmpty {
 //                    completion(addUserOrLogin)
                     runLogin(in: viewController, completion: completion)
                     return
