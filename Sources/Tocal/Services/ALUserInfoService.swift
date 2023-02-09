@@ -123,6 +123,7 @@ public class ALUserInfoService {
     static func removeUserData() {
         UserDefaultsManager.deleteValue(forKey: .panPotID)
         UserDefaultsManager.deleteValue(forKey: .panPotUsername)
+        UserDefaultsManager.deleteValue(forKey: .userSecID)
         UserDefaultsManager.deleteValue(forKey: .cookies)
         UserDefaultsManager.deleteValue(forKey: .installedApps)
         KeychainManager.remove(key: .totalNumberOfAgapes)
