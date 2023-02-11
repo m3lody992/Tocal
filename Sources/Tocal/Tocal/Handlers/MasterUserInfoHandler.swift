@@ -19,6 +19,10 @@ class TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
         ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28 = variation.SFxpEk3kIISBWVM6tU0GMoNXDaoRXVoF
     }
     
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
+        ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28.getUserInfo(forUserID: userID, secUID: secUID, completion: completion)
+    }
+    
     func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName username: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
         ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28.ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName: username, completion: completion)
     }

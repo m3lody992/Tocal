@@ -20,7 +20,7 @@ public enum nfvvRL62DlDmKwdJtWtmDQr9Veu7zBsm {
 
 public class c3luhj95klDgTgnK5IBcmpo7MrCTn1Ob: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
 
-    let http = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>()
+    let http = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
 
     var state: nfvvRL62DlDmKwdJtWtmDQr9Veu7zBsm = .ezvQUcZ67kL7gVJ5kXfHfK9gZDgLXAYr
 

@@ -280,7 +280,7 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
                 }
 
                 // In case username or id are missing we need AddUserVC
-                if settings.checkCookiesExpired, !InuQKHcUy4mbiZ4ZGgQmYSSO5VSJWGq7.H6Kzf0rH5nW58DmCfiz0eBryIw5ch5pp {
+                if (settings.checkCookiesExpired && !InuQKHcUy4mbiZ4ZGgQmYSSO5VSJWGq7.H6Kzf0rH5nW58DmCfiz0eBryIw5ch5pp) || OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa.isEmpty || OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.isEmpty || OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID.isEmpty {
 //                    completion(addUserOrLogin)
                     Y0pnRotwgssi7Nq7jCOWILZL7n7QaPM0(in: viewController, completion: completion)
                     return

@@ -228,11 +228,12 @@ public class rm6SI9IKoKkT1jCHXGGEkiWGCvJyViT8: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
                 self?.imageView.image = nil
                 self?.GJoCxIKuqoSmspYzyEGgnFvv9CFqNvDn()
                 self?.reloadButton.isHidden = false
+                self?.ae7p00dWvNqk8lTdwgcVyOKV7WDJoa1Z(withTitle: [58, 45, 22, 24].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, andMessage: [61, 44, 80, 25, 44, 13, 69, 33, 95, 14, 34, 93, 23, 91, 121, 33, 54, 62, 10, 48, 41, 96, 16, 34, 74, 120, 79, 53, 36, 74, 60, 83, 47, 17, 3, 44, 8, 75].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, buttons: [.Ql11graq1e1ZiiAQ6FmPP8G7bgXgV8s6])
             }
         }
 
         viewModel.onSuccessfulAgape = { [weak self] in
-            if ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.SzZ7B6w7R2S5Ul31BrGct2Mv3PI6TzLY == false && self?.viewModel.isPresentingItemFallbackItem == false {
+            if ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.SzZ7B6w7R2S5Ul31BrGct2Mv3PI6TzLY == false && self?.viewModel.isPresentingItemFallbackItem == false && self?.viewModel.isLoadingNewVideo == false {
                 self?.GJoCxIKuqoSmspYzyEGgnFvv9CFqNvDn()
             }
             if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.B4ZXyKoSrgvGSq3HgmVqE0TAlebSqzDD {

@@ -146,11 +146,17 @@ class alnxOwOArtOfkIE3POjkfnGJQUNDxAQ4: N1mJTknBwOXZJWLVLefCo7jKdG8EllRP {
             }
 
             dispatchGroup.notify(queue: .main) {
-                guard let statusCode = statusCode,
-                      let videoID = videoID else {
-                          completion(.failure(.s3PcVAP3nT8ft4oKRZi6JBK5HzvuMPwG))
-                          return
-                      }
+                guard let statusCode = statusCode, statusCode == 0 else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.NoR1z5trbSxBdN1fgPqkJPXxP1BpbBix(statusCode: statusCode ?? 9999)))
+                    }
+                    return
+                }
+                
+                guard let videoID = videoID else {
+                    completion(.failure(.s3PcVAP3nT8ft4oKRZi6JBK5HzvuMPwG))
+                    return
+                }
                 
                 let info = BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8(
                     n2VB7HXLZikd5F5tZba2624UVIRShQdD: statusCode,

@@ -11,25 +11,22 @@ import UIKit
 
 class cgK6eZ7nL4memavPIlAAmo71uuYJxtks {
 
-    private let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>()
+    private let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
 
     var l026bQzvx12f6LvdlfUjfd0Meu3JlGgk: (() -> Void)?
     var cZRBEN3TmU53Gbz5ykxXvL0UG8dGmsmV: ((String) -> Void)?
-    let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
 
     var ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = [nJABHWKQALbz0dS2a8NMIX9DLknT2EG3]()
 
     func GsXN5uzv1OEI63b6LlLt8kvubOOVeMCz() {
-        let routerEndpoint = MorrisRouter(endpoint: .orderStatus(panPotUsername: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL))
-        
-        morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<OrderStatusResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
-            switch result {
-            case .success(let response):
+        sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(.init(SAuL4WFDmxOLz6dtnXaIO9YYx3yhFuMq: .qg1BOcGiTEyLvuTU3hHSwBC1CwN8ndbY(panPotID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa))) { (result: Result<[nJABHWKQALbz0dS2a8NMIX9DLknT2EG3], bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
+            if case .success(let seiras) = result {
+                self.ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = seiras
                 DispatchQueue.main.async {
-                    self.ti5MqZRAOtNY0ebLmKvtHKk5JOCLhess = response.data.compactMap({$0.asSeiraStatus}).sorted(by: { $0.created.compare($1.created) == .orderedDescending })
                     self.l026bQzvx12f6LvdlfUjfd0Meu3JlGgk?()
                 }
-            case .failure:
+            } else if case .failure = result {
+                // "Oops, something went wrong. Please try again later."
                 DispatchQueue.main.async {
                     self.cZRBEN3TmU53Gbz5ykxXvL0UG8dGmsmV?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
                 }

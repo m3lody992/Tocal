@@ -161,6 +161,9 @@ public class zHOQQcOAadeuiYD6RtfJHyRDssayC3ZL: Codable {
     var overridePicker: Bool
     var flowerAstersOptions: [FlowerAsters]
     var agapeAstersOptions: [AgapeAsters]
+    var modulo: [Int]
+    var sessionChecks: Int
+    var minutesAwayPeriod: Int
 
 }
 
@@ -282,6 +285,9 @@ struct As9zsCLvuiM2X1YOizysdaqG7QQDRudB: Codable {
 struct lxi65Q9jZBaNzusOdfJHI7BRRwGYROo7: Codable {
     var url: String
     var statusPaths: [String]
+    var useItemPathIndex: Bool
+    var itemIndex: Int
+    var itemPath: [String]
     var usernamePaths: [String]
     var userIDPaths: [String]
     var agapeCountPaths: [String]

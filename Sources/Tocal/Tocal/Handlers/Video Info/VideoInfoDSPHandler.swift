@@ -96,12 +96,20 @@ class zmIaEvMMP7djrD2zlZYXojrttBLUFItA: N1mJTknBwOXZJWLVLefCo7jKdG8EllRP {
         let videoViews = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.videoViewsPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int
         let isAccountPrivate = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.isAccountPrivatePaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Bool
         
-        guard let statusCode = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.statusCodePaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int,
-              let videoID = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.videoIDPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? String,
+        let statusCode = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.statusCodePaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int
+        
+        guard let statusCode = statusCode, statusCode == 0 else {
+            DispatchQueue.main.async {
+                self.GPLMnHRAUSZHwQ11gPeyhd8VFyPDDgkY(withReason: .NoR1z5trbSxBdN1fgPqkJPXxP1BpbBix(statusCode: statusCode ?? 9999))
+            }
+            return
+        }
+        
+        guard let videoID = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.videoIDPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? String,
               let coverURL = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoHandlerSettings.dsp.coverURLPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? String else {
-                  GPLMnHRAUSZHwQ11gPeyhd8VFyPDDgkY(withReason: .s3PcVAP3nT8ft4oKRZi6JBK5HzvuMPwG)
-                  return
-              }
+            GPLMnHRAUSZHwQ11gPeyhd8VFyPDDgkY(withReason: .s3PcVAP3nT8ft4oKRZi6JBK5HzvuMPwG)
+            return
+        }
         
         DispatchQueue.main.async { [self] in
             // Disable listening for DSP and return success

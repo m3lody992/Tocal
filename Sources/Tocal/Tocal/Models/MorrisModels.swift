@@ -69,6 +69,8 @@ public struct GetUserInfo: Codable {
 public struct GetUserInfoResponse: Codable {
     public let code: Int
     public let avatar: URL?
+    public let videoCount: Int?
+    public let diggsGotten: Int?
     public let diggsGiven: Int?
     public let flowerCount: Int?
     public let floweringsCount: Int?
@@ -82,7 +84,9 @@ public struct GetUserInfoResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case code
         case avatar
-        case diggsGiven = "digg_count"
+        case videoCount = "aweme_count"
+        case diggsGotten = "digg_count"
+        case diggsGiven = "favoriting_count"
         case flowerCount = "follower_count"
         case floweringsCount = "following_count"
         case isUserPrivate = "is_user_private"
@@ -228,7 +232,7 @@ public struct OrderStatusData: Codable {
     }
 
     var asSeiraStatus: nJABHWKQALbz0dS2a8NMIX9DLknT2EG3 {
-        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(created: DateForm.formatter.date(from: created) ?? Date() ,type: type, adMediaId: "", adMediaUrl: thumbURL, adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
+        nJABHWKQALbz0dS2a8NMIX9DLknT2EG3(created: DateForm.formatter.date(from: created) ?? Date(), adMediaId: "", adMediaUrl: thumbURL, adTargetClicks: ordered, adClicks: received, percent: percent, delay: time, success: completed.boolValue)
     }
 }
 

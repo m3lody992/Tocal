@@ -38,6 +38,9 @@ public extension fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo {
 public extension fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo {
 
     enum lJxJ9w30bJKAFQvv7s6CJReAsTiMpn2n {
+        
+        case userSecID
+        
         case EglYADPEebLBGUTb2mjKPb8CzSzp8SFj
         case oQ3Kymews1Hon3fXq9yIZ2slWPG6q87u
         
@@ -75,6 +78,7 @@ public extension fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo {
 
         var wYAVnTHaFBdbrTMrlvtQS8d6KWwAUfKO: String {
             switch self {
+            case .userSecID: return "userSecIDaeilnrshtnharsbthnersk"
             // TODO: remove when new tiktok app goes out.
             case .EglYADPEebLBGUTb2mjKPb8CzSzp8SFj: return pMma9Oyp1904TuxLtYut9STx35uO4cmO.nTsCgcsOSL7AtL7aP6AJUoAYRMbEsb5M.zA8f9Czp1i7vjLb7MgK9BqY2OPzQxKqU ?? [29, 54, 18, 18, 59, 53, 3, 20, 89, 3, 41, 65].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG
             case .oQ3Kymews1Hon3fXq9yIZ2slWPG6q87u: return [22, 34, 2, 25, 44, 30, 58, 59, 95, 1, 34, 65, 59, 6, 48, 22, 52, 58, 31, 54, 62, 37].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG

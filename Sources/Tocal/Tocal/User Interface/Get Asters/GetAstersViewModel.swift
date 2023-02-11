@@ -14,12 +14,17 @@ import AVFoundation
 
 class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
 
-    private let http = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>()
+    private let http = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
 
     private var presentingItem: dsvRBa8tNAqERz9MljnQygVZ3stcR9RN?
     private var agapedItem: dsvRBa8tNAqERz9MljnQygVZ3stcR9RN?
     private var queue: [dsvRBa8tNAqERz9MljnQygVZ3stcR9RN]?
     private var agapedItems = [dsvRBa8tNAqERz9MljnQygVZ3stcR9RN]()
+    
+    private var moduloCounter: Int = 0
+    private let currentModuloNumber = Int.random(in: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.modulo[0]...OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.modulo[1])
+    private var agapesBetweenChecks: Int = 0
+    private var currentSessionChecks: Int = 0
 
     var onSuccessfulAgape: (() -> Void)?
     var onChangeAgapeMode: (() -> Void)?
@@ -33,6 +38,10 @@ class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
     var onNoNewVideos: (() -> Void)?
     var onError: ((_ message: String, _ autoDismiss: Bool) -> Void)?
     var forceLoader: (() -> Void)?
+    
+    let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
+    
+    var isLoadingNewVideo = false
 
     private lazy var userInfoHandler: TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf? = TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf(variation: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoVariation)
     private lazy var videoInfoAgapeHandler: goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO? = goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO(
@@ -58,6 +67,7 @@ class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
             self.videoInfoAgapeHandler = nil
             self.appStateHanlder = nil
         }
+        
     }
 
     private var isFetchInProgress = false
@@ -66,8 +76,6 @@ class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
     var isPresentingItemFallbackItem: Bool {
         presentingItem?.adMeta == [53, 2, 60, 59, 11, 59, 38, 28].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG && OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.useFallback == true
     }
-
-    private var noAgapeCount = 0
 
 }
 
@@ -105,7 +113,6 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                         // Reset stuff
                         didClickAgape = false
                         agapedItem = nil
-                        noAgapeCount = 0
                         ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.EFWh53eLfjOKdIHugAxuWZ3Ge4mCzerH = 0
                         ggcGO2q8O9ZV2qYCG1KwvyPdsgmSAyj9.goJSSpBUEROMTZdKmBWHfMxPk578BSVn = 0
 
@@ -113,7 +120,7 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                         agapedItems.append(presentingItem)
                         SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.nqPWdxOxbyZuJDqXI1suwzVoUEixx8KB(forQueueItem: presentingItem, source: .UAotBrW1MUg0I1eHuoRQOkvchwnzWSGQ)
                         DispatchQueue.main.async {
-                            onSuccessfulAgape?()
+                            self.onSuccessfulAgape?()
                         }
                         d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                     case .fmbGGvWPuST4dFqWMCRUMeLFKvv3ruGZ:
@@ -166,64 +173,42 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
     
     private func AdXjowrDTiLb8dfZVeErbpUPkfl7OyVK() {
         forceLoader?()
-        switch OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.panPotAgapeCheck {
-        case .api:
-            D7dtIshZmwv121aNrdBybK0kGBcpSWDh() { [weak self] result in
-                switch result {
-                case .success(let isAgaped):
-                    if isAgaped {
-                        self?.FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
-                    } else if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self?.userInfoHandler?.ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL) { result in
-                            self?.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
+        if currentSessionChecks < OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.sessionChecks || (currentSessionChecks >= OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.sessionChecks && moduloCounter % currentModuloNumber == 0) {
+            currentSessionChecks += 1
+            switch OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.panPotAgapeCheck {
+            case .api:
+                self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                    switch result {
+                    case .success(_):
+                        self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
+                    case .failure(_):
+                        if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
+                            self.agapeCheckLogicMorris { result2 in
+                                self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result2)
+                            }
+                        } else {
+                            self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
                         }
-                    } else {
-                        self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason: .HBgNx8jJcqzJSIdAZBCrBRDYdS6702s6)
                     }
-                case .failure(let reason):
-                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self?.userInfoHandler?.ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL) { result in
-                            self?.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
+                }
+            case .classic:
+                self.agapeCheckLogicMorris { result2 in
+                    if case .failure = result2, OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
+                        self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                            self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
                         }
                     } else {
-                        self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason: reason)
+                        self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result2)
                     }
                 }
             }
-        case .classic:
-            self.userInfoHandler?.ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL) { [weak self] result in
-                switch result {
-                case .success(let userInfo):
-                    // If count didin't increase (which is a successful like)
-                     if userInfo.StdLH4czyirx3XMiDKsHErsflzOZA68m > OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy {
-                        // Successful like
-                        self?.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
-                    } else if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        // Call backup
-                        self?.D7dtIshZmwv121aNrdBybK0kGBcpSWDh() { result in
-                            switch result {
-                            case .success(let isAgaped):
-                                isAgaped ? self?.FALRIgyclD2Ibne9WSIlFtHaTBieLNUh() : self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo()
-                            case .failure(let reason):
-                                self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason: reason)
-                            }
-                        }
-                    } else {
-                        self?.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
-                    }
-                case .failure(let reason):
-                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self?.D7dtIshZmwv121aNrdBybK0kGBcpSWDh() { result in
-                            switch result {
-                            case .success(let isAgaped):
-                                isAgaped ? self?.FALRIgyclD2Ibne9WSIlFtHaTBieLNUh() : self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo()
-                            case .failure(let reason):
-                                self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason: reason)
-                            }
-                        }
-                    } else {
-                        self?.HgGkGNKjZLONcTHFvoqYF5Hm9dpXXRDo(withReason: reason)
-                    }
+            
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
+                self.FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
+                self.agapesBetweenChecks += 1
+                if self.isLoadingNewVideo == false {
+                    self.onHideLoader?()
                 }
             }
         }
@@ -268,13 +253,28 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                 onError?([60, 44, 0, 4, 101, 90, 22, 56, 91, 15, 51, 90, 13, 27, 62, 81, 45, 62, 5, 55, 108, 55, 22, 63, 93, 63, 0, 114, 21, 79, 55, 18, 48, 21, 87, 61, 8, 28, 119, 87, 13, 38, 91, 10, 85, 53, 16, 46, 62, 25, 109].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG, false)
                 SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ckYuj63Vw4DM4VVW2oRbMIU3VCmGzd4H(forQueueItem: agapedItem, source: .C0adiaNNC9DcBdmdlyQ0lGsBzfl6xRQ9, reason: .RkZl4abyNClnY8lHutAHNUWaKbuarRGb)
             } else if userInfo.StdLH4czyirx3XMiDKsHErsflzOZA68m > OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy {
-                FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
-            } else if userInfo.StdLH4czyirx3XMiDKsHErsflzOZA68m == OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy {
-                noAgapeCount += 1
-                if !OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.hOE2G3TDOTL3ek6lUhKWpoSdJBIXqoZ7 || self.noAgapeCount > (OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.failToleranceFactor) {
-                    noAgapeCount = 0
-                    onChangeAgapeMode?()
+                let delta = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy + self.agapesBetweenChecks - userInfo.StdLH4czyirx3XMiDKsHErsflzOZA68m + 1
+                
+                if delta > 0 {
+                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.takeDrachme {
+                        maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G -= delta
+                        onAgapeRemoved?()
+                    } else {
+                        onChangeAgapeMode?()
+                    }
+                    wasDeltaAgape()
+                    self.agapesBetweenChecks = 0
+                } else if delta < 0 {
+                    print("LESS THAN 0")
+                    FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
+                    self.agapesBetweenChecks = 0
                 } else {
+                    FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
+                    self.agapesBetweenChecks = 0
+                }
+            } else if userInfo.StdLH4czyirx3XMiDKsHErsflzOZA68m == OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy {
+                onChangeAgapeMode?()
+                if self.isLoadingNewVideo == false {
                     onHideLoader?()
                 }
                 SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ckYuj63Vw4DM4VVW2oRbMIU3VCmGzd4H(forQueueItem: agapedItem, source: .C0adiaNNC9DcBdmdlyQ0lGsBzfl6xRQ9, reason: .HBgNx8jJcqzJSIdAZBCrBRDYdS6702s6)
@@ -294,10 +294,19 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
         }
     }
     
+    private func wasDeltaAgape() {
+        self.moduloCounter += 1
+        self.didClickAgape = false
+        self.agapedItem = nil
+        if let agapedItem = self.agapedItem {
+            SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ckYuj63Vw4DM4VVW2oRbMIU3VCmGzd4H(forQueueItem: agapedItem, source: .C0adiaNNC9DcBdmdlyQ0lGsBzfl6xRQ9, reason: .mAsRcuEAzFPcS4FYgacbZwqGrxMlHMOo)
+        }
+    }
+    
     private func FALRIgyclD2Ibne9WSIlFtHaTBieLNUh() {
         OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.hOE2G3TDOTL3ek6lUhKWpoSdJBIXqoZ7 = true
         maqLKRb6dHH50KVEL9xdQ75ElHiPaZNU.nE9BIkaLKzw5jFajLdwMmfrXwJx1Yo7G += 1
-        self.noAgapeCount = 0
+        moduloCounter += 1
         self.didClickAgape = false
         self.onSuccessfulAgape?()
         if let agapedItem = self.agapedItem {
@@ -314,6 +323,60 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
         }
         agapedItem = nil
     }
+    
+    func recordCurrentApapeCount() {
+        switch OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.panPotAgapeCheck {
+        case .api:
+            self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                switch result {
+                case .success(let info):
+                    OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
+                case .failure(_):
+                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
+                        self.agapeCheckLogicMorris { result2 in
+                            if case .success(let info) = result2 {
+                                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
+                            }
+                        }
+                    }
+                }
+            }
+        case .classic:
+            self.agapeCheckLogicMorris { result2 in
+                switch result2 {
+                case .success(let info):
+                    OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
+                case .failure(_):
+                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
+                        self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                            if case .success(let info) = result {
+                                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func agapeCheckLogicMorris(completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
+            forceLoader?()
+            let userInfoModel = GetUserInfo(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased())
+            var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
+            routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(userInfoModel)
+
+            morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserInfoResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
+                switch result {
+                case .success(let userInfo):
+                    completion(.success(U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(n2VB7HXLZikd5F5tZba2624UVIRShQdD: 0, Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: userInfo.username ?? "", HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userInfo.userUID ?? "", StdLH4czyirx3XMiDKsHErsflzOZA68m: userInfo.diggsGiven ?? 0, XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: userInfo.isUserPrivate ?? false)))
+                case .failure(_):
+                    completion(.failure(.FcZQGrfLSfR3kkjjJgexzvQ7pPfKmuLL))
+                }
+                if self.isLoadingNewVideo == false {
+                    self.onHideLoader?()
+                }
+            }
+        }
 
     func uuDupaojq2f67SJ6ybxRk6YbAQQWd0vI() {
         appStateHanlder?.nThjORZ7mYD5nxmddBBVsmVwEITzJZAA { [weak self] in
@@ -322,10 +385,15 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
 
                 self?.AdXjowrDTiLb8dfZVeErbpUPkfl7OyVK()
             }
+            
+            if Date().timeIntervalSince(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.xFYIahkRtyLfnuS33yZRr54ZCMuhDb8k) > Double(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.minutesAwayPeriod) * Double(60) {
+                self?.currentSessionChecks = 0
+            }
 
             if Date().timeIntervalSince(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.xFYIahkRtyLfnuS33yZRr54ZCMuhDb8k) > 60 {
                 self?.queue?.removeAll()
                 self?.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                self?.recordCurrentApapeCount()
                 self?.forceLoader?()
             }
         }
@@ -347,6 +415,7 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
             guard let item = item else { return }
 
             if jxC52KbDvLHWd3x4cVL5Vde29PpjBqUs.mUfxpS9F6XUYMaHRCmSjv1RxGTEN7HrY {
+                isLoadingNewVideo = true
                 videoInfoAgapeHandler?.pHlUftfJbs0UC1dbtB3d206ZhosZgNBN(forItem: item) { result in
                     switch result {
                     case .success(let videoInfo):
@@ -354,35 +423,48 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                         if videoInfo.n2VB7HXLZikd5F5tZba2624UVIRShQdD != CbSByOZWj5lKojSe9DofebyNclyVTtj8.rW2fv4lsul1AXQk3lgyZRUg4om2JJUXl.qLm3S0MMMCxPrPOIJMUerVRh2SMU8QkB {
                             SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ZQXyqSyPNrXUYKC0Ca0cr051RGybhcav(forQueueItem: item, statusCode: videoInfo.n2VB7HXLZikd5F5tZba2624UVIRShQdD)
                             if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
                                 return
                             } else {
-                                d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                                self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                                 return
                             }
                         }
                         
                         guard videoInfo.WcSVjeAdZJnbXej6D2SLnOZGqgp1RZoU == false else {
                             SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ezp8Ot81XaSVA7TaJ0mRmTE8mF8gCqMG(eventName: .Y9MZeMTw0bvY45l0U8z1Pxg6mnoJWLbk, reason: .hSIoLx0wONlycGhLqNOBaNkAcP4W0ZRe)
-                            d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                            self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                             return
                         }
 
                         DispatchQueue.main.async {
-                            presentingItem = item
-                            onNewVideoLoaded?(videoInfo)
+                            self.presentingItem = item
+                            self.onNewVideoLoaded?(videoInfo)
                         }
                         jxC52KbDvLHWd3x4cVL5Vde29PpjBqUs.dpADqXbagQo1Qtz9nxhelaWjd7DNOXfU = 0
                         jxC52KbDvLHWd3x4cVL5Vde29PpjBqUs.PoeEkJvHyHOJSqF3iqTxCoaFFd6JklxQ = 0
+                        self.isLoadingNewVideo = false
                     case .failure(let reason):
                         // In case we have a http status code not in 200...299, we check the skip flag.
                         // In case flag is set to false we don't load the next video.
                         if case .xmTcHBAXjW6qF7RmoXgcShNcD1tYXeWw(let statusCode) = reason {
                             SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ZQXyqSyPNrXUYKC0Ca0cr051RGybhcav(forQueueItem: item, statusCode: statusCode)
                             if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
                                 return
                             } else {
-                                d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                                self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                                 return
+                            }
+                        }
+                        
+                        else if case .NoR1z5trbSxBdN1fgPqkJPXxP1BpbBix(let statusCode) = reason {
+                            SAEXmfBNs1JAoCZgTAveDNlMOtiHo3au.ZQXyqSyPNrXUYKC0Ca0cr051RGybhcav(forQueueItem: item, statusCode: statusCode)
+                            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.skipUnavailableVideos == false {
+                                self.isLoadingNewVideo = false
+                                return
+                            } else {
+                                self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                             }
                         }
 
@@ -394,19 +476,21 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                         } else {
                             jxC52KbDvLHWd3x4cVL5Vde29PpjBqUs.dpADqXbagQo1Qtz9nxhelaWjd7DNOXfU += 1
                         }
-                        d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                        self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                     }
                 }
             } else {
+                isLoadingNewVideo = true
                 videoInfoAgapeHandler?.YZj5zP6YOwHa2YnZRk7D2UHl2flvfUoR(forItem: item) { result in
                     switch result {
                     case .success:
                         DispatchQueue.main.async {
-                            presentingItem = item
-                            onNewVideoLoaded?(item)
+                            self.presentingItem = item
+                            self.onNewVideoLoaded?(item)
+                            self.isLoadingNewVideo = false
                         }
                     case .failure:
-                        d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
+                        self.d67nf1kLmKBBF3vUujbjsofTsdik8BTc()
                     }
                 }
             }

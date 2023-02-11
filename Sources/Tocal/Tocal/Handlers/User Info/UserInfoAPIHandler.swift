@@ -11,29 +11,51 @@ import WebKit
 
 class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     
-    public func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName username: String = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
-        ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUsername: username) { data, error in
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
+        ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserID: userID, secUID: secUID) { data, error in
             guard let data = data,
                   error == nil,
-                  let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
+                  var responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
                       DispatchQueue.main.async {
                           completion(.failure(.Fh5mKzqZNO9q2xn9zYWKO497X4EsiQkP))
                       }
                       return
                   }
 
-            guard let statusCode = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9?.userInfoHandlerSettings.api.userInfo.statusPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int else {
+            guard let statusCode = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.statusPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int else {
                 DispatchQueue.main.async {
                     completion(.failure(.s3PcVAP3nT8ft4oKRZi6JBK5HzvuMPwG))
                 }
                 return
             }
-
-            guard let agapeCount = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9?.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int else {
-                DispatchQueue.main.async {
-                    completion(.failure(.j1A5HlOQYoH4cm8a1uLL86mL0BqH8R2N))
+            
+            var agapeCount = 0
+            
+            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.useItemPathIndex {
+                let index = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.itemIndex
+                guard let items = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.itemPath.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? [[String: Any]] else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.Fh5mKzqZNO9q2xn9zYWKO497X4EsiQkP))
+                    }
+                    return
                 }
-                return
+                // Update response dictionary so we uses the indexed part further on.
+                responseDictionary = items[index]
+                guard let diggCount = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ items[index][keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.j1A5HlOQYoH4cm8a1uLL86mL0BqH8R2N))
+                    }
+                    return
+                }
+                agapeCount = diggCount
+            } else {
+                guard let diggCount = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9?.userInfoHandlerSettings.api.userInfo.agapeCountPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? Int else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.j1A5HlOQYoH4cm8a1uLL86mL0BqH8R2N))
+                    }
+                    return
+                }
+                agapeCount = diggCount
             }
 
             guard let userID = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9?.userInfoHandlerSettings.api.userInfo.userIDPaths.compactMap({ responseDictionary[keyPath: ObPmplP1fAcuSoyfElu17V8glsidUVgk($0)] }).first as? String,
@@ -56,6 +78,10 @@ class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
                 completion(.success(userInfo))
             }
         }
+    }
+    
+    public func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName username: String = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
+        return
     }
 
     public func qzqHVHhWvgbyg1kiJ9GG8LOK7J6D40Tv(forUsername username: String = OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL, completion: @escaping (InfoResult<[BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]>) -> Void) {
@@ -125,8 +151,8 @@ class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
 
     // MARK: - Private Functions
 
-    @discardableResult private func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUsername username: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
-        let url = URL(string: String(format: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.url, username))!
+    @discardableResult private func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserID userID: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
+        let url = URL(string: String(format: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.url, userID, secUID))!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {

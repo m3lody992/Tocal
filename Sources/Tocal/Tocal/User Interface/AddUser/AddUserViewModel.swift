@@ -15,7 +15,7 @@ class z68MjvbClYKuz0IyruR7jmvcwURA5NBE {
     var o6skqcmeNAQR4CmIGgw1atLg4dTDsUSu: ((GetUserInfoResponse?) -> Void)?
     var JWiY9338FvbMnLJojXuut2rKE4Wss5Gl: (() -> Void)?
 
-    let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>()
+    let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
     let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
     let SFxpEk3kIISBWVM6tU0GMoNXDaoRXVoF = TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf(variation: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoVariation)
 
@@ -56,8 +56,17 @@ class z68MjvbClYKuz0IyruR7jmvcwURA5NBE {
                     return
                 }
                 
-                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa = userInfo.userUID ?? ""
-                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL = userInfo.username ?? ""
+                guard let userSecID = userInfo.userSecID,
+                      let panPotID = userInfo.userUID,
+                      let panPotUserName = userInfo.username,
+                      let videoCount = userInfo.videoCount, videoCount > 0 else {
+                    self.JWiY9338FvbMnLJojXuut2rKE4Wss5Gl?()
+                    return
+                }
+                
+                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa = panPotID
+                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL = panPotUserName
+                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID = userSecID
 
                 DispatchQueue.main.async {
                     if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.adv47DQ8TCJfxb6oOECpPCxATRwklqua {

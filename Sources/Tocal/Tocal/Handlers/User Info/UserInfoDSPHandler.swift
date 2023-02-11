@@ -30,6 +30,10 @@ class JjkoiPPPhB7kObo5AuTuzDjbhSvOkPlF: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     }
 
     // MARK: - Interface
+    
+    func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
+        return
+    }
 
     public func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forURL url: URL, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
         eYDpENjmPYtbJhPb6pA83Fj4bF7PIRAC = true

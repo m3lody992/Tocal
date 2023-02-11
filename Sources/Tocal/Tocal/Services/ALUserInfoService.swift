@@ -111,9 +111,15 @@ public class OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P {
         }
         set { fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(newValue, forKey: .hBZ1QkrUPtTBgrwqoIB1tjZ2Oo0nAB2q) }
     }
+    
+    public static var userSecID: String {
+            get { return fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.Gmo3RjMRMmQLWSOP145g0Cvc8m2deDbX(forKey: .userSecID) ?? [].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG}
+            set { fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(newValue, forKey: .userSecID) }
+        }
 
     public static func wCBP0QZRYejPge85NNHcqwrqUveSkJAq() {
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa)
+        fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .userSecID)
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .GS3da7lJFLNu6Gv37kCMQbFD4sxQUb3f)
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .nMgm4tQFBVlsdDyjyNqBbmFFJbWjGOJW)
         fnXVYwwL3MkXfsBFg7uzb6KpTIhz5ELo.nM8skExPJTnlhb8pCkN9xb6pu8yhRm7h(forKey: .hBZ1QkrUPtTBgrwqoIB1tjZ2Oo0nAB2q)
