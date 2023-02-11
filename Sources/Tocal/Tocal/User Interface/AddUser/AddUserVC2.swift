@@ -254,7 +254,9 @@ public class AddUserViewController: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR {
                     imageView.contentMode = .scaleAspectFit
                     imageView.clipsToBounds = true
                     imageView.kf.indicatorType = .activity
-                    imageView.kf.setImage(with: info.avatar)
+                    if let avatar = info.avatar {
+                        imageView.kf.setImage(with: URL(string: avatar))
+                    }
                     showAlert.view.addSubview(imageView)
                     NSLayoutConstraint.activate([
                         showAlert.view.heightAnchor.constraint(equalToConstant: 350),

@@ -68,7 +68,7 @@ public struct GetUserInfo: Codable {
 
 public struct GetUserInfoResponse: Codable {
     public let code: Int
-    public let avatar: URL?
+    public let avatar: String?
     public let videoCount: Int?
     public let diggsGotten: Int?
     public let diggsGiven: Int?
