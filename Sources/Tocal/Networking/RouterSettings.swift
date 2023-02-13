@@ -12,7 +12,7 @@ extension URLSession {
     static var customSession: URLSession {
         let configuration = URLSessionConfiguration.default
         configuration.allowsCellularAccess = true
-        configuration.connectionProxyDictionary = [kCFStreamPropertyProxyLocalBypass: true]
+//        configuration.connectionProxyDictionary = [kCFStreamPropertyProxyLocalBypass: true]
         configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         return URLSession(configuration: configuration)
     }
