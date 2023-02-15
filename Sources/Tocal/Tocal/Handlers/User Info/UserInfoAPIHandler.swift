@@ -85,10 +85,10 @@ class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     }
     
     func getUserVideos(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<[BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]>) -> Void) {
-        ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserID: userID, secUID: secUID) { data, error in
+        KuracPalacUserVideosLFDG(forUserID: userID, secUID: secUID) { data, error in
             guard let data = data,
                   error == nil,
-                  var responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
+                  let responseDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Dictionary<String, Any> else {
                       DispatchQueue.main.async {
                           completion(.failure(.Fh5mKzqZNO9q2xn9zYWKO497X4EsiQkP))
                       }
@@ -222,6 +222,19 @@ class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     }
 
     // MARK: - Private Functions
+    
+    @discardableResult private func KuracPalacUserVideosLFDG(forUserID userID: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
+        let url = URL(string: String(format: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userVideos.url, userID, secUID))!
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        }
+
+        task.resume()
+        return task
+    }
 
     @discardableResult private func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserID userID: String, secUID: String, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask? {
         let url = URL(string: String(format: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.api.userInfo.url, userID, secUID))!
