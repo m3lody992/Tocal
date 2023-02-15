@@ -41,14 +41,19 @@ class SwofemewWEYfi96nB7knqDLIJ8txRv7A: NSObject {
         morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserPostsResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
             switch result {
             case .success(let response):
-                DispatchQueue.main.async {
-                    self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
-                    self.pagination = response.pagination
-                    self.hasMore = response.hasMore
-                    self.onVideoFeedRefreshed?()
+                if response.code == 200 {
+                    DispatchQueue.main.async {
+                        self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
+                        self.pagination = response.pagination
+                        self.hasMore = response.hasMore
+                        self.onVideoFeedRefreshed?()
+                    }
+                } else if response.code == 500 {
+                    self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                    return
                 }
             case .failure:
-                print("fail")
+                self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
             }
         }
     }
