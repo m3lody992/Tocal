@@ -15,6 +15,7 @@ protocol x1ZVxZA73ncdFoB2DdRKQ1Hhw1n3SuRd {
 
 protocol ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void)
+    func getUserVideos(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<[BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]>) -> Void)
     func ZkqsA6HXrfOYZeKg9lUVv30u54W6UzkR(forUserName username: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void)
     func qzqHVHhWvgbyg1kiJ9GG8LOK7J6D40Tv(forUsername username: String, completion: @escaping (InfoResult<[BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]>) -> Void)
 }

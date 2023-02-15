@@ -9,7 +9,7 @@
 import Foundation
 import WebKit
 
-class TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
+class TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 { 
     
     private var ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4
     
@@ -17,6 +17,10 @@ class TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
     
     init(variation: YEMnzQSpK2e0L5VQqjbmlE2KittE9BBm) {
         ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28 = variation.SFxpEk3kIISBWVM6tU0GMoNXDaoRXVoF
+    }
+    
+    func getUserVideos(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<[BcDLEP1ZbZafGIVGYp2Uk2aEmpITrDI8]>) -> Void) {
+        ta7XlM3LFwQ3c2emXQZxAvzfgBKUJf28.getUserVideos(forUserID: userID, secUID: secUID, completion: completion)
     }
     
     func getUserInfo(forUserID userID: String, secUID: String, completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {

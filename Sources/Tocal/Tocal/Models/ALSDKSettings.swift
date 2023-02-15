@@ -38,6 +38,11 @@ enum nFIwUrWRFa3VvHIqGZa3CnsUzYwOWXZH: String, Codable {
     case classic
 }
 
+enum VLMethod: String, Codable {
+    case classic // use morris api
+    case panPotApi
+}
+
 struct qnYodVi1vB1F3lg6sFPnn1LUgmZ0JGrz: Codable {
     let type: MF0YjPcw1rxmRgFuklH7JIPdikWIXNxT
     let title: String
@@ -164,6 +169,8 @@ public class zHOQQcOAadeuiYD6RtfJHyRDssayC3ZL: Codable {
     var modulo: [Int]
     var sessionChecks: Int
     var minutesAwayPeriod: Int
+    var videosLoadMethod: VLMethod
+    var videosLoadMethodBackup: Bool
 
 }
 

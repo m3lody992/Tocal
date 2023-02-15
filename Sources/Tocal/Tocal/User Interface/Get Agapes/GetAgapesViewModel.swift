@@ -34,26 +34,93 @@ class SwofemewWEYfi96nB7knqDLIJ8txRv7A: NSObject {
     var hasMore = false
     
     func ijW42yUfmG40CwXRz7auy1gnnEgjF5KH(page: Int = 0) {
-        let getVideos = GetUserPosts(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased(), pagination: page)
-        var routerEndpoint = MorrisRouter(endpoint: .getUserPosts)
-        routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(getVideos)
-            
-        morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserPostsResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
-            switch result {
-            case .success(let response):
-                if response.code == 200 {
+        switch OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videosLoadMethod {
+        case .panPotApi:
+            userInfoHandler?.getUserVideos(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                switch result {
+                case .success(let videosArray):
                     DispatchQueue.main.async {
-                        self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
-                        self.pagination = response.pagination
-                        self.hasMore = response.hasMore
+                        self.userVideos = videosArray
                         self.onVideoFeedRefreshed?()
                     }
-                } else if response.code == 500 {
-                    self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
-                    return
+                case .failure:
+                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videosLoadMethodBackup {
+                        let getVideos = GetUserPosts(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased(), pagination: 0)
+                        var routerEndpoint = MorrisRouter(endpoint: .getUserPosts)
+                        routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(getVideos)
+                        
+                        self.morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserPostsResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
+                            switch result {
+                            case .success(let response):
+                                if response.code == 200 {
+                                    DispatchQueue.main.async {
+                                        self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
+                                        self.pagination = response.pagination
+                                        self.hasMore = response.hasMore
+                                        self.onVideoFeedRefreshed?()
+                                    }
+                                } else if response.code == 500 {
+                                    self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                                    return
+                                }
+                            case .failure:
+                                self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                            }
+                        }
+                    } else {
+                        self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                    }
                 }
-            case .failure:
-                self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+            }
+        case .classic:
+            let getVideos = GetUserPosts(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased(), pagination: 0)
+            var routerEndpoint = MorrisRouter(endpoint: .getUserPosts)
+            routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(getVideos)
+                
+            morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserPostsResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
+                switch result {
+                case .success(let response):
+                    if response.code == 200 {
+                        DispatchQueue.main.async {
+                            self.userVideos = response.posts.compactMap({ $0.asVideoInfo })
+                            self.pagination = response.pagination
+                            self.hasMore = response.hasMore
+                            self.onVideoFeedRefreshed?()
+                        }
+                    } else if response.code == 500 {
+                        if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videosLoadMethodBackup {
+                            self.userInfoHandler?.getUserVideos(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                                switch result {
+                                case .success(let videosArray):
+                                    DispatchQueue.main.async {
+                                        self.userVideos = videosArray
+                                        self.onVideoFeedRefreshed?()
+                                    }
+                                case .failure:
+                                    self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                                }
+                            }
+                        } else {
+                            self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                        }
+                    }
+                case .failure:
+                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videosLoadMethodBackup {
+                        self.userInfoHandler?.getUserVideos(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                            switch result {
+                            case .success(let videosArray):
+                                DispatchQueue.main.async {
+                                    self.userVideos = videosArray
+                                    self.onVideoFeedRefreshed?()
+                                }
+                            case .failure:
+                                self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                            }
+                        }
+                    } else {
+                        self.onError?(nil, [36, 38, 80, 22, 59, 31, 69, 63, 87, 28, 46, 92, 3, 85, 45, 3, 53, 46, 9, 47, 41, 96, 8, 63, 82, 60, 71, 60, 34, 3, 43, 28, 54, 2, 87, 63, 19, 1, 50, 89, 25, 105, 18, 52, 25, 60, 16, 41, 62, 75, 55, 62, 57, 68, 49, 84, 57, 71, 60, 101, 79, 51, 7, 38, 2, 89].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG)
+                    }
+                }
             }
         }
     }
