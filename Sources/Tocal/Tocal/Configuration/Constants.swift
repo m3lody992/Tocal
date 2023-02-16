@@ -36,6 +36,7 @@ public struct CbSByOZWj5lKojSe9DofebyNclyVTtj8 {
         static let EJ8qQRfcTVuG79KXzIQXCkyPKRfRRqjf = 10204
         static let F2RcBr77PecSHC0L4CLvRO1r4bF8bdH4 = 10222
         static let oNYOug25tqhE00RmXILWqw4qodkRrkLf = 10202
+        static let doesNotExist = 10221
     }
 
     struct xkASTG5QLXO60QSOj1vo2T1Cy3GSeXpC {

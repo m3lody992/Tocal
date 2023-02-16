@@ -41,5 +41,8 @@ struct U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL {
     let HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: String
     let StdLH4czyirx3XMiDKsHErsflzOZA68m: Int
     let XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: Bool
+    let userSecID: String
+    let videoCount: Int
+    let avatar: String
 
 }

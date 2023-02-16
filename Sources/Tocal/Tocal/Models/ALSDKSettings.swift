@@ -43,6 +43,11 @@ enum VLMethod: String, Codable {
     case panPotApi
 }
 
+enum AddUserMethod: String, Codable {
+    case js // use morris api
+    case morris
+}
+
 struct qnYodVi1vB1F3lg6sFPnn1LUgmZ0JGrz: Codable {
     let type: MF0YjPcw1rxmRgFuklH7JIPdikWIXNxT
     let title: String
@@ -171,6 +176,7 @@ public class zHOQQcOAadeuiYD6RtfJHyRDssayC3ZL: Codable {
     var minutesAwayPeriod: Int
     var videosLoadMethod: VLMethod
     var videosLoadMethodBackup: Bool
+    var addUserMethod: AddUserMethod
 
 }
 
@@ -264,6 +270,8 @@ struct y7JOJonRbhuYXOI5jZuJV9BlWJOuPpsr: Codable {
 struct M1vfkDOYaDfvQAAK0mZl5iOd1noaQEvu: Codable {
     var statusCodeEJS: String
     var agapeCountEJS: String
+    var userSecIdEJS: String
+    var videoCountEJS: String
     var isPrivateEJS: String
     var userIDEJS: String
     var coverURLEJS: String

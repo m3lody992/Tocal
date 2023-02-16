@@ -72,7 +72,8 @@ class li2GEEf6B8jZtdjIoTygldxWxZMAlJrQ: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
                 Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: username,
                 HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userID,
                 StdLH4czyirx3XMiDKsHErsflzOZA68m: agapeCount,
-                XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: isPrivate)
+                XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: isPrivate,
+                userSecID: "", videoCount: 0, avatar: "")
             
             DispatchQueue.main.async {
                 completion(.success(userInfo))

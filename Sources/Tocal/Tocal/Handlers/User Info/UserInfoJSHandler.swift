@@ -150,6 +150,9 @@ class S5TQWgsS9zOwyPvTRiQS9Awq3vbHKAnn: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
         var userID: String?
         var username: String?
         var agapeCount: Int?
+        var userSecId: String?
+        var videoCount: Int?
+        var avatar: String?
 
         dispatchGroup.enter()
         webView?.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.js.userInfo.statusCodeEJS) { result, error in
@@ -195,12 +198,51 @@ class S5TQWgsS9zOwyPvTRiQS9Awq3vbHKAnn: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
             agapeCount = result
             dispatchGroup.leave()
         }
+        
+        dispatchGroup.enter()
+        webView?.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.js.userInfo.userSecIdEJS) { result, error in
+            guard let result = result as? String,
+                  error == nil else {
+                dispatchGroup.leave()
+                return
+            }
+
+            userSecId = result
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        webView?.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.js.userInfo.videoCountEJS) { result, error in
+            guard let result = result as? Int,
+                  error == nil else {
+                dispatchGroup.leave()
+                return
+            }
+
+            videoCount = result
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        webView?.evaluateJavaScript(OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoHandlerSettings.js.userInfo.coverURLEJS) { result, error in
+            guard let result = result as? String,
+                  error == nil else {
+                dispatchGroup.leave()
+                return
+            }
+
+            avatar = result
+            dispatchGroup.leave()
+        }
 
         dispatchGroup.notify(queue: .main) {
             guard let userID = userID,
                   let username = username,
                   let statusCode = statusCode,
-                  let agapeCount = agapeCount else {
+                  let agapeCount = agapeCount,
+                  let userSecId = userSecId,
+                  let videoCount = videoCount,
+                  let avatr = avatar else {
                 self.GPLMnHRAUSZHwQ11gPeyhd8VFyPDDgkY(withReason: .FcZQGrfLSfR3kkjjJgexzvQ7pPfKmuLL)
                 return
             }
@@ -209,11 +251,15 @@ class S5TQWgsS9zOwyPvTRiQS9Awq3vbHKAnn: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
             DispatchQueue.main.async {
                 self.LUFmLu94XtMtq62bca8sGPoctAafWF1H?(
                     .success(
-                        U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(n2VB7HXLZikd5F5tZba2624UVIRShQdD: statusCode,
-                                 Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: username,
-                                 HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userID,
-                                 StdLH4czyirx3XMiDKsHErsflzOZA68m: agapeCount,
-                                 XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: statusCode == CbSByOZWj5lKojSe9DofebyNclyVTtj8.rW2fv4lsul1AXQk3lgyZRUg4om2JJUXl.F2RcBr77PecSHC0L4CLvRO1r4bF8bdH4)))
+                        U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(
+                            n2VB7HXLZikd5F5tZba2624UVIRShQdD: statusCode,
+                            Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: username,
+                            HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userID,
+                            StdLH4czyirx3XMiDKsHErsflzOZA68m: agapeCount,
+                            XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: statusCode == CbSByOZWj5lKojSe9DofebyNclyVTtj8.rW2fv4lsul1AXQk3lgyZRUg4om2JJUXl.F2RcBr77PecSHC0L4CLvRO1r4bF8bdH4,
+                            userSecID: userSecId,
+                            videoCount: videoCount,
+                            avatar: avatr)))
                 self.LUFmLu94XtMtq62bca8sGPoctAafWF1H = nil
                 self.KLdqWL6UXvPalxWby8b6Ja7Pj2rJM79O = false
                 self.Mcpw8J3bq8HXTJ8DyEuNxEpIumUrlY1P()

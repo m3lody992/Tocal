@@ -284,7 +284,9 @@ class JjkoiPPPhB7kObo5AuTuzDjbhSvOkPlF: ze2N5a2YfnDH4j6VNswuEGs5JdCX4vQ4 {
                              Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: username,
                              HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userID,
                              StdLH4czyirx3XMiDKsHErsflzOZA68m: agapeCount ?? 0,
-                             XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: isPrivate ?? false)))
+                             XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: isPrivate ?? false,
+                                                    userSecID: "",
+                                                     videoCount: 0, avatar: "")))
             self.epr7gP0NpY4WHtn4MxXHcOB4ulhtH73p = nil
             self.eYDpENjmPYtbJhPb6pA83Fj4bF7PIRAC = false
             self.Mcpw8J3bq8HXTJ8DyEuNxEpIumUrlY1P()

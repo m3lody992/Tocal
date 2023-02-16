@@ -368,7 +368,7 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
             morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserInfoResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
                 switch result {
                 case .success(let userInfo):
-                    completion(.success(U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(n2VB7HXLZikd5F5tZba2624UVIRShQdD: 0, Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: userInfo.username ?? "", HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userInfo.userUID ?? "", StdLH4czyirx3XMiDKsHErsflzOZA68m: userInfo.diggsGiven ?? 0, XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: userInfo.isUserPrivate ?? false)))
+                    completion(.success(U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(n2VB7HXLZikd5F5tZba2624UVIRShQdD: 0, Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: userInfo.username ?? "", HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userInfo.userUID ?? "", StdLH4czyirx3XMiDKsHErsflzOZA68m: userInfo.diggsGiven ?? 0, XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: userInfo.isUserPrivate ?? false, userSecID: userInfo.userSecID ?? "", videoCount: userInfo.videoCount ?? 0, avatar: userInfo.avatar ?? "")))
                 case .failure(_):
                     completion(.failure(.FcZQGrfLSfR3kkjjJgexzvQ7pPfKmuLL))
                 }
