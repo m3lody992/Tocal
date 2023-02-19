@@ -17,7 +17,7 @@ class z68MjvbClYKuz0IyruR7jmvcwURA5NBE {
 
     let sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<RBiSyKE4En773hSSDHFoN2lHb37cDW0Z>(engine: .customSession)
     let morris = GyVdk6JyHecjDyYHKgALpPUXqaaPn0Da<MorrisRouter>(engine: .customSession)
-    let SFxpEk3kIISBWVM6tU0GMoNXDaoRXVoF = TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf(variation: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.userInfoVariation)
+    let SFxpEk3kIISBWVM6tU0GMoNXDaoRXVoF = TtuV9JjRLImHkorm8jmiv29Nwr5Rycxf(variation: .js)
 
     private var xExzcQM1GpwjZTi1772LAR4mFFIYuGV9 = [6, 45, 27, 25, 38, 13, 11].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG // "unknown"
 
