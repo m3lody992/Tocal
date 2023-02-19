@@ -66,7 +66,7 @@ class z68MjvbClYKuz0IyruR7jmvcwURA5NBE {
                         
                         DispatchQueue.main.async {
                             if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.adv47DQ8TCJfxb6oOECpPCxATRwklqua {
-    //                            self.o6skqcmeNAQR4CmIGgw1atLg4dTDsUSu?(userInfo)
+                                self.o6skqcmeNAQR4CmIGgw1atLg4dTDsUSu?(GetUserInfoResponse(code: info.n2VB7HXLZikd5F5tZba2624UVIRShQdD, avatar: info.avatar, videoCount: info.videoCount, diggsGotten: 0, diggsGiven: 0, flowerCount: 0, floweringsCount: 0, isUserPrivate: info.XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi, userSecID: info.userSecID, userUID: panPotID, username: panPotUserName, message: ""))
                             } else {
                                 // Check if user is existing user.
                                 self.sY5md4yqp1kulKje1Vv9Rg3l9LNVS1yS.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(.init(SAuL4WFDmxOLz6dtnXaIO9YYx3yhFuMq: .R8myqoZ3aNDIq9Ht98QFPTDtSRGmVNNQ(panPotID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa))) { (result: Result<FpuDL47pSnHDcqqighZhyxwCvlD4DX38, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
