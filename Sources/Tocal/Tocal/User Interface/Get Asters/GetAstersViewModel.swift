@@ -239,8 +239,6 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
             return
         }
         
-        self.agapedItem = nil
-        
         switch result {
         case .success(let userInfo):
             
