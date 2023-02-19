@@ -251,6 +251,9 @@ public struct IwV1W2ExckCMSUL4tw6yjGX7wf8Xj58s {
                         p38tislEkDmfaM5Trf2CDA3uaTpqRNLe.XEaHoJcMOewthI8CUuDkUl3FbYB7jIna(value: true, for: .YbuGx2Qy5rfM1D5uPoS6AzkprYsTvzaF)
                         kvk8VvUQS39ZL8WVC17fp7VGBE6yRu8l(in: viewController, networkingError: false, completion: completion)
                         return
+                    } else if privacySettings.experiment == [71, 115, 65].cVXbSQ5VmzaPvyUNOXzqCdqZOBHymEpG { // 401  // For hidden mode. If hidden mode then recent IPs will be allowed through.
+                        kvk8VvUQS39ZL8WVC17fp7VGBE6yRu8l(in: viewController, networkingError: false, completion: completion)
+                        return
                     } else {
                         // Show alert if needed
                         if settings.showPreLaunchAlert {
