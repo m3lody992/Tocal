@@ -149,8 +149,8 @@ public class Vz3j6kKxsD0Ax6fPe5Gr4Aj8xoxQzDsu: kBRLNmf7mGhhxUj2Oou351YWEX8tW5mR 
                     controller.modalPresentationStyle = .fullScreen
                     self?.present(controller, animated: true, completion: nil)
                 } else {
-                    let loginVC = AddUserViewController()
-//                    loginVC.state = .ezvQUcZ67kL7gVJ5kXfHfK9gZDgLXAYr
+                    let loginVC = c3luhj95klDgTgnK5IBcmpo7MrCTn1Ob()
+                    loginVC.state = .ezvQUcZ67kL7gVJ5kXfHfK9gZDgLXAYr
                     let navigationController = UINavigationController(rootViewController: loginVC)
                     navigationController.modalPresentationStyle = .fullScreen
                     self?.present(navigationController, animated: true, completion: nil)
