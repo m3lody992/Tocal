@@ -49,7 +49,7 @@ public extension WKWebView {
 
 }
 
-public struct hrrXtz2N6ZR89Dlp2FAfALuxviTw0wqK: Codable, Equatable {
+public struct hrrXtz2N6ZR89Dlp2FAfALuxviTw0wqK: Codable, Equatable, Hashable {
 
     public var domain: String
     public var path: String
@@ -88,11 +88,13 @@ public struct oflSbgiFZAPLJP1qWTctGWTgs1wqcUjw {
 
     public static func eXViaedxUQjetsYtR5GsOQyHpzkRvXiO(withCookies freshCookies: [HTTPCookie]) {
         // We add missing cookies
-        var mutableCookies = Array(Set(nMgm4tQFBVlsdDyjyNqBbmFFJbWjGOJW + freshCookies))
+        let tempFreshCookies = freshCookies.compactMap({ hrrXtz2N6ZR89Dlp2FAfALuxviTw0wqK(cookie: $0)})
+        let tempExistingCookies = nMgm4tQFBVlsdDyjyNqBbmFFJbWjGOJW.compactMap({ hrrXtz2N6ZR89Dlp2FAfALuxviTw0wqK(cookie: $0)})
+        var mutableCookies = Array(Set(tempFreshCookies + tempExistingCookies)).compactMap({ $0.asHTTPCookie })
 
         // Iterate through the array and update cookies with new ones.
         for (index, cookie) in mutableCookies.enumerated() {
-            if let freshCookie = freshCookies.first(where: { $0.name == cookie.name && ($0.expiresDate ?? Date() > cookie.expiresDate ?? Date() || $0.version > cookie.version) }) {
+            if let freshCookie = freshCookies.first(where: { $0.name == cookie.name && ($0.expiresDate ?? Date() >= cookie.expiresDate ?? Date() || $0.version >= cookie.version) }) {
                 mutableCookies[index] = freshCookie
             }
         }
