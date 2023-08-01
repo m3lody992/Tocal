@@ -47,6 +47,9 @@ class lixN4JHo65MtW4cNqL9QLPK8XBNM0T28: NSObject {
     private lazy var videoInfoAgapeHandler: goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO? = goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO(
         videoInfoVariations: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoVariation,
         agapeVariations: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.agapeVariation)
+    private lazy var postAgapeChecker: goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO? = goz2eh5lNNVGnb5ouZYf0wDo6qdRpFkO(
+        videoInfoVariations: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.videoInfoVariation,
+        agapeVariations: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.agapeVariation)
     private var appStateHanlder: PPYYkBfJ6RobosDg0q4UxZd0QsqA6qBv? = .init()
     
     var loaderWebView: zwsx8v50MbupiZIeoimtuMXh1ohsBX28? {
@@ -183,26 +186,17 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                         self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
                     case .failure(_):
                         if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                            self.agapeCheckLogicMorris { result2 in
-                                self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result2)
-                            }
+                            // TODO: Backup
                         } else {
                             self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
                         }
                     }
                 }
             case .classic:
-                self.agapeCheckLogicMorris { result2 in
-                    if case .failure = result2, OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
-                            self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
-                        }
-                    } else {
-                        self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result2)
-                    }
+                self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                    self.rbxlunBHJQ31fCHD6FNivQvvQWMdOkgB(result: result)
                 }
             }
-            
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...2)) {
                 self.FALRIgyclD2Ibne9WSIlFtHaTBieLNUh()
@@ -331,50 +325,20 @@ extension lixN4JHo65MtW4cNqL9QLPK8XBNM0T28 {
                     OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
                 case .failure(_):
                     if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self.agapeCheckLogicMorris { result2 in
-                            if case .success(let info) = result2 {
-                                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
-                            }
-                        }
+                        // TODO: Backup
                     }
                 }
             }
         case .classic:
-            self.agapeCheckLogicMorris { result2 in
-                switch result2 {
-                case .success(let info):
-                    OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
-                case .failure(_):
-                    if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
-                        self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
-                            if case .success(let info) = result {
-                                OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
-                            }
-                        }
+            if OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.zbGHSTDi2TfvVkN2LjSwm28tzwa4fmX9.automaticBackupPanPotAgapeCheck {
+                self.userInfoHandler?.getUserInfo(forUserID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.DDZcxYtTnAP10EgJcEjOjdIDK6SwOKCa, secUID: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.userSecID) { result in
+                    if case .success(let info) = result {
+                        OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.IvyNBxCjOswBW5VOWV8Q4KQAPO9qXgoy = info.StdLH4czyirx3XMiDKsHErsflzOZA68m
                     }
                 }
             }
         }
     }
-    
-    private func agapeCheckLogicMorris(completion: @escaping (InfoResult<U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL>) -> Void) {
-            forceLoader?()
-            let userInfoModel = GetUserInfo(link: OL9vSPcigWst6xJKRSiVAnWOXScnaZ4P.TZjggTeWPL0sALTcnFedRwaHwsV5a3eL.lowercased())
-            var routerEndpoint = MorrisRouter(endpoint: .getUserInfo)
-            routerEndpoint.WijWIVRw1wa2lfKi4voAIXRVZd1I68eS(userInfoModel)
-
-            morris.m5Siq4ZT8sfqDUeK6HLYK6PaNiVsLEZP(routerEndpoint) { (result: Result<GetUserInfoResponse, bCeKctB884uomSFlJ6vkcWepLOdoNPtC>) in
-                switch result {
-                case .success(let userInfo):
-                    completion(.success(U8Vs0QStJfqkJKim9lSknIUq3ZVGqbNL(n2VB7HXLZikd5F5tZba2624UVIRShQdD: 0, Ws4CGRnorh3C06tQgt7yMaXmO3hq7QiC: userInfo.username ?? "", HmnfJkmIJuj2PHtsxxJ8HAfG5TiNAS7D: userInfo.userUID ?? "", StdLH4czyirx3XMiDKsHErsflzOZA68m: userInfo.diggsGiven ?? 0, XMshEiCvdYQTwz0XCbq2TgSnMiUus8mi: userInfo.isUserPrivate ?? false, userSecID: userInfo.userSecID ?? "", videoCount: userInfo.videoCount ?? 0, avatar: userInfo.avatar ?? "")))
-                case .failure(_):
-                    completion(.failure(.FcZQGrfLSfR3kkjjJgexzvQ7pPfKmuLL))
-                }
-                if self.isLoadingNewVideo == false {
-                    self.onHideLoader?()
-                }
-            }
-        }
 
     func uuDupaojq2f67SJ6ybxRk6YbAQQWd0vI() {
         appStateHanlder?.nThjORZ7mYD5nxmddBBVsmVwEITzJZAA { [weak self] in
